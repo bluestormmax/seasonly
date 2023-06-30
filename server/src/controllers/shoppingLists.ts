@@ -9,3 +9,19 @@ export const getShoppingLists: RequestHandler = async (req, res, next) => {
     next(error);
   }
 };
+
+export const createShoppingList: RequestHandler = async (req, res, next) => {
+  const title = req.body.title;
+  const list = req.body.list;
+
+  try {
+    const newShoppingList = await ShoppingListModel.create({
+      title: title,
+      list: list,
+    });
+    // Send new resource created code and new list as JSON
+    res.status(201).json(newShoppingList);
+  } catch (error) {
+    next(error);
+  }
+};

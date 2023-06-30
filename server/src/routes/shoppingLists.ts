@@ -5,4 +5,6 @@ const router = express.Router();
 
 router.get("/", ShoppingListController.getShoppingLists);
 
+router.post("/", ShoppingListController.createShoppingList);
+
 export default router;
