@@ -1,22 +1,39 @@
-import { useState } from "react";
-import { Typography, Button } from "@mui/material";
+import { useState, useEffect } from "react";
+import { Typography } from "@mui/material";
+import { ShoppingList } from "./models/shoppingList";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [shoppingLists, setShoppingLists] = useState<ShoppingList[]>([]);
 
-  const handleClick = () => {
-    setCount(count + 1);
-  };
+  useEffect(() => {
+    async function loadShoppingLists() {
+      try {
+        const response = await fetch(
+          "http://localhost:5000/api/shoppingLists",
+          {
+            method: "GET",
+          }
+        );
+        const shoppingLists = await response.json();
+        setShoppingLists(shoppingLists);
+      } catch (error) {
+        console.error(error);
+        alert(error); // TODO: dev only.
+      }
+    }
+    loadShoppingLists();
+  }, []);
 
   return (
     <div className="app wrapper">
       <Typography className="heading welcome" variant="h1" component="h1">
         hello!
       </Typography>
-      <Button variant="contained" onClick={handleClick}>
-        Count: {count}
-      </Button>
+      {JSON.stringify(shoppingLists)}
+      {/* {shoppingLists.map((list) => {
+        <div className="shopping-list">{list}</div>;
+      })} */}
     </div>
   );
 }
