@@ -1,5 +1,6 @@
 import { RequestHandler } from "express";
 import ShoppingListModel from "../models/shoppingList";
+import createHttpError from "http-errors";
 
 // Get all shopping lists
 export const getShoppingLists: RequestHandler = async (req, res, next) => {
@@ -42,6 +43,9 @@ export const createShoppingList: RequestHandler<
   const list = req.body.list;
 
   try {
+    if (!title || !list) {
+      throw createHttpError(400, "List must have a title and list items");
+    }
     const newShoppingList = await ShoppingListModel.create({
       title: title,
       list: list,
