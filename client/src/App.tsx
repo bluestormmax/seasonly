@@ -1,9 +1,12 @@
+import { Typography } from "@mui/material";
 import "./App.css";
 
 function App() {
   return (
     <div className="app wrapper">
-      <h1>hello!</h1>
+      <Typography className="heading welcome" variant="h1" component="h1">
+        hello!
+      </Typography>
     </div>
   );
 }
