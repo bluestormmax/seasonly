@@ -31,10 +31,11 @@ function App() {
       <Typography className="heading welcome" variant="h1" component="h1">
         hello!
       </Typography>
-      {JSON.stringify(shoppingLists)}
-      {/* {shoppingLists.map((list) => {
-        <div className="shopping-list">{list}</div>;
-      })} */}
+      {shoppingLists.map((list) => (
+        <div className="shopping-list" key={list["_id"]}>
+          {JSON.stringify(list)}
+        </div>
+      ))}
     </div>
   );
 }
