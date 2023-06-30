@@ -1,8 +1,12 @@
 import "dotenv/config";
 import express, { NextFunction, Request, Response } from "express";
+import morgan from "morgan";
 import shoppingListRoutes from "./routes/shoppingLists";
 
 const app = express();
+
+// set up request logging.
+app.use(morgan("dev"));
 
 // Set up express to accept JSON
 app.use(express.json());
