@@ -9,14 +9,15 @@ function App() {
   useEffect(() => {
     async function loadShoppingLists() {
       try {
-        const response = await fetch(
-          "http://localhost:5000/api/shoppingLists",
-          {
-            method: "GET",
-          }
-        );
-        const shoppingLists = await response.json();
-        setShoppingLists(shoppingLists);
+        const response = await fetch("/api/shoppingLists", {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "GET",
+        });
+        const initialShoppingLists = await response.json();
+        setShoppingLists(initialShoppingLists);
       } catch (error) {
         console.error(error);
         alert(error); // TODO: dev only.
