@@ -1,4 +1,5 @@
 import { RequestHandler } from "express";
+import mongoose from "mongoose";
 import ShoppingListModel from "../models/shoppingList";
 import createHttpError from "http-errors";
 
@@ -17,6 +18,9 @@ export const getShoppingList: RequestHandler = async (req, res, next) => {
   const shoppingListId = req.params.shoppingListId;
 
   try {
+    if (!mongoose.isValidObjectId(shoppingListId)) {
+      throw createHttpError(400, "Invalid list id");
+    }
     const shoppingList = await ShoppingListModel.findById(
       shoppingListId
     ).exec();
