@@ -7,6 +7,7 @@ const app = express();
 // Set up express to accept JSON
 app.use(express.json());
 
+// Put all shoppingList endpoints at this URL
 app.use("/api/shoppingLists", shoppingListRoutes);
 
 // Custom error for non-existent endpoints.
