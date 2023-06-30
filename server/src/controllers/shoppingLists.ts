@@ -63,3 +63,37 @@ export const createShoppingList: RequestHandler<
     next(error);
   }
 };
+
+interface UpdateShoppingListParams {
+  shoppingListId: string;
+}
+
+interface UpdateShoppingListBody {
+  title?: string;
+  list?: string;
+}
+
+export const updateShoppingList: RequestHandler<
+  UpdateShoppingListParams,
+  unknown,
+  UpdateShoppingListBody,
+  unknown
+> = async (req, res, next) => {
+  const shoppingListId = req.params.shoppingListId;
+  const newTitle = req.body.title;
+  const newList = req.body.list;
+
+  try {
+    if (!mongoose.isValidObjectId(shoppingListId)) {
+      throw createHttpError(400, "Invalid list id");
+    }
+    if (!newTitle || !newList) {
+      throw createHttpError(
+        400,
+        "List must have a title and list items to be updated"
+      );
+    }
+  } catch (error) {
+    next(error);
+  }
+};

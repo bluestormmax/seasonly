@@ -9,4 +9,6 @@ router.get("/:shoppingListId", ShoppingListController.getShoppingList);
 
 router.post("/", ShoppingListController.createShoppingList);
 
+router.patch("/:shoppingListId", ShoppingListController.updateShoppingList);
+
 export default router;
