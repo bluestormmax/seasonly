@@ -4,6 +4,9 @@ import shoppingListRoutes from "./routes/shoppingLists";
 
 const app = express();
 
+// Set up express to accept JSON
+app.use(express.json());
+
 app.use("/api/shoppingLists", shoppingListRoutes);
 
 // Custom error for non-existent endpoints.
