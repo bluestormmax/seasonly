@@ -1,6 +1,7 @@
 import "dotenv/config";
 import express, { NextFunction, Request, Response } from "express";
 import morgan from "morgan";
+import createHttpError, { isHttpError } from "http-errors";
 import shoppingListRoutes from "./routes/shoppingLists";
 
 const app = express();
@@ -16,15 +17,19 @@ app.use("/api/shoppingLists", shoppingListRoutes);
 
 // Custom error for non-existent endpoints.
 app.use((req, res, next) => {
-  next(Error("Endpoint not found"));
+  next(createHttpError(404, "Endpoint not found"));
 });
 
 // Express error handler.
 app.use((error: unknown, req: Request, res: Response, next: NextFunction) => {
   console.log(error);
   let errorMessage = "An unknown error occurred";
-  if (error instanceof Error) errorMessage = error.message;
-  res.status(500).json({ error: errorMessage });
+  let statusCode = 500; // 500 fallback.
+  if (isHttpError(error)) {
+    statusCode = error.status;
+    errorMessage = error.message;
+  }
+  res.status(statusCode).json({ error: errorMessage });
 });
 
 export default app;
