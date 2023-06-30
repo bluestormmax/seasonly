@@ -11,4 +11,6 @@ router.post("/", ShoppingListController.createShoppingList);
 
 router.patch("/:shoppingListId", ShoppingListController.updateShoppingList);
 
+router.delete("/:shoppingListId", ShoppingListController.deleteShoppingList);
+
 export default router;

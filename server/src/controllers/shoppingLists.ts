@@ -111,3 +111,28 @@ export const updateShoppingList: RequestHandler<
     next(error);
   }
 };
+
+export const deleteShoppingList: RequestHandler = async (req, res, next) => {
+  const shoppingListId = req.params.shoppingListId;
+
+  try {
+    if (!mongoose.isValidObjectId(shoppingListId)) {
+      throw createHttpError(400, "Invalid list id");
+    }
+
+    const shoppingList = await ShoppingListModel.findById(
+      shoppingListId
+    ).exec();
+
+    if (!shoppingList) {
+      throw createHttpError(404, "List not found");
+    }
+
+    await shoppingList.deleteOne();
+
+    // Send deletion success code.
+    res.sendStatus(204);
+  } catch (error) {
+    next(error);
+  }
+};
