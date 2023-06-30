@@ -25,8 +25,19 @@ export const getShoppingList: RequestHandler = async (req, res, next) => {
   }
 };
 
+interface CreateShoppingListBody {
+  // Make both of these optional in case the request is missing one or the other
+  title?: string;
+  list?: string;
+}
+
 // Create new shopping list
-export const createShoppingList: RequestHandler = async (req, res, next) => {
+export const createShoppingList: RequestHandler<
+  unknown,
+  unknown,
+  CreateShoppingListBody,
+  unknown
+> = async (req, res, next) => {
   const title = req.body.title;
   const list = req.body.list;
 
@@ -35,7 +46,7 @@ export const createShoppingList: RequestHandler = async (req, res, next) => {
       title: title,
       list: list,
     });
-    // Send new resource created, code and new list as JSON
+    // Send new resource created code and new list as JSON
     res.status(201).json(newShoppingList);
   } catch (error) {
     next(error);
