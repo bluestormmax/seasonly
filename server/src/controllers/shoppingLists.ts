@@ -93,6 +93,20 @@ export const updateShoppingList: RequestHandler<
         "List must have a title and list items to be updated"
       );
     }
+
+    const shoppingList = await ShoppingListModel.findById(
+      shoppingListId
+    ).exec();
+    if (!shoppingList) {
+      throw createHttpError(404, "List not found");
+    }
+    shoppingList.title = newTitle;
+    shoppingList.list = newList;
+
+    // Use the updated list immediately in UI.
+    const updatedShoppingList = await shoppingList.save();
+    // Return updated note to db.
+    res.status(200).json(updatedShoppingList);
   } catch (error) {
     next(error);
   }
