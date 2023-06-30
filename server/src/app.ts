@@ -1,17 +1,10 @@
 import "dotenv/config";
 import express, { NextFunction, Request, Response } from "express";
-import ShoppingListModel from "./models/shoppingList";
+import shoppingListRoutes from "./routes/shoppingLists";
 
 const app = express();
 
-app.get("/", async (req, res, next) => {
-  try {
-    const shoppingLists = await ShoppingListModel.find().exec();
-    res.status(200).json(shoppingLists);
-  } catch (error) {
-    next(error);
-  }
-});
+app.use("/api/shoppingLists", shoppingListRoutes);
 
 // Custom error for non-existent endpoints.
 app.use((req, res, next) => {
