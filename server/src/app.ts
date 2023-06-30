@@ -13,6 +13,11 @@ app.get("/", async (req, res, next) => {
   }
 });
 
+// Custom error for non-existent endpoints.
+app.use((req, res, next) => {
+  next(Error("Endpoint not found"));
+});
+
 // Express error handler.
 app.use((error: unknown, req: Request, res: Response, next: NextFunction) => {
   console.log(error);
