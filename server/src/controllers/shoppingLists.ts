@@ -20,6 +20,9 @@ export const getShoppingList: RequestHandler = async (req, res, next) => {
     const shoppingList = await ShoppingListModel.findById(
       shoppingListId
     ).exec();
+    if (!shoppingList) {
+      throw createHttpError(404, "List not found");
+    }
     res.status(200).json(shoppingList);
   } catch (error) {
     next(error);
