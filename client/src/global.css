@@ -24,6 +24,7 @@ a:hover {
 }
 
 body {
+  background: #fafafa;
   margin: 0;
   display: flex;
   place-items: center;
@@ -66,4 +67,9 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+/** TODO: MOVE TO MODULES */
+.wrapper {
+  padding: 2rem;
 }
