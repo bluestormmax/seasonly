@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { ShoppingList as ShoppingListModel } from "./models/shoppingList";
 import ShoppingList from "./components/ShoppingList";
-import "./App.css";
 
 function App() {
   const [shoppingLists, setShoppingLists] = useState<ShoppingListModel[]>([]);
@@ -32,9 +31,19 @@ function App() {
       <Typography className="heading welcome" variant="h1" component="h1">
         lists!
       </Typography>
-      {shoppingLists.map((item) => (
-        <ShoppingList key={item._id} shoppingList={item} />
-      ))}
+      {shoppingLists ? (
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: 3,
+          }}
+        >
+          {shoppingLists.map((item) => (
+            <ShoppingList key={item._id} shoppingList={item} />
+          ))}
+        </Box>
+      ) : null}
     </div>
   );
 }
