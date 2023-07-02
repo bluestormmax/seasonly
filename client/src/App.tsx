@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Typography } from "@mui/material";
+import { Typography, IconButton } from "@mui/material";
+import { Add as AddIcon } from "@mui/icons-material";
 import { ShoppingList as ShoppingListModel } from "@models/shoppingList";
 import { ShoppingList, GridWrapper } from "./components";
 import * as ShoppingListsApi from "./api/shoppingLists.api";
@@ -35,7 +36,16 @@ function App() {
           ))}
         </GridWrapper>
       ) : null}
-      {openAddList ? <AddListDialog /> : null}
+      {openAddList ? (
+        <AddListDialog onClose={() => setOpenAddList(false)} />
+      ) : null}
+      <IconButton
+        size="small"
+        edge="start"
+        onClick={() => setOpenAddList(true)}
+      >
+        <AddIcon />
+      </IconButton>
     </div>
   );
 }
