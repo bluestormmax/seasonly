@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Box, Typography } from "@mui/material";
 import { ShoppingList as ShoppingListModel } from "./models/shoppingList";
-import ShoppingList from "./components/ShoppingList";
+import ShoppingList from "./components/ShoppingList/ShoppingList";
 
 function App() {
   const [shoppingLists, setShoppingLists] = useState<ShoppingListModel[]>([]);
