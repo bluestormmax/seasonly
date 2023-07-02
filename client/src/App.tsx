@@ -3,9 +3,11 @@ import { Typography } from "@mui/material";
 import { ShoppingList as ShoppingListModel } from "@models/shoppingList";
 import { ShoppingList, GridWrapper } from "./components";
 import * as ShoppingListsApi from "./api/shoppingLists.api";
+import { AddListDialog } from "./components/AddListDialog/AddListDialog";
 
 function App() {
   const [shoppingLists, setShoppingLists] = useState<ShoppingListModel[]>([]);
+  const [openAddList, setOpenAddList] = useState(false);
 
   useEffect(() => {
     async function loadShoppingLists() {
@@ -33,6 +35,7 @@ function App() {
           ))}
         </GridWrapper>
       ) : null}
+      {openAddList ? <AddListDialog /> : null}
     </div>
   );
 }
