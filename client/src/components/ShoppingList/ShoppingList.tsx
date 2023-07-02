@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, Typography } from "@mui/material";
-import { ShoppingList as ShoppingListModel } from "../../models/shoppingList";
-import { formatDate } from "../../utils/formatDate";
+import { ShoppingList as ShoppingListModel } from "@models/shoppingList";
+import { formatDate } from "@utils/formatDate";
 import styles from "./ShoppingList.module.css";
 
 type ShoppingListProps = {
