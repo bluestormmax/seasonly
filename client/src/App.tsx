@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { Typography } from "@mui/material";
-import { ShoppingList } from "./models/shoppingList";
+import { ShoppingList as ShoppingListModel } from "./models/shoppingList";
+import ShoppingList from "./components/ShoppingList";
 import "./App.css";
 
 function App() {
-  const [shoppingLists, setShoppingLists] = useState<ShoppingList[]>([]);
+  const [shoppingLists, setShoppingLists] = useState<ShoppingListModel[]>([]);
 
   useEffect(() => {
     async function loadShoppingLists() {
@@ -29,12 +30,10 @@ function App() {
   return (
     <div className="app wrapper">
       <Typography className="heading welcome" variant="h1" component="h1">
-        hello!
+        lists!
       </Typography>
-      {shoppingLists.map((list) => (
-        <div className="shopping-list" key={list["_id"]}>
-          {JSON.stringify(list)}
-        </div>
+      {shoppingLists.map((item) => (
+        <ShoppingList key={item._id} shoppingList={item} />
       ))}
     </div>
   );
