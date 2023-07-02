@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { ShoppingList as ShoppingListModel } from "./models/shoppingList";
-import ShoppingList from "./components/ShoppingList/ShoppingList";
+import { ShoppingList, GridWrapper } from "./components";
 
 function App() {
   const [shoppingLists, setShoppingLists] = useState<ShoppingListModel[]>([]);
@@ -32,17 +32,11 @@ function App() {
         lists!
       </Typography>
       {shoppingLists ? (
-        <Box
-          sx={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: 3,
-          }}
-        >
+        <GridWrapper>
           {shoppingLists.map((item) => (
             <ShoppingList key={item._id} shoppingList={item} />
           ))}
-        </Box>
+        </GridWrapper>
       ) : null}
     </div>
   );

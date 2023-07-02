@@ -1,1 +1,2 @@
-export * from "./ShoppingList";
+export { GridWrapper } from "./GridWrapper";
+export { ShoppingList } from "./ShoppingList";
