@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
-import styles from "./GridWrapper.module.css";
 import { Box } from "@mui/material";
+import styles from "./GridWrapper.module.css";
 
 type GridWrapperProps = {
   children: ReactNode;
