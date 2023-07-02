@@ -2,9 +2,8 @@ import { useState, useEffect } from "react";
 import { Typography, IconButton } from "@mui/material";
 import { Add as AddIcon } from "@mui/icons-material";
 import { ShoppingList as ShoppingListModel } from "@models/shoppingList";
-import { ShoppingList, GridWrapper } from "./components";
+import { ShoppingList, GridWrapper, AddListDialog } from "./components";
 import * as ShoppingListsApi from "./api/shoppingLists.api";
-import { AddListDialog } from "./components/AddListDialog/AddListDialog";
 
 function App() {
   const [shoppingLists, setShoppingLists] = useState<ShoppingListModel[]>([]);
