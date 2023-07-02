@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Typography } from "@mui/material";
-import { ShoppingList as ShoppingListModel } from "./models/shoppingList";
+import { ShoppingList as ShoppingListModel } from "@models/shoppingList";
 import { ShoppingList, GridWrapper } from "./components";
+import * as ShoppingListsApi from "./api/shoppingLists.api";
 
 function App() {
   const [shoppingLists, setShoppingLists] = useState<ShoppingListModel[]>([]);
@@ -9,14 +10,8 @@ function App() {
   useEffect(() => {
     async function loadShoppingLists() {
       try {
-        const response = await fetch("/api/shoppingLists", {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          method: "GET",
-        });
-        const initialShoppingLists = await response.json();
+        const initialShoppingLists =
+          await ShoppingListsApi.fetchShoppingLists();
         setShoppingLists(initialShoppingLists);
       } catch (error) {
         console.error(error);
