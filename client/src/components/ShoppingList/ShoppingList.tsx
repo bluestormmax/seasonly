@@ -10,9 +10,11 @@ type ShoppingListProps = {
 
 const ShoppingList = ({ shoppingList, className }: ShoppingListProps) => {
   const { title, list, createdAt, updatedAt } = shoppingList;
-  const timeStamp = updatedAt ? updatedAt : createdAt;
-  const date = formatDate(timeStamp);
-  const classNames = `${styles.shopping_list} ${className ? className : ""}`;
+  const timeStamp: string = updatedAt ? updatedAt : createdAt;
+  const date: string = formatDate(timeStamp);
+  const classNames: string = `${styles.shopping_list} ${
+    className ? className : ""
+  }`;
 
   return (
     <Card className={classNames}>
