@@ -17,7 +17,7 @@ const AddListDialog = ({ onClose }: AddListDialogProps) => {
   };
 
   return (
-    <Dialog open onClose={onClose}>
+    <Dialog open onClose={handleClose}>
       <DialogTitle>Add New Shopping List</DialogTitle>
       <DialogActions>
         <IconButton onClick={handleClose}>
