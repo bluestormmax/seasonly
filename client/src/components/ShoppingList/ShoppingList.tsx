@@ -11,8 +11,10 @@ const ShoppingList = ({ shoppingList, className }: ShoppingListProps) => {
   const { title, list, createdAt, updatedAt } = shoppingList;
   const timeStamp = updatedAt ? updatedAt : createdAt;
   const date = new Date(timeStamp).toLocaleString();
+  const classNames = `${styles.shopping_list} ${className ? className : ""}`;
+
   return (
-    <Card className={`${styles.shopping_list} ${className}`}>
+    <Card className={classNames}>
       <CardHeader title={title} />
       <CardContent>
         <Typography variant="body1" component="p">
@@ -28,4 +30,4 @@ const ShoppingList = ({ shoppingList, className }: ShoppingListProps) => {
   );
 };
 
-export default ShoppingList;
+export { ShoppingList };

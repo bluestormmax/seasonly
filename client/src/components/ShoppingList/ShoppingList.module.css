@@ -1,3 +1,3 @@
 .shopping_list {
-  background-color: paleturquoise;
+  background-color: paleturquoise !important; /* TODO: remove, dev only */
 }
