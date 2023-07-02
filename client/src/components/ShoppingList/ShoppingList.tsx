@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, Typography } from "@mui/material";
 import { ShoppingList as ShoppingListModel } from "../../models/shoppingList";
+import { formatDate } from "../../utils/formatDate";
 import styles from "./ShoppingList.module.css";
 
 type ShoppingListProps = {
@@ -10,7 +11,7 @@ type ShoppingListProps = {
 const ShoppingList = ({ shoppingList, className }: ShoppingListProps) => {
   const { title, list, createdAt, updatedAt } = shoppingList;
   const timeStamp = updatedAt ? updatedAt : createdAt;
-  const date = new Date(timeStamp).toLocaleString();
+  const date = formatDate(timeStamp);
   const classNames = `${styles.shopping_list} ${className ? className : ""}`;
 
   return (
