@@ -14,12 +14,14 @@ import styles from "./ShoppingList.module.css";
 type ShoppingListProps = {
   shoppingList: ShoppingListModel;
   className?: string;
+  onEditListClicked: (shoppingList: ShoppingListModel) => void;
   onDeleteListClicked: (shoppingList: ShoppingListModel) => void;
 };
 
 const ShoppingList = ({
   shoppingList,
   className,
+  onEditListClicked,
   onDeleteListClicked,
 }: ShoppingListProps) => {
   const { title, list, createdAt, updatedAt } = shoppingList;
@@ -42,7 +44,12 @@ const ShoppingList = ({
           Last updated at: {date}
         </Typography>
         <Box className="card-actions">
-          <IconButton>
+          <IconButton
+            onClick={(event) => {
+              onEditListClicked(shoppingList);
+              event.stopPropagation();
+            }}
+          >
             <Edit />
           </IconButton>
           <IconButton
