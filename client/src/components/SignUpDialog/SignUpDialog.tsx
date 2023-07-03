@@ -42,7 +42,7 @@ const SignUpDialog = ({ onDismiss, onSignupSuccess }: SignUpDialogProps) => {
 
   return (
     <Dialog open>
-      <DialogTitle>Sign Up</DialogTitle>
+      <DialogTitle>Sign Up for Seasonly</DialogTitle>
       <DialogContent>
         <form id="signupForm" onSubmit={handleSubmit(onSignupSubmit)}>
           <Stack my={2}>
@@ -51,6 +51,7 @@ const SignUpDialog = ({ onDismiss, onSignupSuccess }: SignUpDialogProps) => {
               label="Username"
               register={register}
               registerOptions={{ required: "Please enter a username" }}
+              error={errors.username}
             />
           </Stack>
           <Stack my={2}>
@@ -60,6 +61,7 @@ const SignUpDialog = ({ onDismiss, onSignupSuccess }: SignUpDialogProps) => {
               type="email"
               register={register}
               registerOptions={{ required: "Please enter your email" }}
+              error={errors.email}
             />
           </Stack>
           <Stack my={2}>
@@ -69,6 +71,7 @@ const SignUpDialog = ({ onDismiss, onSignupSuccess }: SignUpDialogProps) => {
               type="password"
               register={register}
               registerOptions={{ required: "Please enter a valid password" }}
+              error={errors.password}
             />
           </Stack>
         </form>
@@ -78,7 +81,7 @@ const SignUpDialog = ({ onDismiss, onSignupSuccess }: SignUpDialogProps) => {
           <Close />
         </IconButton>
         <Button form="signupForm" type="submit" disabled={isSubmitting}>
-          Sign UP
+          Sign Up
         </Button>
       </DialogActions>
     </Dialog>
