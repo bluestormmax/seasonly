@@ -13,7 +13,7 @@ type AddListDialogProps = {
 
 const AddListDialog = ({ onClose }: AddListDialogProps) => {
   const handleClose = () => {
-    onClose(false);
+    onClose();
   };
 
   return (
