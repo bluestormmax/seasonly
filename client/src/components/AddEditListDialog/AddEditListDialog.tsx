@@ -6,7 +6,6 @@ import {
   DialogContent,
   DialogTitle,
   IconButton,
-  TextField,
   Stack,
 } from "@mui/material";
 import { ShoppingList } from "@models/shoppingList";
