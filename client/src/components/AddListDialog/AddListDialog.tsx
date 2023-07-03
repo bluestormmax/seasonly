@@ -9,27 +9,49 @@ import {
   TextField,
   Stack,
 } from "@mui/material";
+import { ShoppingList } from "@models/shoppingList";
+import { useForm } from "react-hook-form";
+import { ShoppingListInput } from "@/api/shoppingLists.api";
+import * as ShoppingListApi from "@/api/shoppingLists.api";
 
 type AddListDialogProps = {
   onClose: () => void;
+  onListSave: (shoppingList: ShoppingList) => void;
 };
 
-const AddListDialog = ({ onClose }: AddListDialogProps) => {
+const AddListDialog = ({ onClose, onListSave }: AddListDialogProps) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<ShoppingListInput>();
+
   const handleClose = () => {
     onClose();
   };
 
-  const handleSubmit = () => {
-    onClose();
-  };
+  async function onListSubmit(input: ShoppingListInput) {
+    try {
+      const listResponse = await ShoppingListApi.createShoppingList(input);
+      onListSave(listResponse);
+    } catch (error) {
+      console.error(error);
+      alert(error); // TODO: dev only.
+    }
+  }
 
   return (
     <Dialog open onClose={handleClose}>
       <DialogTitle>Add New Shopping List</DialogTitle>
       <DialogContent>
-        <form id="addListForm">
+        <form id="addListForm" onSubmit={handleSubmit(onListSubmit)}>
           <Stack my={2}>
-            <TextField id="list-title-input" label="Title" variant="outlined" />
+            <TextField
+              id="list-title-input"
+              label="Title"
+              variant="outlined"
+              {...register("title", { required: "Required" })}
+            />
           </Stack>
           <Stack>
             <TextField
@@ -38,6 +60,7 @@ const AddListDialog = ({ onClose }: AddListDialogProps) => {
               variant="outlined"
               multiline
               rows={4}
+              {...register("list", { required: "Required" })}
             />
           </Stack>
         </form>
@@ -46,7 +69,7 @@ const AddListDialog = ({ onClose }: AddListDialogProps) => {
         <IconButton onClick={handleClose}>
           <Close />
         </IconButton>
-        <Button form="addListForm" type="submit" onSubmit={handleSubmit}>
+        <Button form="addListForm" type="submit">
           Save List
         </Button>
       </DialogActions>
