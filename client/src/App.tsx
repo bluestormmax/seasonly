@@ -66,6 +66,7 @@ function App() {
         size="small"
         edge="start"
         onClick={() => setOpenAddListDialog(true)}
+        title="Add Shopping List"
       >
         <AddIcon />
       </IconButton>

@@ -46,6 +46,7 @@ const ShoppingList = ({
             onDeleteListClicked(shoppingList);
             event.stopPropagation();
           }}
+          title="Delete shopping list"
         >
           <DeleteOutline />
         </IconButton>
