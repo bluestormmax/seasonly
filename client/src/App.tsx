@@ -38,7 +38,10 @@ function App() {
       {openAddListDialog ? (
         <AddListDialog
           onClose={() => setOpenAddListDialog(false)}
-          onListSave={() => {}}
+          onListSave={(newShoppingList) => {
+            setShoppingLists([...shoppingLists, newShoppingList]);
+            setOpenAddListDialog(false);
+          }}
         />
       ) : null}
       <IconButton
