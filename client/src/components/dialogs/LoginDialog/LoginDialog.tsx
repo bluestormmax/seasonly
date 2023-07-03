@@ -12,7 +12,7 @@ import { Close } from "@mui/icons-material";
 import { User } from "@models/user";
 import { LoginCredentials } from "@api/user.api";
 import * as UserApi from "@api/user.api";
-import { TextInputField } from "../FormFields/TextInputField";
+import { TextInputField } from "../../formFields/TextInputField";
 
 type LoginDialogProps = {
   onDismiss: () => void;

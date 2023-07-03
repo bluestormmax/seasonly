@@ -12,7 +12,7 @@ import { ShoppingList } from "@models/shoppingList";
 import { useForm } from "react-hook-form";
 import { ShoppingListInput } from "@/api/shoppingLists.api";
 import * as ShoppingListApi from "@/api/shoppingLists.api";
-import { TextInputField } from "../FormFields/TextInputField";
+import { TextInputField } from "../../formFields/TextInputField";
 
 type AddEditListDialogProps = {
   listToEdit?: ShoppingList;
