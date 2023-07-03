@@ -36,7 +36,10 @@ function App() {
         </GridWrapper>
       ) : null}
       {openAddListDialog ? (
-        <AddListDialog onClose={() => setOpenAddListDialog(false)} />
+        <AddListDialog
+          onClose={() => setOpenAddListDialog(false)}
+          onListSave={() => {}}
+        />
       ) : null}
       <IconButton
         size="small"

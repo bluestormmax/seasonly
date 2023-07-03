@@ -8,7 +8,6 @@ import {
   IconButton,
   TextField,
   Stack,
-  FormHelperText,
 } from "@mui/material";
 import { ShoppingList } from "@models/shoppingList";
 import { useForm } from "react-hook-form";
@@ -74,7 +73,7 @@ const AddListDialog = ({ onClose, onListSave }: AddListDialogProps) => {
         <IconButton onClick={handleClose}>
           <Close />
         </IconButton>
-        <Button form="addListForm" type="submit">
+        <Button form="addListForm" type="submit" disabled={isSubmitting}>
           Save List
         </Button>
       </DialogActions>
