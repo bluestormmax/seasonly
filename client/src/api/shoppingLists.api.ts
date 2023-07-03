@@ -40,6 +40,20 @@ export async function createShoppingList(
   return response.json();
 }
 
+export async function updateShoppingList(
+  shoppingListId: string,
+  shoppingList: ShoppingListInput
+): Promise<ShoppingList> {
+  const response = await fetchData("/api/shoppingLists" + shoppingListId, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(shoppingList),
+  });
+  return response.json();
+}
+
 export async function deleteShoppingList(shoppingListId: string) {
   await fetchData("/api/shoppingLists/" + shoppingListId, { method: "DELETE" });
 }
