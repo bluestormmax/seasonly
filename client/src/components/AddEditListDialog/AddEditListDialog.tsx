@@ -61,9 +61,11 @@ const AddEditListDialog = ({
 
   return (
     <Dialog open onClose={handleClose}>
-      <DialogTitle>Add New Shopping List</DialogTitle>
+      <DialogTitle>
+        {listToEdit ? "Edit Shopping List" : "Add New Shopping List"}
+      </DialogTitle>
       <DialogContent>
-        <form id="addListForm" onSubmit={handleSubmit(onListSubmit)}>
+        <form id="addEditListForm" onSubmit={handleSubmit(onListSubmit)}>
           <Stack my={2}>
             <TextField
               id="list-title-input"
@@ -92,7 +94,7 @@ const AddEditListDialog = ({
         <IconButton onClick={handleClose}>
           <Close />
         </IconButton>
-        <Button form="addListForm" type="submit" disabled={isSubmitting}>
+        <Button form="addEditListForm" type="submit" disabled={isSubmitting}>
           Save List
         </Button>
       </DialogActions>

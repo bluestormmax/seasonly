@@ -8,6 +8,7 @@ import * as ShoppingListsApi from "./api/shoppingLists.api";
 function App() {
   const [shoppingLists, setShoppingLists] = useState<ShoppingListModel[]>([]);
   const [openAddEditListDialog, setOpenAddEditListDialog] = useState(false);
+  const [listToEdit, setListToEdit] = useState<ShoppingListModel | null>(null);
 
   useEffect(() => {
     async function loadShoppingLists() {
@@ -49,6 +50,7 @@ function App() {
               key={item._id}
               shoppingList={item}
               onDeleteListClicked={deleteList}
+              onEditListClicked={setListToEdit}
             />
           ))}
         </GridWrapper>
@@ -59,6 +61,22 @@ function App() {
           onListSave={(newShoppingList) => {
             setShoppingLists([...shoppingLists, newShoppingList]);
             setOpenAddEditListDialog(false);
+          }}
+        />
+      ) : null}
+      {listToEdit ? (
+        <AddEditListDialog
+          listToEdit={listToEdit}
+          onClose={() => setListToEdit(null)}
+          onListSave={(updatedList) => {
+            setShoppingLists(
+              shoppingLists.map((existingList) =>
+                existingList._id === updatedList._id
+                  ? updatedList
+                  : existingList
+              )
+            );
+            setListToEdit(null);
           }}
         />
       ) : null}
