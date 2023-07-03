@@ -14,12 +14,12 @@ import { useForm } from "react-hook-form";
 import { ShoppingListInput } from "@/api/shoppingLists.api";
 import * as ShoppingListApi from "@/api/shoppingLists.api";
 
-type AddListDialogProps = {
+type AddEditListDialogProps = {
   onClose: () => void;
   onListSave: (shoppingList: ShoppingList) => void;
 };
 
-const AddListDialog = ({ onClose, onListSave }: AddListDialogProps) => {
+const AddEditListDialog = ({ onClose, onListSave }: AddEditListDialogProps) => {
   const {
     register,
     handleSubmit,
@@ -81,4 +81,4 @@ const AddListDialog = ({ onClose, onListSave }: AddListDialogProps) => {
   );
 };
 
-export { AddListDialog };
+export { AddEditListDialog };

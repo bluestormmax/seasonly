@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import { Typography, IconButton } from "@mui/material";
 import { Add as AddIcon } from "@mui/icons-material";
 import { ShoppingList as ShoppingListModel } from "@models/shoppingList";
-import { ShoppingList, GridWrapper, AddListDialog } from "./components";
+import { ShoppingList, GridWrapper, AddEditListDialog } from "./components";
 import * as ShoppingListsApi from "./api/shoppingLists.api";
 
 function App() {
   const [shoppingLists, setShoppingLists] = useState<ShoppingListModel[]>([]);
-  const [openAddListDialog, setOpenAddListDialog] = useState(false);
+  const [openAddEditListDialog, setOpenAddEditListDialog] = useState(false);
 
   useEffect(() => {
     async function loadShoppingLists() {
@@ -53,19 +53,19 @@ function App() {
           ))}
         </GridWrapper>
       ) : null}
-      {openAddListDialog ? (
-        <AddListDialog
-          onClose={() => setOpenAddListDialog(false)}
+      {openAddEditListDialog ? (
+        <AddEditListDialog
+          onClose={() => setOpenAddEditListDialog(false)}
           onListSave={(newShoppingList) => {
             setShoppingLists([...shoppingLists, newShoppingList]);
-            setOpenAddListDialog(false);
+            setOpenAddEditListDialog(false);
           }}
         />
       ) : null}
       <IconButton
         size="small"
         edge="start"
-        onClick={() => setOpenAddListDialog(true)}
+        onClick={() => setOpenAddEditListDialog(true)}
         title="Add Shopping List"
       >
         <AddIcon />
