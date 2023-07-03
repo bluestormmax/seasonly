@@ -23,6 +23,20 @@ function App() {
     loadShoppingLists();
   }, []);
 
+  async function deleteList(shoppingList: ShoppingListModel) {
+    try {
+      await ShoppingListsApi.deleteShoppingList(shoppingList._id);
+      setShoppingLists(
+        shoppingLists.filter(
+          (existingList) => existingList._id !== shoppingList._id
+        )
+      );
+    } catch (error) {
+      console.error(error);
+      alert(error); // TODO: dev only
+    }
+  }
+
   return (
     <div className="app wrapper">
       <Typography className="heading welcome" variant="h1" component="h1">
@@ -31,7 +45,11 @@ function App() {
       {shoppingLists ? (
         <GridWrapper>
           {shoppingLists.map((item) => (
-            <ShoppingList key={item._id} shoppingList={item} />
+            <ShoppingList
+              key={item._id}
+              shoppingList={item}
+              onDeleteListClicked={deleteList}
+            />
           ))}
         </GridWrapper>
       ) : null}
