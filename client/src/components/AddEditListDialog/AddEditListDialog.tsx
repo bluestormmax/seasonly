@@ -92,11 +92,14 @@ const AddEditListDialog = ({
         </form>
       </DialogContent>
       <DialogActions>
-        <IconButton onClick={handleClose}>
+        <IconButton
+          onClick={handleClose}
+          title={listToEdit ? `Cancel editing list` : `Cancel saving list`}
+        >
           <Close />
         </IconButton>
         <Button form="addEditListForm" type="submit" disabled={isSubmitting}>
-          Save List
+          {listToEdit ? "Update list" : "Save List"}
         </Button>
       </DialogActions>
     </Dialog>
