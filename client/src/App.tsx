@@ -7,7 +7,7 @@ import * as ShoppingListsApi from "./api/shoppingLists.api";
 
 function App() {
   const [shoppingLists, setShoppingLists] = useState<ShoppingListModel[]>([]);
-  const [openAddList, setOpenAddList] = useState(false);
+  const [openAddListDialog, setOpenAddListDialog] = useState(false);
 
   useEffect(() => {
     async function loadShoppingLists() {
@@ -35,13 +35,13 @@ function App() {
           ))}
         </GridWrapper>
       ) : null}
-      {openAddList ? (
-        <AddListDialog onClose={() => setOpenAddList(false)} />
+      {openAddListDialog ? (
+        <AddListDialog onClose={() => setOpenAddListDialog(false)} />
       ) : null}
       <IconButton
         size="small"
         edge="start"
-        onClick={() => setOpenAddList(true)}
+        onClick={() => setOpenAddListDialog(true)}
       >
         <AddIcon />
       </IconButton>
