@@ -3,7 +3,7 @@ import { Typography, IconButton, CircularProgress } from "@mui/material";
 import { Add as AddIcon } from "@mui/icons-material";
 import { ShoppingList as ShoppingListModel } from "@models/shoppingList";
 import { ShoppingList, GridWrapper, AddEditListDialog } from "./components";
-import * as ShoppingListsApi from "./api/shoppingLists.api";
+import * as ShoppingListsApi from "@api/shoppingLists.api";
 
 function App() {
   const [shoppingLists, setShoppingLists] = useState<ShoppingListModel[]>([]);
