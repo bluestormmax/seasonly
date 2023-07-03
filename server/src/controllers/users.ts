@@ -1,5 +1,6 @@
 import { RequestHandler } from "express";
 import createHttpError from "http-errors";
+import bcrypt from "bcrypt";
 import UserModel from "../models/user";
 
 interface SignUpBody {
@@ -36,6 +37,16 @@ export const signUp: RequestHandler<
         "Invalid email, please use another or log in instead."
       );
     }
+
+    const passwordHashed = await bcrypt.hash(passwordRaw, 10); // salting
+
+    const newUser = await UserModel.create({
+      username: username,
+      email: email,
+      password: passwordHashed,
+    });
+
+    res.status(201).json(newUser);
   } catch (error) {
     next(error);
   }
