@@ -8,6 +8,7 @@ import {
   IconButton,
   TextField,
   Stack,
+  FormHelperText,
 } from "@mui/material";
 import { ShoppingList } from "@models/shoppingList";
 import { useForm } from "react-hook-form";
@@ -50,7 +51,9 @@ const AddListDialog = ({ onClose, onListSave }: AddListDialogProps) => {
               id="list-title-input"
               label="Title"
               variant="outlined"
-              {...register("title", { required: "Required" })}
+              {...register("title", { required: "A list title is required!" })}
+              helperText={errors.title?.message}
+              error={!!errors.title}
             />
           </Stack>
           <Stack>
@@ -60,7 +63,9 @@ const AddListDialog = ({ onClose, onListSave }: AddListDialogProps) => {
               variant="outlined"
               multiline
               rows={4}
-              {...register("list", { required: "Required" })}
+              {...register("list", { required: "List items are required!" })}
+              helperText={errors.list?.message}
+              error={!!errors.list}
             />
           </Stack>
         </form>
