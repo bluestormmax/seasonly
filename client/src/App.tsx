@@ -7,6 +7,7 @@ import {
   GridWrapper,
   AddEditListDialog,
   SignUpDialog,
+  LoginDialog,
 } from "./components";
 import * as ShoppingListsApi from "@api/shoppingLists.api";
 
@@ -113,7 +114,10 @@ function App() {
       >
         <AddIcon />
       </IconButton>
-      {true && <SignUpDialog onDismiss={() => {}} onSignupSuccess={() => {}} />}
+      {false && (
+        <SignUpDialog onDismiss={() => {}} onSignupSuccess={() => {}} />
+      )}
+      {true && <LoginDialog onDismiss={() => {}} onLoginSuccess={() => {}} />}
     </div>
   );
 }
