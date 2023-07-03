@@ -3,6 +3,7 @@ import express, { NextFunction, Request, Response } from "express";
 import morgan from "morgan";
 import createHttpError, { isHttpError } from "http-errors";
 import shoppingListRoutes from "./routes/shoppingLists";
+import userRoutes from "./routes/users";
 
 const app = express();
 
@@ -11,6 +12,9 @@ app.use(morgan("dev"));
 
 // Set up express to accept JSON
 app.use(express.json());
+
+// Put all user endpoints at this URL
+app.use("/api/users", userRoutes);
 
 // Put all shoppingList endpoints at this URL
 app.use("/api/shoppingLists", shoppingListRoutes);
