@@ -2,6 +2,9 @@ import "dotenv/config";
 import express, { NextFunction, Request, Response } from "express";
 import morgan from "morgan";
 import createHttpError, { isHttpError } from "http-errors";
+import session from "express-session";
+import MongoStore from "connect-mongo";
+import env from "./util/validateEnv";
 import shoppingListRoutes from "./routes/shoppingLists";
 import userRoutes from "./routes/users";
 
@@ -12,6 +15,22 @@ app.use(morgan("dev"));
 
 // Set up express to accept JSON
 app.use(express.json());
+
+// Read the session data after json but before routes.
+app.use(
+  session({
+    secret: env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 60 * 60 * 1000, // 1hr
+    },
+    rolling: true, // refresh cookie automatically within 1hr if user active
+    store: MongoStore.create({
+      mongoUrl: env.MONGO_CONNECTION_STRING,
+    }),
+  })
+);
 
 // Put all user endpoints at this URL
 app.use("/api/users", userRoutes);
