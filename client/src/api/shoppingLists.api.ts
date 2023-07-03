@@ -1,15 +1,5 @@
 import { ShoppingList } from "@models/shoppingList";
-
-async function fetchData(input: RequestInfo, init: RequestInit) {
-  const response = await fetch(input, init);
-  if (response.ok) {
-    return response;
-  } else {
-    const errorBody = await response.json(); // We set up this JSON in our endpoint.
-    const errorMsg = errorBody.error;
-    throw Error(errorMsg);
-  }
-}
+import { fetchData } from "./fetchData.api";
 
 export async function fetchShoppingLists(): Promise<ShoppingList[]> {
   const response = await fetchData("/api/shoppingLists", {
