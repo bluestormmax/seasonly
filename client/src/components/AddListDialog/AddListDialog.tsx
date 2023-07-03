@@ -3,8 +3,11 @@ import {
   Button,
   Dialog,
   DialogActions,
+  DialogContent,
   DialogTitle,
   IconButton,
+  TextField,
+  Stack,
 } from "@mui/material";
 
 type AddListDialogProps = {
@@ -16,14 +19,36 @@ const AddListDialog = ({ onClose }: AddListDialogProps) => {
     onClose();
   };
 
+  const handleSubmit = () => {
+    onClose();
+  };
+
   return (
     <Dialog open onClose={handleClose}>
       <DialogTitle>Add New Shopping List</DialogTitle>
+      <DialogContent>
+        <form id="addListForm">
+          <Stack my={2}>
+            <TextField id="list-title-input" label="Title" variant="outlined" />
+          </Stack>
+          <Stack>
+            <TextField
+              id="list-content-input"
+              label="List"
+              variant="outlined"
+              multiline
+              rows={4}
+            />
+          </Stack>
+        </form>
+      </DialogContent>
       <DialogActions>
         <IconButton onClick={handleClose}>
           <Close />
         </IconButton>
-        <Button onClick={handleClose}>Save List</Button>
+        <Button form="addListForm" type="submit" onSubmit={handleSubmit}>
+          Save List
+        </Button>
       </DialogActions>
     </Dialog>
   );
