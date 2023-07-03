@@ -13,6 +13,7 @@ import { ShoppingList } from "@models/shoppingList";
 import { useForm } from "react-hook-form";
 import { ShoppingListInput } from "@/api/shoppingLists.api";
 import * as ShoppingListApi from "@/api/shoppingLists.api";
+import { TextInputField } from "../FormFields/TextInputField";
 
 type AddEditListDialogProps = {
   listToEdit?: ShoppingList;
@@ -67,25 +68,25 @@ const AddEditListDialog = ({
       <DialogContent>
         <form id="addEditListForm" onSubmit={handleSubmit(onListSubmit)}>
           <Stack my={2}>
-            <TextField
-              id="list-title-input"
+            <TextInputField
+              name="title"
               label="Title"
-              variant="outlined"
-              {...register("title", { required: "A list title is required!" })}
-              helperText={errors.title?.message}
-              error={!!errors.title}
+              register={register}
+              registerOptions={{
+                required: "A list title is required!",
+              }}
+              error={errors.title}
             />
           </Stack>
           <Stack>
-            <TextField
-              id="list-content-input"
+            <TextInputField
+              name="list"
               label="List"
-              variant="outlined"
               multiline
               rows={4}
-              {...register("list", { required: "List items are required!" })}
-              helperText={errors.list?.message}
-              error={!!errors.list}
+              register={register}
+              registerOptions={{ required: "List items are required!" }}
+              error={errors.list}
             />
           </Stack>
         </form>
