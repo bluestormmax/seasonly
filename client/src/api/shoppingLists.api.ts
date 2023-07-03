@@ -39,3 +39,7 @@ export async function createShoppingList(
   });
   return response.json();
 }
+
+export async function deleteShoppingList(shoppingListId: string) {
+  await fetchData("/api/shoppingLists/" + shoppingListId, { method: "DELETE" });
+}
