@@ -1,4 +1,12 @@
-import { Box, Card, CardContent, CardHeader, Typography } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardContent,
+  CardHeader,
+  IconButton,
+  Typography,
+} from "@mui/material";
+import { DeleteOutline } from "@mui/icons-material";
 import { ShoppingList as ShoppingListModel } from "@models/shoppingList";
 import { formatDate } from "@utils/formatDate";
 import styles from "./ShoppingList.module.css";
@@ -24,17 +32,14 @@ const ShoppingList = ({ shoppingList, className }: ShoppingListProps) => {
           {list}
         </Typography>
       </CardContent>
-      {date !== "Invalid Date" ? (
-        <Box
-          className="card-footer"
-          p={2}
-          sx={{ borderTop: "1px solid #d2d2d2" }}
-        >
-          <Typography variant="body2" component="span">
-            Last updated at: {date}
-          </Typography>
-        </Box>
-      ) : null}
+      <Box className={styles.card_footer}>
+        <Typography variant="body2" component="span">
+          Last updated at: {date}
+        </Typography>
+        <IconButton>
+          <DeleteOutline />
+        </IconButton>
+      </Box>
     </Card>
   );
 };
