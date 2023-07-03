@@ -15,16 +15,26 @@ import { ShoppingListInput } from "@/api/shoppingLists.api";
 import * as ShoppingListApi from "@/api/shoppingLists.api";
 
 type AddEditListDialogProps = {
+  listToEdit?: ShoppingList;
   onClose: () => void;
   onListSave: (shoppingList: ShoppingList) => void;
 };
 
-const AddEditListDialog = ({ onClose, onListSave }: AddEditListDialogProps) => {
+const AddEditListDialog = ({
+  listToEdit,
+  onClose,
+  onListSave,
+}: AddEditListDialogProps) => {
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<ShoppingListInput>();
+  } = useForm<ShoppingListInput>({
+    defaultValues: {
+      title: listToEdit?.title || "",
+      list: listToEdit?.list || "",
+    },
+  });
 
   const handleClose = () => {
     onClose();
@@ -32,7 +42,16 @@ const AddEditListDialog = ({ onClose, onListSave }: AddEditListDialogProps) => {
 
   async function onListSubmit(input: ShoppingListInput) {
     try {
-      const listResponse = await ShoppingListApi.createShoppingList(input);
+      let listResponse: ShoppingList;
+      if (listToEdit) {
+        listResponse = await ShoppingListApi.updateShoppingList(
+          listToEdit._id,
+          input
+        );
+      } else {
+        listResponse = await ShoppingListApi.createShoppingList(input);
+      }
+
       onListSave(listResponse);
     } catch (error) {
       console.error(error);
