@@ -1,12 +1,19 @@
 import { RequestHandler } from "express";
 import mongoose from "mongoose";
-import ShoppingListModel from "../models/shoppingList";
 import createHttpError from "http-errors";
+import ShoppingListModel from "../models/shoppingList";
+import { assertIsDefined } from "../util/assertIsDefined";
 
 // Get all shopping lists
 export const getShoppingLists: RequestHandler = async (req, res, next) => {
+  const authenticatedUserId = req.session.userId;
+
   try {
-    const shoppingLists = await ShoppingListModel.find().exec();
+    assertIsDefined(authenticatedUserId);
+
+    const shoppingLists = await ShoppingListModel.find({
+      userId: authenticatedUserId,
+    }).exec();
     res.status(200).json(shoppingLists);
   } catch (error) {
     next(error);
