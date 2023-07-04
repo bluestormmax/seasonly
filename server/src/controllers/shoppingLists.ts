@@ -23,8 +23,11 @@ export const getShoppingLists: RequestHandler = async (req, res, next) => {
 // Get single shopping list
 export const getShoppingList: RequestHandler = async (req, res, next) => {
   const shoppingListId = req.params.shoppingListId;
+  const authenticatedUserId = req.session.userId;
 
   try {
+    assertIsDefined(authenticatedUserId);
+
     if (!mongoose.isValidObjectId(shoppingListId)) {
       throw createHttpError(400, "Invalid list id");
     }
@@ -34,6 +37,11 @@ export const getShoppingList: RequestHandler = async (req, res, next) => {
     if (!shoppingList) {
       throw createHttpError(404, "List not found");
     }
+
+    if (!shoppingList.userId.equals(authenticatedUserId)) {
+      throw createHttpError(401, "You cannot access this list");
+    }
+
     res.status(200).json(shoppingList);
   } catch (error) {
     next(error);
@@ -55,12 +63,16 @@ export const createShoppingList: RequestHandler<
 > = async (req, res, next) => {
   const title = req.body.title;
   const list = req.body.list;
+  const authenticatedUserId = req.session.userId;
 
   try {
+    assertIsDefined(authenticatedUserId);
+
     if (!title || !list) {
       throw createHttpError(400, "List must have a title and list items");
     }
     const newShoppingList = await ShoppingListModel.create({
+      userId: authenticatedUserId,
       title: title,
       list: list,
     });
@@ -89,8 +101,11 @@ export const updateShoppingList: RequestHandler<
   const shoppingListId = req.params.shoppingListId;
   const newTitle = req.body.title;
   const newList = req.body.list;
+  const authenticatedUserId = req.session.userId;
 
   try {
+    assertIsDefined(authenticatedUserId);
+
     if (!mongoose.isValidObjectId(shoppingListId)) {
       throw createHttpError(400, "Invalid list id");
     }
@@ -107,6 +122,10 @@ export const updateShoppingList: RequestHandler<
     if (!shoppingList) {
       throw createHttpError(404, "List not found");
     }
+    if (!shoppingList.userId.equals(authenticatedUserId)) {
+      throw createHttpError(401, "You cannot access this list");
+    }
+
     shoppingList.title = newTitle;
     shoppingList.list = newList;
 
@@ -121,8 +140,10 @@ export const updateShoppingList: RequestHandler<
 
 export const deleteShoppingList: RequestHandler = async (req, res, next) => {
   const shoppingListId = req.params.shoppingListId;
-
+  const authenticatedUserId = req.session.userId;
   try {
+    assertIsDefined(authenticatedUserId);
+
     if (!mongoose.isValidObjectId(shoppingListId)) {
       throw createHttpError(400, "Invalid list id");
     }
@@ -133,6 +154,9 @@ export const deleteShoppingList: RequestHandler = async (req, res, next) => {
 
     if (!shoppingList) {
       throw createHttpError(404, "List not found");
+    }
+    if (!shoppingList.userId.equals(authenticatedUserId)) {
+      throw createHttpError(401, "You cannot access this list");
     }
 
     await shoppingList.deleteOne();
