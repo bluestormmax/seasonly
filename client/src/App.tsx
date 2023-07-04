@@ -8,6 +8,7 @@ import {
   AddEditListDialog,
   SignUpDialog,
   LoginDialog,
+  NavBar,
 } from "./components";
 import * as ShoppingListsApi from "@api/shoppingLists.api";
 
@@ -65,6 +66,12 @@ function App() {
 
   return (
     <div className="app wrapper">
+      <NavBar
+        loggedInUser={null}
+        onLoginClicked={() => {}}
+        onSignupClicked={() => {}}
+        onLogoutSuccessful={() => {}}
+      />
       <Typography className="heading welcome" variant="h1" component="h1">
         lists!
       </Typography>
