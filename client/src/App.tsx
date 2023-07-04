@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
-import { Box } from "@mui/material";
 import { User as UserModel } from "@models/user";
 import * as UserApi from "@api/user.api";
+import { Box } from "@mui/material";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { SignUpDialog, LoginDialog, NavBar } from "./components";
-import {
-  ListsPageLoggedInView,
-  ListsPageLoggedOutView,
-} from "./pages/NotesPage";
+import { ListsPage, InSeasonPage, NotFoundPage } from "./pages";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState<UserModel | null>(null);
@@ -26,36 +24,45 @@ function App() {
   });
 
   return (
-    <div className="app wrapper">
-      <NavBar
-        loggedInUser={loggedInUser}
-        onLoginClicked={() => setShowLoginDialog(true)}
-        onSignUpClicked={() => setShowSignUpDialog(true)}
-        onLogOutSuccess={() => setLoggedInUser(null)}
-      />
-      <Box className="main" mt={2}>
-        {loggedInUser ? <ListsPageLoggedInView /> : <ListsPageLoggedOutView />}
-      </Box>
+    <BrowserRouter>
+      <div className="app wrapper">
+        <NavBar
+          loggedInUser={loggedInUser}
+          onLoginClicked={() => setShowLoginDialog(true)}
+          onSignUpClicked={() => setShowSignUpDialog(true)}
+          onLogOutSuccess={() => setLoggedInUser(null)}
+        />
+        <Box className="main" mt={2}>
+          <Routes>
+            <Route path="/" element={<InSeasonPage />} />
+            <Route
+              path="/shopping-lists"
+              element={<ListsPage loggedInUser={loggedInUser} />}
+            />
+            <Route path="/*" element={<NotFoundPage />} />
+          </Routes>
+        </Box>
 
-      {showSignUpDialog ? (
-        <SignUpDialog
-          onDismiss={() => setShowSignUpDialog(false)}
-          onSignupSuccess={(user) => {
-            setLoggedInUser(user);
-            setShowSignUpDialog(false);
-          }}
-        />
-      ) : null}
-      {showLoginDialog ? (
-        <LoginDialog
-          onDismiss={() => setShowLoginDialog(false)}
-          onLoginSuccess={(user) => {
-            setLoggedInUser(user);
-            setShowLoginDialog(false);
-          }}
-        />
-      ) : null}
-    </div>
+        {showSignUpDialog ? (
+          <SignUpDialog
+            onDismiss={() => setShowSignUpDialog(false)}
+            onSignupSuccess={(user) => {
+              setLoggedInUser(user);
+              setShowSignUpDialog(false);
+            }}
+          />
+        ) : null}
+        {showLoginDialog ? (
+          <LoginDialog
+            onDismiss={() => setShowLoginDialog(false)}
+            onLoginSuccess={(user) => {
+              setLoggedInUser(user);
+              setShowLoginDialog(false);
+            }}
+          />
+        ) : null}
+      </div>
+    </BrowserRouter>
   );
 }
 
