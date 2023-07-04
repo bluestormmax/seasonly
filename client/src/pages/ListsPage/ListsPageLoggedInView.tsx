@@ -3,7 +3,11 @@ import { Typography, IconButton, CircularProgress } from "@mui/material";
 import { Add as AddIcon } from "@mui/icons-material";
 import { ShoppingList as ShoppingListModel } from "@models/shoppingList";
 import * as ShoppingListsApi from "@api/shoppingLists.api";
-import { ShoppingList, GridWrapper, AddEditListDialog } from "../../components";
+import {
+  ShoppingList,
+  GridWrapper,
+  AddEditListDialog,
+} from "../../../components";
 
 const ListsPageLoggedInView = () => {
   const [shoppingLists, setShoppingLists] = useState<ShoppingListModel[]>([]);
