@@ -3,7 +3,6 @@ import createHttpError from "http-errors";
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import UserModel from "../models/user";
-import { assertIsDefined } from "../util/assertIsDefined";
 
 export const getAuthenticatedUser: RequestHandler = async (req, res, next) => {
   try {
@@ -138,11 +137,8 @@ export const updateUser: RequestHandler<
   const userId = req.params.userId;
   const newState = req.body.state;
   const newZone = req.body.zone;
-  const authenticatedUserId = req.session.userId;
 
   try {
-    assertIsDefined(authenticatedUserId);
-
     if (!mongoose.isValidObjectId(userId)) {
       throw createHttpError(400, "Invalid user id");
     }
@@ -157,7 +153,7 @@ export const updateUser: RequestHandler<
       throw createHttpError(404, "User not found");
     }
 
-    if (!existingUser._id.equals(authenticatedUserId)) {
+    if (!existingUser._id.equals(userId)) {
       throw createHttpError(401, "You cannot update this user");
     }
 
