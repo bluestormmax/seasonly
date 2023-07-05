@@ -22,7 +22,7 @@ function App() {
       }
     }
     fetchLoggedInUser();
-  });
+  }, []);
 
   return (
     <BrowserRouter>
