@@ -1,5 +1,12 @@
 import { Typography } from "@mui/material";
-const InSeasonPage = () => {
+import { User as UserModel } from "@models/user";
+import { GrowingZoneInput } from "../../components";
+
+type InSeasonPageProps = {
+  loggedInUser: UserModel | null;
+};
+
+const InSeasonPage = ({ loggedInUser }: InSeasonPageProps) => {
   return (
     <>
       <Typography
@@ -10,7 +17,7 @@ const InSeasonPage = () => {
       >
         What's In Season
       </Typography>
-      <Typography variant="body1">in season lists here...</Typography>
+      <GrowingZoneInput loggedInUser={loggedInUser} />
     </>
   );
 };
