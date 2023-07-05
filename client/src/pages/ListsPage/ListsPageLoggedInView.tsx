@@ -59,8 +59,13 @@ const ListsPageLoggedInView = () => {
 
   return (
     <>
-      <Typography className="heading welcome" variant="h1" component="h1">
-        lists!
+      <Typography
+        className="heading welcome"
+        variant="h3"
+        component="h1"
+        mb={3}
+      >
+        Saved shopping lists
       </Typography>
       {listsLoading ? <CircularProgress /> : null}
       {showListsLoadingError ? (
