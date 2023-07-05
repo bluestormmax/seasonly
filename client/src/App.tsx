@@ -3,13 +3,14 @@ import { User as UserModel } from "@models/user";
 import * as UserApi from "@api/user.api";
 import { Box } from "@mui/material";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { SignUpDialog, LoginDialog, NavBar } from "./components";
+import { SignUpDialog, LoginDialog, NavBar, OffCanvasMenu } from "./components";
 import { ListsPage, InSeasonPage, NotFoundPage } from "./pages";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState<UserModel | null>(null);
   const [showSignUpDialog, setShowSignUpDialog] = useState(false);
   const [showLoginDialog, setShowLoginDialog] = useState(false);
+  const [showOffCanvasMenu, setShowOffCanvasMenu] = useState(false);
 
   useEffect(() => {
     async function fetchLoggedInUser() {
@@ -25,14 +26,19 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="app wrapper">
+      <div className="app">
         <NavBar
           loggedInUser={loggedInUser}
           onLoginClicked={() => setShowLoginDialog(true)}
           onSignUpClicked={() => setShowSignUpDialog(true)}
           onLogOutSuccess={() => setLoggedInUser(null)}
+          onMenuIconClicked={() => setShowOffCanvasMenu(true)}
         />
-        <Box className="main" mt={2}>
+        <OffCanvasMenu
+          open={showOffCanvasMenu}
+          onCloseIconClicked={() => setShowOffCanvasMenu(false)}
+        />
+        <Box className="main" p={3}>
           <Routes>
             <Route path="/" element={<InSeasonPage />} />
             <Route

@@ -10,6 +10,7 @@ type NavBarProps = {
   onSignUpClicked: () => void;
   onLoginClicked: () => void;
   onLogOutSuccess: () => void;
+  onMenuIconClicked: () => void;
 };
 
 const NavBar = ({
@@ -17,6 +18,7 @@ const NavBar = ({
   onSignUpClicked,
   onLoginClicked,
   onLogOutSuccess,
+  onMenuIconClicked,
 }: NavBarProps) => {
   return (
     <AppBar position="static">
@@ -27,6 +29,7 @@ const NavBar = ({
           color="inherit"
           aria-label="menu"
           sx={{ mr: 2 }}
+          onClick={onMenuIconClicked}
         >
           <Menu />
         </IconButton>
