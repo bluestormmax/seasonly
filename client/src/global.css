@@ -20,7 +20,7 @@ a {
   text-decoration: inherit;
 }
 a:hover {
-  color: #f83f06;
+  color: #8b2303;
 }
 
 body {
@@ -60,7 +60,7 @@ button:focus-visible {
     background-color: #ffffff;
   }
   a:hover {
-    color: #747bff;
+    color: #8b2303;
   }
   button {
     background-color: #f9f9f9;
