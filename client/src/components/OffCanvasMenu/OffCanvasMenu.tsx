@@ -3,12 +3,11 @@ import {
   IconButton,
   List,
   ListItem,
-  ListItemButton,
-  ListItemIcon,
   ListItemText,
 } from "@mui/material";
 import { ChevronLeft, WbSunny, FoodBank } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import styles from "./OffCanvasMenu.module.css";
 
 type OffCanvasMenuProps = {
   open: boolean;
@@ -24,36 +23,22 @@ const OffCanvasMenu = ({
   return (
     <Drawer variant="persistent" anchor="left" open={open}>
       <IconButton
+        className={styles.close_icon}
         onClick={onCloseIconClicked}
-        sx={{
-          width: "32px",
-          height: "32px",
-          alignSelf: "flex-end",
-          marginRight: "10px",
-          marginTop: "10px",
-          backgroundColor: "#ff57220a",
-        }}
+        sx={{}}
         color="secondary"
       >
         <ChevronLeft />
       </IconButton>
-      <List>
+      <List className={styles.menu} role="navigation">
         {["In Season", "Shopping Lists"].map((text, index) => (
           <ListItem key={text} disablePadding>
-            <Link to={index % 2 === 0 ? "/" : "shopping-lists"}>
-              <ListItemButton
-                sx={{ fontSize: "2rem", paddingRight: "32px" }}
-                onClick={onLinkClicked}
-              >
-                <ListItemIcon sx={{ minWidth: "44px" }}>
-                  {index % 2 === 0 ? (
-                    <WbSunny color="secondary" />
-                  ) : (
-                    <FoodBank color="secondary" />
-                  )}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
+            <Link
+              to={index % 2 === 0 ? "/" : "shopping-lists"}
+              onClick={onLinkClicked}
+            >
+              {index % 2 === 0 ? <WbSunny /> : <FoodBank />}
+              <ListItemText primary={text} />{" "}
             </Link>
           </ListItem>
         ))}
