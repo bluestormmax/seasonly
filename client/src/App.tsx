@@ -39,7 +39,7 @@ function App() {
           onCloseIconClicked={() => setShowOffCanvasMenu(false)}
           onLinkClicked={() => setShowOffCanvasMenu(false)}
         />
-        <Box className="main" p={3}>
+        <Box className="main" p={4}>
           <Routes>
             <Route path="/" element={<InSeasonPage />} />
             <Route
