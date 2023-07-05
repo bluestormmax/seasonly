@@ -31,7 +31,7 @@ const OffCanvasMenu = ({
         <ChevronLeft />
       </IconButton>
       <List className={styles.menu} role="navigation">
-        {["In Season", "Shopping Lists"].map((text, index) => (
+        {["What's In Season", "Shopping Lists"].map((text, index) => (
           <ListItem key={text} disablePadding>
             <Link
               to={index % 2 === 0 ? "/" : "shopping-lists"}

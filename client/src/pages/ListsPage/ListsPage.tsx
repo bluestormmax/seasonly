@@ -1,4 +1,5 @@
 import { User as UserModel } from "@models/user";
+import { Typography } from "@mui/material";
 import { ListsPageLoggedInView } from "./ListsPageLoggedInView";
 import { ListsPageLoggedOutView } from "./ListsPageLoggedOutView";
 
@@ -8,7 +9,17 @@ type ListsPageProps = {
 
 const ListsPage = ({ loggedInUser }: ListsPageProps) => {
   return (
-    <>{loggedInUser ? <ListsPageLoggedInView /> : <ListsPageLoggedOutView />}</>
+    <>
+      <Typography
+        className="heading welcome"
+        variant="h3"
+        component="h1"
+        mb={3}
+      >
+        Saved shopping lists
+      </Typography>
+      {loggedInUser ? <ListsPageLoggedInView /> : <ListsPageLoggedOutView />}
+    </>
   );
 };
 

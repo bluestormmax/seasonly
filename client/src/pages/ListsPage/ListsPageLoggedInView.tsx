@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Typography, IconButton, CircularProgress } from "@mui/material";
+import { IconButton, CircularProgress } from "@mui/material";
 import { Add as AddIcon } from "@mui/icons-material";
 import { ShoppingList as ShoppingListModel } from "@models/shoppingList";
 import * as ShoppingListsApi from "@api/shoppingLists.api";
@@ -59,14 +59,6 @@ const ListsPageLoggedInView = () => {
 
   return (
     <>
-      <Typography
-        className="heading welcome"
-        variant="h3"
-        component="h1"
-        mb={3}
-      >
-        Saved shopping lists
-      </Typography>
       {listsLoading ? <CircularProgress /> : null}
       {showListsLoadingError ? (
         <p>Something went wrong while loading lists.</p>
