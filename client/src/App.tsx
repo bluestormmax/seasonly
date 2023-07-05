@@ -37,6 +37,7 @@ function App() {
         <OffCanvasMenu
           open={showOffCanvasMenu}
           onCloseIconClicked={() => setShowOffCanvasMenu(false)}
+          onLinkClicked={() => setShowOffCanvasMenu(false)}
         />
         <Box className="main" p={3}>
           <Routes>
