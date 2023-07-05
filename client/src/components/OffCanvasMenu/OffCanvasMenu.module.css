@@ -2,8 +2,8 @@
   width: 32px;
   height: 32px;
   align-self: flex-end;
-  margin-right: 10px;
-  margin-top: 10px;
+  margin-right: 10px !important; /*TODO: MUI override? */
+  margin-top: 10px !important;
   background-color: #ff57220a;
 }
 
