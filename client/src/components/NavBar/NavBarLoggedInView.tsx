@@ -23,7 +23,11 @@ const NavBarLoggedInView = ({
 
   return (
     <>
-      <Typography variant="body1" component="div">
+      <Typography
+        variant="body1"
+        component="div"
+        sx={{ fontSize: "0.8rem", mr: 2 }}
+      >
         Logged in as: {user.username}
       </Typography>
       <Button color="inherit" onClick={logout}>
