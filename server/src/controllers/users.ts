@@ -1,7 +1,9 @@
 import { RequestHandler } from "express";
 import createHttpError from "http-errors";
+import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import UserModel from "../models/user";
+import { assertIsDefined } from "../util/assertIsDefined";
 
 export const getAuthenticatedUser: RequestHandler = async (req, res, next) => {
   try {
@@ -116,4 +118,57 @@ export const logout: RequestHandler = (req, res, next) => {
       res.sendStatus(200);
     }
   }); // Doesn't return a promise so we can't use async/await
+};
+
+interface UpdateUserParams {
+  userId: string;
+}
+
+interface UpdateUserBody {
+  state?: string;
+  zone?: string;
+}
+
+export const updateUser: RequestHandler<
+  UpdateUserParams,
+  unknown,
+  UpdateUserBody,
+  unknown
+> = async (req, res, next) => {
+  const userId = req.params.userId;
+  const newState = req.body.state;
+  const newZone = req.body.zone;
+  const authenticatedUserId = req.session.userId;
+
+  try {
+    assertIsDefined(authenticatedUserId);
+
+    if (!mongoose.isValidObjectId(userId)) {
+      throw createHttpError(400, "Invalid user id");
+    }
+
+    if (!newState || !newZone) {
+      throw createHttpError(400, "No profile fields to update");
+    }
+
+    const existingUser = await UserModel.findById(userId).exec(); // Execute to make this a promise
+
+    if (!existingUser) {
+      throw createHttpError(404, "User not found");
+    }
+
+    if (!existingUser._id.equals(authenticatedUserId)) {
+      throw createHttpError(401, "You cannot update this user");
+    }
+
+    existingUser.state = newState;
+    existingUser.zone = newZone;
+
+    // Use the updated user immediately in UI.
+    const updatedUser = await existingUser.save();
+    // Return updated note to db.
+    res.status(200).json(updatedUser);
+  } catch (error) {
+    next(error);
+  }
 };

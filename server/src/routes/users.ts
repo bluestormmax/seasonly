@@ -10,6 +10,8 @@ router.post("/signup", UserController.signUp);
 
 router.post("/login", UserController.login);
 
+router.patch("/:userId", UserController.updateUser);
+
 router.post("/logout", UserController.logout);
 
 export default router;
