@@ -125,7 +125,11 @@ interface UpdateUserParams {
 
 interface UpdateUserBody {
   state?: string;
-  zone?: string;
+  zone?: {
+    zone: string;
+    coordinates: { lat: string; lon: string };
+    temperature_range: string;
+  };
 }
 
 export const updateUser: RequestHandler<
