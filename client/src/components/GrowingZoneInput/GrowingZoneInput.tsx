@@ -1,31 +1,26 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button, FormLabel, Stack } from "@mui/material";
-import { ProfileFields } from "@/api/user.api";
-import { User } from "@models/user";
+import { ZoneData } from "@api/user.api";
 import { TextInputField } from "../formFields/TextInputField";
 
-type GrowingZoneInputProps = {
-  loggedInUser: User | null;
+type ZipInput = {
+  zip: string;
 };
 
-const GrowingZoneInput = ({ loggedInUser }: GrowingZoneInputProps) => {
+const GrowingZoneInput = () => {
+  const [, setZone] = useState<ZoneData>();
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<ProfileFields>({
-    defaultValues: {
-      state: loggedInUser?.state || "",
-      zone: loggedInUser?.zone || "",
-    },
-  });
+  } = useForm<ZipInput>({});
 
   async function onZoneSubmit(data: object) {
     try {
       let response = await fetch(`https://phzmapi.org/${data.zip}.json`);
       let zone = await response.json();
-      console.log("ZONE: ", zone);
-      return zone;
+      setZone(zone);
     } catch (error) {
       console.log(error);
     }
@@ -42,7 +37,7 @@ const GrowingZoneInput = ({ loggedInUser }: GrowingZoneInputProps) => {
           registerOptions={{
             required: "A zip code is required!",
           }}
-          error={errors.zone}
+          error={errors.zip}
         />
         <Button type="submit" disabled={isSubmitting}>
           Submit
