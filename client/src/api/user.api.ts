@@ -47,3 +47,29 @@ export async function logout() {
     method: "POST",
   });
 }
+
+export interface ZoneData {
+  zone: string;
+  coordinates: {
+    lat: number;
+    lon: number;
+  };
+  temperature_range: string;
+}
+
+export interface ProfileFields {
+  userId: string;
+  state?: string;
+  zone?: ZoneData;
+}
+
+export async function updateUser(profileFields: ProfileFields): Promise<User> {
+  const response = await fetchData("/api/user/" + profileFields.userId, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(profileFields),
+  });
+  return response.json();
+}
