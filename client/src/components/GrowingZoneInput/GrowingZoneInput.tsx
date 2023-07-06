@@ -1,15 +1,17 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button, FormLabel, Stack } from "@mui/material";
 import { ZoneData } from "@api/user.api";
 import { TextInputField } from "../formFields/TextInputField";
 
+type GrowingZoneInputProps = {
+  onZoneSet: (zone: ZoneData) => void;
+};
+
 type ZipInput = {
   zip: string;
 };
 
-const GrowingZoneInput = () => {
-  const [, setZone] = useState<ZoneData>();
+const GrowingZoneInput = ({ onZoneSet }: GrowingZoneInputProps) => {
   const {
     register,
     handleSubmit,
@@ -20,7 +22,7 @@ const GrowingZoneInput = () => {
     try {
       let response = await fetch(`https://phzmapi.org/${data.zip}.json`);
       let zone = await response.json();
-      setZone(zone);
+      onZoneSet(zone);
     } catch (error) {
       console.log(error);
     }
@@ -29,19 +31,23 @@ const GrowingZoneInput = () => {
   return (
     <form id="growingZoneInput" onSubmit={handleSubmit(onZoneSubmit)}>
       <Stack>
-        <FormLabel>Enter your zip code to find your growing zone:</FormLabel>
-        <TextInputField
-          name="zip"
-          label="Zip Code"
-          register={register}
-          registerOptions={{
-            required: "A zip code is required!",
-          }}
-          error={errors.zip}
-        />
-        <Button type="submit" disabled={isSubmitting}>
-          Submit
-        </Button>
+        <FormLabel sx={{ mb: 2 }}>
+          Enter your zip code to find your growing zone:
+        </FormLabel>
+        <Stack direction="row">
+          <TextInputField
+            name="zip"
+            label="Zip Code"
+            register={register}
+            registerOptions={{
+              required: "A zip code is required!",
+            }}
+            error={errors.zip}
+          />
+          <Button type="submit" disabled={isSubmitting}>
+            Submit
+          </Button>
+        </Stack>
       </Stack>
     </form>
   );
