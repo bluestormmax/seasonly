@@ -60,7 +60,7 @@ const AddEditListDialog = ({
   }
 
   return (
-    <Dialog open onClose={handleClose}>
+    <Dialog open onClose={handleClose} fullWidth maxWidth="sm">
       <DialogTitle>
         {listToEdit ? "Edit Shopping List" : "Add New Shopping List"}
       </DialogTitle>

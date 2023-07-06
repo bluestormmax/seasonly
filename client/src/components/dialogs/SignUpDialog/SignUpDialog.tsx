@@ -41,7 +41,7 @@ const SignUpDialog = ({ onDismiss, onSignupSuccess }: SignUpDialogProps) => {
   };
 
   return (
-    <Dialog open>
+    <Dialog open fullWidth maxWidth="sm">
       <DialogTitle>Sign Up for Seasonly</DialogTitle>
       <DialogContent>
         <form id="signupForm" onSubmit={handleSubmit(onSignupSubmit)}>

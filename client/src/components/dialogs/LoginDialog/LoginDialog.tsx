@@ -41,7 +41,7 @@ const LoginDialog = ({ onDismiss, onLoginSuccess }: LoginDialogProps) => {
   };
 
   return (
-    <Dialog open>
+    <Dialog open fullWidth maxWidth="sm">
       <DialogTitle>Log in to Seasonly</DialogTitle>
       <DialogContent>
         <form id="loginForm" onSubmit={handleSubmit(onLoginSubmit)}>
