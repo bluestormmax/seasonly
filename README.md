@@ -13,4 +13,4 @@ A simple app that will let you:
 - Possibly tie it into some recipe APIs? 
 
 ## Built With
-React, TypeScript, Node.js, Express, Mongoose, MongoDB Atlas, MUI, react-hook-form, express-session
+React, TypeScript, Node.js, Express, Mongoose, MongoDB Atlas, MUI, react-hook-form, express-session, a cast of thousands...
