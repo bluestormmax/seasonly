@@ -1,6 +1,6 @@
 # Seasonly
 
-This project is very much WIP! -- I'm developing features with specific personal learning goals in mind, and will deploy the app once the puzzle starts coming together.
+This project is very much WIP! -- I'm developing features with specific personal development goals in mind, and will deploy the app once the puzzle starts coming together.
 
 ## What's It Going to Be? 
 A simple app that will let you: 
