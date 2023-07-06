@@ -34,7 +34,7 @@ const ShoppingList = ({
   return (
     <Card className={classNames}>
       <CardHeader title={title} />
-      <CardContent>
+      <CardContent className={styles.card_content}>
         <Typography variant="body1" component="p">
           {list}
         </Typography>
