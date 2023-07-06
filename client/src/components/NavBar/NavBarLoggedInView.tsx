@@ -1,9 +1,9 @@
 import { Button, Typography } from "@mui/material";
-import { User } from "@models/user";
+import { User as UserModel } from "@models/user";
 import * as UserApi from "@api/user.api";
 
 type NavBarLoggedInViewProps = {
-  user: User;
+  user: UserModel;
   onLogoutSuccess: () => void;
 };
 
