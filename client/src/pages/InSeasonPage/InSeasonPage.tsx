@@ -17,7 +17,10 @@ const InSeasonPage = ({ loggedInUser }: InSeasonPageProps) => {
       >
         What's In Season
       </Typography>
-      <GrowingZoneInput loggedInUser={loggedInUser} />
+      {loggedInUser && loggedInUser.zone.zone ? (
+        <Typography>Your growing zone is: {loggedInUser.zone.zone}</Typography>
+      ) : null}
+      <GrowingZoneInput onZoneSet={() => {}} />
     </>
   );
 };
