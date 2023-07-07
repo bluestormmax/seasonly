@@ -5,20 +5,27 @@ import { TextInputField } from "../formFields/TextInputField";
 
 type GrowingZoneInputProps = {
   onZoneSet: (zone: ZoneData) => void;
+  setUserState: (state: string) => void;
 };
 
 type ZipInput = {
   zip: string;
 };
 
-const GrowingZoneInput = ({ onZoneSet }: GrowingZoneInputProps) => {
+const GrowingZoneInput = ({
+  onZoneSet,
+  setUserState,
+}: GrowingZoneInputProps) => {
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<ZipInput>({});
 
-  async function onZoneSubmit(data: object) {
+  async function onZoneSubmit(data: { zip: string }) {
+    const zip = data.zip;
+    setUserState(zip);
+
     try {
       let response = await fetch(`https://phzmapi.org/${data.zip}.json`);
       let zone = await response.json();
