@@ -119,11 +119,11 @@ export const logout: RequestHandler = (req, res, next) => {
   }); // Doesn't return a promise so we can't use async/await
 };
 
-interface UpdateUserParams {
+interface UpdateUserProfileParams {
   userId: string;
 }
 
-interface UpdateUserBody {
+interface UpdateUserProfileBody {
   state?: string;
   zip?: string;
   zone?: {
@@ -133,10 +133,10 @@ interface UpdateUserBody {
   };
 }
 
-export const updateUser: RequestHandler<
-  UpdateUserParams,
+export const updateUserProfile: RequestHandler<
+  UpdateUserProfileParams,
   unknown,
-  UpdateUserBody,
+  UpdateUserProfileBody,
   unknown
 > = async (req, res, next) => {
   const userId = req.params.userId;

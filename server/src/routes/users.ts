@@ -12,7 +12,7 @@ router.post("/signup", UserController.signUp);
 
 router.post("/login", UserController.login);
 
-router.patch("/:userId", UserController.updateUser);
+router.patch("/:userId", UserController.updateUserProfile);
 
 router.post("/logout", UserController.logout);
 
