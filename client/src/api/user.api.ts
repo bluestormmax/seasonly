@@ -51,8 +51,8 @@ export async function logout() {
 export interface ZoneData {
   zone: string;
   coordinates: {
-    lat: number;
-    lon: number;
+    lat: string;
+    lon: string;
   };
   temperature_range: string;
 }
