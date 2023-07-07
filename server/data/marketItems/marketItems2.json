@@ -1,0 +1,506 @@
+{
+  "vegetables": [
+    {
+      "name": "Tomatoes",
+      "zones": [
+        {
+          "zone": "Zone 9",
+          "planting_dates": ["February", "March"],
+          "harvest_dates": ["June", "July", "August", "September", "October"]
+        },
+        {
+          "zone": "Zone 10",
+          "planting_dates": ["January", "February"],
+          "harvest_dates": [
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Carrots",
+      "zones": [
+        {
+          "zone": "Zone 9",
+          "planting_dates": [
+            "October",
+            "November",
+            "December",
+            "January",
+            "February"
+          ],
+          "harvest_dates": ["January", "February", "March", "April", "May"]
+        },
+        {
+          "zone": "Zone 10",
+          "planting_dates": [
+            "September",
+            "October",
+            "November",
+            "December",
+            "January",
+            "February",
+            "March"
+          ],
+          "harvest_dates": [
+            "November",
+            "December",
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Asparagus",
+      "zones": [
+        {
+          "zone": "Zone 9",
+          "planting_dates": ["January", "February", "March"],
+          "harvest_dates": ["February", "March", "April", "May"]
+        },
+        {
+          "zone": "Zone 10",
+          "planting_dates": ["January", "February", "March"],
+          "harvest_dates": [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cauliflower",
+      "zones": [
+        {
+          "zone": "Zone 9",
+          "planting_dates": ["September", "October", "November", "December"],
+          "harvest_dates": ["December", "January", "February", "March"]
+        },
+        {
+          "zone": "Zone 10",
+          "planting_dates": ["September", "October", "November", "December"],
+          "harvest_dates": [
+            "September",
+            "October",
+            "November",
+            "December",
+            "January",
+            "February",
+            "March"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cucumbers",
+      "zones": [
+        {
+          "zone": "Zone 9",
+          "planting_dates": ["March", "April", "May"],
+          "harvest_dates": ["June", "July", "August", "September"]
+        },
+        {
+          "zone": "Zone 10",
+          "planting_dates": ["February", "March", "April", "May"],
+          "harvest_dates": [
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Green beans",
+      "zones": [
+        {
+          "zone": "Zone 9",
+          "planting_dates": ["March", "April", "May"],
+          "harvest_dates": ["June", "July", "August", "September"]
+        },
+        {
+          "zone": "Zone 10",
+          "planting_dates": ["February", "March", "April", "May"],
+          "harvest_dates": [
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Peas",
+      "zones": [
+        {
+          "zone": "Zone 9",
+          "planting_dates": ["November", "December", "January"],
+          "harvest_dates": ["January", "February", "March", "April"]
+        },
+        {
+          "zone": "Zone 10",
+          "planting_dates": ["October", "November", "December", "January"],
+          "harvest_dates": [
+            "December",
+            "January",
+            "February",
+            "March",
+            "April",
+            "May"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Radishes",
+      "zones": [
+        {
+          "zone": "Zone 9",
+          "planting_dates": [
+            "October",
+            "November",
+            "December",
+            "January",
+            "February"
+          ],
+          "harvest_dates": ["December", "January", "February", "March", "April"]
+        },
+        {
+          "zone": "Zone 10",
+          "planting_dates": [
+            "September",
+            "October",
+            "November",
+            "December",
+            "January",
+            "February"
+          ],
+          "harvest_dates": [
+            "November",
+            "December",
+            "January",
+            "February",
+            "March",
+            "April",
+            "May"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Spinach",
+      "zones": [
+        {
+          "zone": "Zone 9",
+          "planting_dates": [
+            "September",
+            "October",
+            "November",
+            "December",
+            "January"
+          ],
+          "harvest_dates": [
+            "November",
+            "December",
+            "January",
+            "February",
+            "March",
+            "April",
+            "May"
+          ]
+        },
+        {
+          "zone": "Zone 10",
+          "planting_dates": [
+            "September",
+            "October",
+            "November",
+            "December",
+            "January",
+            "February"
+          ],
+          "harvest_dates": [
+            "September",
+            "October",
+            "November",
+            "December",
+            "January",
+            "February",
+            "March",
+            "April",
+            "May"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Zucchini",
+      "zones": [
+        {
+          "zone": "Zone 9",
+          "planting_dates": ["March", "April", "May"],
+          "harvest_dates": [
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October"
+          ]
+        },
+        {
+          "zone": "Zone 10",
+          "planting_dates": ["February", "March", "April", "May"],
+          "harvest_dates": [
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November"
+          ]
+        }
+      ]
+    }
+  ],
+  "fruits": [
+    {
+      "name": "Apples",
+      "zones": [
+        {
+          "zone": "Zone 9",
+          "planting_dates": ["December", "January"],
+          "harvest_dates": ["August", "September", "October"]
+        },
+        {
+          "zone": "Zone 10",
+          "planting_dates": ["November", "December", "January"],
+          "harvest_dates": [
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Blackberries",
+      "zones": [
+        {
+          "zone": "Zone 9",
+          "planting_dates": ["October", "November", "December"],
+          "harvest_dates": ["April", "May", "June"]
+        },
+        {
+          "zone": "Zone 10",
+          "planting_dates": ["October", "November", "December"],
+          "harvest_dates": ["February", "March", "April", "May", "June"]
+        }
+      ]
+    },
+    {
+      "name": "Blueberries",
+      "zones": [
+        {
+          "zone": "Zone 9",
+          "planting_dates": ["November", "December", "January"],
+          "harvest_dates": ["June", "July", "August"]
+        },
+        {
+          "zone": "Zone 10",
+          "planting_dates": ["October", "November", "December", "January"],
+          "harvest_dates": ["May", "June", "July", "August", "September"]
+        }
+      ]
+    },
+    {
+      "name": "Cherries",
+      "zones": [
+        {
+          "zone": "Zone 9",
+          "planting_dates": ["November", "December", "January"],
+          "harvest_dates": ["April", "May", "June"]
+        },
+        {
+          "zone": "Zone 10",
+          "planting_dates": ["October", "November", "December", "January"],
+          "harvest_dates": ["February", "March", "April", "May", "June"]
+        }
+      ]
+    },
+    {
+      "name": "Grapes",
+      "zones": [
+        {
+          "zone": "Zone 9",
+          "planting_dates": ["November", "December", "January"],
+          "harvest_dates": ["July", "August", "September"]
+        },
+        {
+          "zone": "Zone 10",
+          "planting_dates": ["October", "November", "December", "January"],
+          "harvest_dates": [
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Melons",
+      "zones": [
+        {
+          "zone": "Zone 9",
+          "planting_dates": ["March", "April", "May"],
+          "harvest_dates": ["June", "July", "August", "September"]
+        },
+        {
+          "zone": "Zone 10",
+          "planting_dates": ["February", "March", "April", "May"],
+          "harvest_dates": [
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Peaches",
+      "zones": [
+        {
+          "zone": "Zone 9",
+          "planting_dates": ["November", "December", "January"],
+          "harvest_dates": ["May", "June", "July"]
+        },
+        {
+          "zone": "Zone 10",
+          "planting_dates": ["October", "November", "December", "January"],
+          "harvest_dates": ["April", "May", "June", "July", "August"]
+        }
+      ]
+    },
+    {
+      "name": "Pears",
+      "zones": [
+        {
+          "zone": "Zone 9",
+          "planting_dates": ["December", "January"],
+          "harvest_dates": ["July", "August", "September"]
+        },
+        {
+          "zone": "Zone 10",
+          "planting_dates": ["November", "December", "January"],
+          "harvest_dates": ["June", "July", "August", "September", "October"]
+        }
+      ]
+    },
+    {
+      "name": "Plums",
+      "zones": [
+        {
+          "zone": "Zone 9",
+          "planting_dates": ["December", "January"],
+          "harvest_dates": ["June", "July"]
+        },
+        {
+          "zone": "Zone 10",
+          "planting_dates": ["November", "December", "January"],
+          "harvest_dates": ["April", "May", "June", "July"]
+        }
+      ]
+    },
+    {
+      "name": "Raspberries",
+      "zones": [
+        {
+          "zone": "Zone 9",
+          "planting_dates": ["October", "November", "December", "January"],
+          "harvest_dates": ["April", "May", "June"]
+        },
+        {
+          "zone": "Zone 10",
+          "planting_dates": ["October", "November", "December", "January"],
+          "harvest_dates": ["February", "March", "April", "May", "June"]
+        }
+      ]
+    },
+    {
+      "name": "Strawberries",
+      "zones": [
+        {
+          "zone": "Zone 9",
+          "planting_dates": ["October", "November", "December"],
+          "harvest_dates": ["March", "April", "May"]
+        },
+        {
+          "zone": "Zone 10",
+          "planting_dates": ["October", "November", "December"],
+          "harvest_dates": ["January", "February", "March", "April", "May"]
+        }
+      ]
+    },
+    {
+      "name": "Watermelons",
+      "zones": [
+        {
+          "zone": "Zone 9",
+          "planting_dates": ["March", "April", "May"],
+          "harvest_dates": ["May", "June", "July", "August"]
+        },
+        {
+          "zone": "Zone 10",
+          "planting_dates": ["February", "March", "April", "May"],
+          "harvest_dates": [
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October"
+          ]
+        }
+      ]
+    }
+  ]
+}
