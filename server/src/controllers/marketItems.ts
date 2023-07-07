@@ -59,6 +59,26 @@ export const getMarketItemTypes: RequestHandler = async (req, res, next) => {
   }
 };
 
+async function upsertSearchIndex() {
+  const inSeasonSearchIndex = await findIndexByName(IN_SEASON_SEARCH_INDEX_NAME)
+  if (!inSeasonSearchIndex) {
+    await request(ATLAS_SEARCH_INDEX_API_URL, {
+      data: {
+        name: IN_SEASON_SEARCH_INDEX_NAME,
+        database: MONGODB_DATABASE,
+        collectionName: MONGODB_COLLECTION,
+        // https://www.mongodb.com/docs/atlas/atlas-search/index-definitions/#syntax
+        mappings: {
+          dynamic: true,
+        },
+      },
+      dataType: 'json',
+      contentType: 'application/json',
+      method: 'POST',
+      digestAuth: DIGEST_AUTH,
+    })
+  }
+
 // Get all in-season market items for the selected zone.
 export const getSeasonalMarketItems: RequestHandler = async (
   req,
