@@ -5,6 +5,7 @@ import { MarketItem as MarketItemModel } from "@models/marketItem";
 import * as MarketItemsApi from "@api/marketItems.api";
 import { ZoneData } from "@api/user.api";
 import { getStateFromZip } from "@/utils/getStateFromZip";
+import { getMonthName } from "@/utils/dateHelpers";
 import { GrowingZoneInput } from "../../components";
 
 type InSeasonPageProps = {
@@ -13,9 +14,11 @@ type InSeasonPageProps = {
 
 const InSeasonPage = ({ loggedInUser }: InSeasonPageProps) => {
   const [usState, setUsState] = useState<string>("");
-  const [zone, setZone] = useState<ZoneData | null>(null);
-  const [itemsLoading, setItemsLoading] = useState(true);
+  const [zone, setZone] = useState<ZoneData>();
+  const [itemsLoading, setItemsLoading] = useState(false);
+  const [showItemsLoadingError, setShowItemsLoadingError] = useState(false);
   const [marketItems, setMarketItems] = useState<MarketItemModel[]>([]);
+  const [month, setMonth] = useState<string>(getMonthName());
 
   const zoneText = `Your growing zone is: ${zone?.zone} in ${usState}`;
 
@@ -35,21 +38,23 @@ const InSeasonPage = ({ loggedInUser }: InSeasonPageProps) => {
   });
 
   useEffect(() => {
-    async function loadMarketItems() {
+    async function loadInSeasonMarketItems() {
+      const seasonalData = { zone: zone?.zone, month: month };
       try {
-        // setShowListsLoadingError(false);
+        setShowItemsLoadingError(false);
         setItemsLoading(true);
-        const initialMarketItems = await MarketItemsApi.fetchAllMarketItems();
+        const initialMarketItems =
+          await MarketItemsApi.fetchInSeasonMarketItems(seasonalData);
         setMarketItems(initialMarketItems);
       } catch (error) {
         console.error(error);
-        // setShowListsLoadingError(true);
+        setShowItemsLoadingError(true);
       } finally {
         setItemsLoading(false);
       }
     }
-    loadMarketItems();
-  }, []);
+    loadInSeasonMarketItems();
+  }, [zone, month]);
 
   return (
     <>
