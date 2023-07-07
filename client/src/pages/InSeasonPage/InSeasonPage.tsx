@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { User as UserModel } from "@models/user";
+import { MarketItem as MarketItemModel } from "@models/marketItem";
+import * as MarketItemsApi from "@api/marketItems.api";
 import { ZoneData } from "@api/user.api";
 import { getStateFromZip } from "@/utils/getStateFromZip";
 import { GrowingZoneInput } from "../../components";
@@ -12,6 +14,9 @@ type InSeasonPageProps = {
 const InSeasonPage = ({ loggedInUser }: InSeasonPageProps) => {
   const [usState, setUsState] = useState<string>("");
   const [zone, setZone] = useState<ZoneData | null>(null);
+  const [marketItems, setMarketItems] = useState<MarketItemModel[]>([]);
+
+  const zoneText = `Your growing zone is: ${zone?.zone} in ${usState}`;
 
   function setUsStateFromZip(zip: string): void {
     const state = getStateFromZip(zip);
@@ -28,7 +33,22 @@ const InSeasonPage = ({ loggedInUser }: InSeasonPageProps) => {
     }
   });
 
-  const zoneText = `Your growing zone is: ${zone?.zone} in ${usState}`;
+  useEffect(() => {
+    async function loadMarketItems() {
+      try {
+        // setShowListsLoadingError(false);
+        // setListsLoading(true);
+        const initialMarketItems = await MarketItemsApi.fetchAllMarketItems();
+        setMarketItems(initialMarketItems);
+      } catch (error) {
+        console.error(error);
+        // setShowListsLoadingError(true);
+      } finally {
+        // setListsLoading(false);
+      }
+    }
+    loadMarketItems();
+  }, []);
 
   return (
     <>
@@ -47,6 +67,13 @@ const InSeasonPage = ({ loggedInUser }: InSeasonPageProps) => {
           setUsStateFromZip(zip);
         }}
       />
+      {marketItems ? (
+        <Box>
+          {marketItems.map((item) => (
+            <h3>{item.displayName}</h3>
+          ))}
+        </Box>
+      ) : null}
     </>
   );
 };
