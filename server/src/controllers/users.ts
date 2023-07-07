@@ -125,6 +125,7 @@ interface UpdateUserParams {
 
 interface UpdateUserBody {
   state?: string;
+  zip?: string;
   zone?: {
     zone: string;
     coordinates: { lat: string; lon: string };
@@ -141,13 +142,14 @@ export const updateUser: RequestHandler<
   const userId = req.params.userId;
   const newState = req.body.state;
   const newZone = req.body.zone;
+  const newZip = req.body.zip;
 
   try {
     if (!mongoose.isValidObjectId(userId)) {
       throw createHttpError(400, "Invalid user id");
     }
 
-    if (!newState || !newZone) {
+    if (!newState || !newZone || !newZip) {
       throw createHttpError(400, "No profile fields to update");
     }
 
@@ -163,6 +165,7 @@ export const updateUser: RequestHandler<
 
     existingUser.state = newState;
     existingUser.zone = newZone;
+    existingUser.zip = newZip;
 
     // Use the updated user immediately in UI.
     const updatedUser = await existingUser.save();
