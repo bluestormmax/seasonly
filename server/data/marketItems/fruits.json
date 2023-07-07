@@ -1,6 +1,6 @@
 
     {
-      "itemType": "fruit", "name": "Nectarines",
+      "itemType": "fruit", "name": "nectarines", "displayName": "Nectarines",
       "zones": [
         {
           "zone": "Zone 2",
@@ -65,7 +65,7 @@
       ]
     }
     {
-      "itemType": "fruit", "name": "Oranges",
+      "itemType": "fruit", "name": "oranges", "displayName": "Oranges",
       "zones": [
         {
           "zone": "Zone 2",
@@ -158,7 +158,7 @@
       ]
     }
     {
-      "itemType": "fruit", "name": "Lemons",
+      "itemType": "fruit", "name": "lemons", "displayName": "Lemons",
       "zones": [
         {
           "zone": "Zone 2",
@@ -251,7 +251,7 @@
       ]
     }
     {
-      "itemType": "fruit", "name": "Limes",
+      "itemType": "fruit", "name": "limes", "displayName": "Limes",
       "zones": [
         {
           "zone": "Zone 2",
@@ -344,7 +344,7 @@
       ]
     }
     {
-      "itemType": "fruit", "name": "Avocados",
+      "itemType": "fruit", "name": "avocados", "displayName": "Avocados",
       "zones": [
         {
           "zone": "Zone 2",
@@ -486,7 +486,7 @@
       ]
     }
     {
-      "itemType": "fruit", "name": "Apples",
+      "itemType": "fruit", "name": "apples", "displayName": "Apples",
       "zones": [
         {
           "zone": "Zone 3",
@@ -553,7 +553,7 @@
       ]
     }
     {
-      "itemType": "fruit", "name": "Blackberries",
+      "itemType": "fruit", "name": "blackberries", "displayName": "Blackberries",
       "zones": [
         {
           "zone": "Zone 4",
@@ -636,7 +636,7 @@
       ]
     }
     {
-      "itemType": "fruit", "name": "Blueberries",
+      "itemType": "fruit", "name": "blueberries", "displayName": "Blueberries",
       "zones": [
         {
           "zone": "Zone 3",
@@ -710,7 +710,7 @@
       ]
     }
     {
-      "itemType": "fruit", "name": "Cherries",
+      "itemType": "fruit", "name": "cherries", "displayName": "Cherries",
       "zones": [
         {
           "zone": "Zone 4",
@@ -786,7 +786,7 @@
       ]
     }
     {
-      "itemType": "fruit", "name": "Grapes",
+      "itemType": "fruit", "name": "grapes", "displayName": "Grapes",
       "zones": [
         {
           "zone": "Zone 4",
@@ -862,7 +862,7 @@
       ]
     }
     {
-      "itemType": "fruit", "name": "Melons",
+      "itemType": "fruit", "name": "melons", "displayName": "Melons",
       "zones": [
         {
           "zone": "Zone 1",
@@ -968,7 +968,7 @@
       ]
     }
     {
-      "itemType": "fruit", "name": "Peaches",
+      "itemType": "fruit", "name": "peaches", "displayName": "Peaches",
       "zones": [
         {
           "zone": "Zone 4",
@@ -1023,7 +1023,7 @@
       ]
     }
     {
-      "itemType": "fruit", "name": "Pears",
+      "itemType": "fruit", "name": "pears", "displayName": "Pears",
       "zones": [
         {
           "zone": "Zone 3",
@@ -1105,7 +1105,7 @@
       ]
     }
     {
-      "itemType": "fruit", "name": "Plums",
+      "itemType": "fruit", "name": "plums", "displayName": "Plums",
       "zones": [
         {
           "zone": "Zone 4",
@@ -1173,7 +1173,7 @@
       ]
     }
     {
-      "itemType": "fruit", "name": "Raspberries",
+      "itemType": "fruit", "name": "raspberries", "displayName": "Raspberries",
       "zones": [
         {
           "zone": "Zone 1",
@@ -1263,7 +1263,7 @@
       ]
     }
     {
-      "itemType": "fruit", "name": "Strawberries",
+      "itemType": "fruit", "name": "strawberries", "displayName": "Strawberries",
       "zones": [
         {
           "zone": "Zone 1",
@@ -1348,7 +1348,7 @@
       ]
     }
     {
-      "itemType": "fruit", "name": "Watermelons",
+      "itemType": "fruit", "name": "watermelons", "displayName": "Watermelons",
       "zones": [
         {
           "zone": "Zone 2",

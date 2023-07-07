@@ -1,7 +1,7 @@
 
   {
     "itemType": "vegetable",
-    "name": "Garlic",
+    "name": "garlic", "displayName": "Garlic",
     "zones": [
       {
         "zone": "Zone 2",
@@ -67,7 +67,7 @@
   }
   {
     "itemType": "vegetable",
-    "name": "Sweet Potatoes",
+    "name": "sweet_potatoes", "displayName": "Sweet Potatoes",
     "zones": [
       {
         "zone": "Zone 2",
@@ -133,7 +133,7 @@
   }
   {
     "itemType": "vegetable",
-    "name": "Leeks",
+    "name": "leeks", "displayName": "Leeks",
     "zones": [
       {
         "zone": "Zone 2",
@@ -263,7 +263,7 @@
   }
   {
     "itemType": "vegetable",
-    "name": "Potatoes",
+    "name": "potatoes", "displayName": "Potatoes",
     "zones": [
       {
         "zone": "Zone 2",
@@ -349,7 +349,7 @@
   }
   {
     "itemType": "vegetable",
-    "name": "Cabbage",
+    "name": "cabbage", "displayName": "Cabbage",
     "zones": [
       {
         "zone": "Zone 2",
@@ -487,7 +487,7 @@
   }
   {
     "itemType": "vegetable",
-    "name": "Kale",
+    "name": "kale", "displayName": "Kale",
     "zones": [
       {
         "zone": "Zone 2",
@@ -706,7 +706,7 @@
   }
   {
     "itemType": "vegetable",
-    "name": "Swiss chard",
+    "name": "swiss_chard", "displayName": "Swiss chard",
     "zones": [
       {
         "zone": "Zone 2",
@@ -939,7 +939,7 @@
   }
   {
     "itemType": "vegetable",
-    "name": "Onions",
+    "name": "onions", "displayName": "Onions",
     "zones": [
       {
         "zone": "Zone 2",
@@ -1059,7 +1059,7 @@
   }
   {
     "itemType": "vegetable",
-    "name": "Shallots",
+    "name": "shallots", "displayName": "Shallots",
     "zones": [
       {
         "zone": "Zone 2",
@@ -1166,7 +1166,7 @@
   }
   {
     "itemType": "vegetable",
-    "name": "Basil",
+    "name": "basil", "displayName": "Basil",
     "zones": [
       {
         "zone": "Zone 2",
@@ -1341,7 +1341,7 @@
   }
   {
     "itemType": "vegetable",
-    "name": "Thyme",
+    "name": "thyme", "displayName": "Thyme",
     "zones": [
       {
         "zone": "Zone 2",
@@ -1516,7 +1516,7 @@
   }
   {
     "itemType": "vegetable",
-    "name": "Oregano",
+    "name": "oregano", "displayName": "Oregano",
     "zones": [
       {
         "zone": "Zone 2",
@@ -1691,7 +1691,7 @@
   }
   {
     "itemType": "vegetable",
-    "name": "Mint",
+    "name": "mint", "displayName": "Mint",
     "zones": [
       {
         "zone": "Zone 2",
@@ -1866,7 +1866,7 @@
   }
   {
     "itemType": "vegetable",
-    "name": "Parsley",
+    "name": "parsley", "displayName": "Parsley",
     "zones": [
       {
         "zone": "Zone 2",
@@ -2041,7 +2041,7 @@
   }
   {
     "itemType": "vegetable",
-    "name": "Tomatoes",
+    "name": "tomatoes", "displayName": "Tomatoes",
     "zones": [
       {
         "zone": "Zone 2",
@@ -2148,7 +2148,7 @@
   }
   {
     "itemType": "vegetable",
-    "name": "Carrots",
+    "name": "carrots", "displayName": "Carrots",
     "zones": [
       {
         "zone": "Zone 1",
@@ -2292,7 +2292,7 @@
   }
   {
     "itemType": "vegetable",
-    "name": "Asparagus",
+    "name": "asparagus", "displayName": "Asparagus",
     "zones": [
       {
         "zone": "Zone 3",
@@ -2408,7 +2408,7 @@
   }
   {
     "itemType": "vegetable",
-    "name": "Cauliflower",
+    "name": "cauliflower", "displayName": "Cauliflower",
     "zones": [
       {
         "zone": "Zone 1",
@@ -2513,7 +2513,7 @@
   }
   {
     "itemType": "vegetable",
-    "name": "Cucumbers",
+    "name": "cucumbers", "displayName": "Cucumbers",
     "zones": [
       {
         "zone": "Zone 2",
@@ -2623,7 +2623,7 @@
   }
   {
     "itemType": "vegetable",
-    "name": "Green beans",
+    "name": "green_beans", "displayName": "Green beans",
     "zones": [
       {
         "zone": "Zone 1",
@@ -2739,7 +2739,7 @@
   }
   {
     "itemType": "vegetable",
-    "name": "Peas",
+    "name": "peas", "displayName": "Peas",
     "zones": [
       {
         "zone": "Zone 1",
@@ -2845,7 +2845,7 @@
   }
   {
     "itemType": "vegetable",
-    "name": "Radishes",
+    "name": "radishes", "displayName": "Radishes",
     "zones": [
       {
         "zone": "Zone 1",
@@ -2965,7 +2965,7 @@
   }
   {
     "itemType": "vegetable",
-    "name": "Spinach",
+    "name": "spinach", "displayName": "Spinach",
     "zones": [
       {
         "zone": "Zone 1",
@@ -3114,7 +3114,7 @@
   }
   {
     "itemType": "vegetable",
-    "name": "Zucchini",
+    "name": "zucchini", "displayName": "Zucchini",
     "zones": [
       {
         "zone": "Zone 2",
@@ -3237,6 +3237,204 @@
           "April",
           "May"
         ]
+      }
+    ]
+  }
+  {
+    "name": "sage",
+    "displayName": "Sage",
+    "zones": [
+      {
+        "zone": "Zone 2",
+        "planting_dates": ["April", "May"],
+        "harvest_dates": ["July", "August"]
+      },
+      {
+        "zone": "Zone 3",
+        "planting_dates": ["April", "May"],
+        "harvest_dates": ["July", "August"]
+      },
+      {
+        "zone": "Zone 4",
+        "planting_dates": ["April", "May"],
+        "harvest_dates": ["July", "August"]
+      },
+      {
+        "zone": "Zone 5",
+        "planting_dates": ["April", "May"],
+        "harvest_dates": ["June", "July", "August"]
+      },
+      {
+        "zone": "Zone 6",
+        "planting_dates": ["March", "April", "May"],
+        "harvest_dates": ["May", "June", "July", "August"]
+      },
+      {
+        "zone": "Zone 7",
+        "planting_dates": ["March", "April", "May"],
+        "harvest_dates": ["April", "May", "June", "July", "August"]
+      },
+      {
+        "zone": "Zone 8",
+        "planting_dates": ["March", "April", "May"],
+        "harvest_dates": ["April", "May", "June", "July", "August"]
+      },
+      {
+        "zone": "Zone 9",
+        "planting_dates": ["February", "March", "April", "May"],
+        "harvest_dates": ["March", "April", "May", "June", "July", "August"]
+      },
+      {
+        "zone": "Zone 10",
+        "planting_dates": ["January", "February", "March", "April", "May"],
+        "harvest_dates": ["February", "March", "April", "May", "June", "July", "August"]
+      },
+      {
+        "zone": "Zone 11",
+        "planting_dates": ["January", "February", "March", "April", "May"],
+        "harvest_dates": ["January", "February", "March", "April", "May", "June", "July", "August"]
+      },
+      {
+        "zone": "Zone 12",
+        "planting_dates": ["December", "January", "February", "March", "April", "May"],
+        "harvest_dates": ["December", "January", "February", "March", "April", "May", "June", "July", "August"]
+      },
+      {
+        "zone": "Zone 13",
+        "planting_dates": ["November", "December", "January", "February", "March", "April", "May"],
+        "harvest_dates": ["November", "December", "January", "February", "March", "April", "May", "June", "July", "August"]
+      }
+    ]
+  }
+  {
+    "name": "rosemary",
+    "displayName": "Rosemary",
+    "zones": [
+      {
+        "zone": "Zone 2",
+        "planting_dates": ["April", "May"],
+        "harvest_dates": ["July", "August"]
+      },
+      {
+        "zone": "Zone 3",
+        "planting_dates": ["April", "May"],
+        "harvest_dates": ["July", "August"]
+      },
+      {
+        "zone": "Zone 4",
+        "planting_dates": ["April", "May"],
+        "harvest_dates": ["July", "August"]
+      },
+      {
+        "zone": "Zone 5",
+        "planting_dates": ["April", "May"],
+        "harvest_dates": ["June", "July", "August"]
+      },
+      {
+        "zone": "Zone 6",
+        "planting_dates": ["March", "April", "May"],
+        "harvest_dates": ["May", "June", "July", "August"]
+      },
+      {
+        "zone": "Zone 7",
+        "planting_dates": ["March", "April", "May"],
+        "harvest_dates": ["April", "May", "June", "July", "August"]
+      },
+      {
+        "zone": "Zone 8",
+        "planting_dates": ["March", "April", "May"],
+        "harvest_dates": ["April", "May", "June", "July", "August"]
+      },
+      {
+        "zone": "Zone 9",
+        "planting_dates": ["February", "March", "April", "May"],
+        "harvest_dates": ["March", "April", "May", "June", "July", "August"]
+      },
+      {
+        "zone": "Zone 10",
+        "planting_dates": ["January", "February", "March", "April", "May"],
+        "harvest_dates": ["February", "March", "April", "May", "June", "July", "August"]
+      },
+      {
+        "zone": "Zone 11",
+        "planting_dates": ["January", "February", "March", "April", "May"],
+        "harvest_dates": ["January", "February", "March", "April", "May", "June", "July", "August"]
+      },
+      {
+        "zone": "Zone 12",
+        "planting_dates": ["December", "January", "February", "March", "April", "May"],
+        "harvest_dates": ["December", "January", "February", "March", "April", "May", "June", "July", "August"]
+      },
+      {
+        "zone": "Zone 13",
+        "planting_dates": ["November", "December", "January", "February", "March", "April", "May"],
+        "harvest_dates": ["November", "December", "January", "February", "March", "April", "May", "June", "July", "August"]
+      }
+    ]
+  }
+  {
+    "name": "brussels_sprouts",
+    "displayName": "Brussels Sprouts",
+    "zones": [
+      {
+        "zone": "Zone 2",
+        "planting_dates": ["May", "June"],
+        "harvest_dates": ["September", "October"]
+      },
+      {
+        "zone": "Zone 3",
+        "planting_dates": ["May", "June"],
+        "harvest_dates": ["September", "October"]
+      },
+      {
+        "zone": "Zone 4",
+        "planting_dates": ["April", "May"],
+        "harvest_dates": ["September", "October"]
+      },
+      {
+        "zone": "Zone 5",
+        "planting_dates": ["April", "May"],
+        "harvest_dates": ["August", "September", "October"]
+      },
+      {
+        "zone": "Zone 6",
+        "planting_dates": ["March", "April", "May"],
+        "harvest_dates": ["August", "September", "October"]
+      },
+      {
+        "zone": "Zone 7",
+        "planting_dates": ["March", "April", "May"],
+        "harvest_dates": ["August", "September", "October", "November"]
+      },
+      {
+        "zone": "Zone 8",
+        "planting_dates": ["March", "April", "May"],
+        "harvest_dates": ["July", "August", "September", "October", "November"]
+      },
+      {
+        "zone": "Zone 9",
+        "planting_dates": ["February", "March", "April", "May"],
+        "harvest_dates": ["July", "August", "September", "October", "November", "December"]
+      },
+      {
+        "zone": "Zone 10",
+        "planting_dates": ["January", "February", "March", "April", "May"],
+        "harvest_dates": ["June", "July", "August", "September", "October", "November", "December"]
+      },
+      {
+        "zone": "Zone 11",
+        "planting_dates": ["January", "February", "March", "April", "May"],
+        "harvest_dates": ["June", "July", "August", "September", "October", "November", "December"]
+      },
+      {
+        "zone": "Zone 12",
+        "planting_dates": ["December", "January", "February", "March", "April", "May"],
+        "harvest_dates": ["May", "June", "July", "August", "September", "October", "November", "December"]
+      },
+      {
+        "zone": "Zone 13",
+        "planting_dates": ["November", "December", "January", "February", "March", "April", "May"],
+        "harvest_dates": ["April", "May", "June", "July", "August", "September", "October", "November", "December"]
       }
     ]
   }
