@@ -1,14 +1,18 @@
 import { InferSchemaType, model, Schema } from "mongoose";
 
+const ZonesSchema = new Schema({
+  zone: { type: String },
+  plant: [{ type: String }],
+  harvest: [{ type: String }],
+});
+
 const marketItemSchema = new Schema({
   itemType: { type: String, required: true },
   displayName: { type: String, required: true },
   name: { type: String, required: true },
   zones: [
     {
-      zone: { type: String },
-      planting_dates: [{ type: String }],
-      harvest_dates: [{ type: String }],
+      ZonesSchema,
     },
   ],
 });

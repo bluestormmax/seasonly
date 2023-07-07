@@ -5,8 +5,10 @@ export interface MarketItem {
   zones: [
     {
       zone: string;
-      planting_dates: string[];
-      harvest_dates: string[];
+      dates: {
+        plant: string[];
+        harvest: string[];
+      };
     }
   ];
 }
