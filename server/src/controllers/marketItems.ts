@@ -57,8 +57,8 @@ export const getSeasonalMarketItems: RequestHandler = async (
   res,
   next
 ) => {
-  const zone = req.body.zone;
-  const month = req.body.month;
+  const zone = req.params.zone;
+  const month = req.params.month.toLowerCase();
   const zoneDigit = zone.replace(/[^0-9]/g, "");
 
   const db = mongoClient.db(MONGODB_DATABASE);

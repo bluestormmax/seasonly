@@ -9,6 +9,9 @@ router.get("/:name", MarketItemController.getMarketItem);
 
 router.get("/type/:typeName", MarketItemController.getMarketItemTypes);
 
-router.get("/seasonal/now", MarketItemController.getSeasonalMarketItems);
+router.get(
+  "/seasonal/:zone/:month",
+  MarketItemController.getSeasonalMarketItems
+);
 
 export default router;
