@@ -70,7 +70,7 @@ const InSeasonPage = ({ loggedInUser }: InSeasonPageProps) => {
       {marketItems ? (
         <Box>
           {marketItems.map((item) => (
-            <h3>{item.displayName}</h3>
+            <h3 key={item.name}>{item.displayName}</h3>
           ))}
         </Box>
       ) : null}
