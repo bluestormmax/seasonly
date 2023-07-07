@@ -39,7 +39,7 @@ const GrowingZoneInput = ({
     <form id="growingZoneInput" onSubmit={handleSubmit(onZoneSubmit)}>
       <Stack>
         <FormLabel sx={{ mb: 2 }}>
-          Enter your zip code to find your growing zone:
+          Enter a zip code to find the growing zone:
         </FormLabel>
         <Stack direction="row">
           <TextInputField
