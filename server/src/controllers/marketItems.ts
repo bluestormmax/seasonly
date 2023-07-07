@@ -13,7 +13,7 @@ const ATLAS_API_PUBLIC_KEY = env.MONGODB_ATLAS_PUBLIC_KEY;
 const ATLAS_API_PRIVATE_KEY = env.MONGODB_ATLAS_PRIVATE_KEY;
 const DIGEST_AUTH = `${ATLAS_API_PUBLIC_KEY}:${ATLAS_API_PRIVATE_KEY}`;
 
-const IN_SEASON_SEARCH_INDEX_NAME = "in_season_search";
+const IN_SEASON_SEARCH_INDEX_NAME = "searchMarketItems";
 
 // Get all market items.
 export const getMarketItems: RequestHandler = async (req, res, next) => {
@@ -59,26 +59,6 @@ export const getMarketItemTypes: RequestHandler = async (req, res, next) => {
   }
 };
 
-async function upsertSearchIndex() {
-  const inSeasonSearchIndex = await findIndexByName(IN_SEASON_SEARCH_INDEX_NAME)
-  if (!inSeasonSearchIndex) {
-    await request(ATLAS_SEARCH_INDEX_API_URL, {
-      data: {
-        name: IN_SEASON_SEARCH_INDEX_NAME,
-        database: MONGODB_DATABASE,
-        collectionName: MONGODB_COLLECTION,
-        // https://www.mongodb.com/docs/atlas/atlas-search/index-definitions/#syntax
-        mappings: {
-          dynamic: true,
-        },
-      },
-      dataType: 'json',
-      contentType: 'application/json',
-      method: 'POST',
-      digestAuth: DIGEST_AUTH,
-    })
-  }
-
 // Get all in-season market items for the selected zone.
 export const getSeasonalMarketItems: RequestHandler = async (
   req,
@@ -89,8 +69,35 @@ export const getSeasonalMarketItems: RequestHandler = async (
   const month = "July";
   const zoneDigit = zone.replace(/[^0-9]/g, "");
   const zoneToFind = new RegExp(zoneDigit + "$");
-  console.log("ZONE: ", zoneToFind);
   const query = { zone: zoneToFind };
+
+  const db = mongoClient.db("tutorial");
+  const collection = db.collection<User>(MONGODB_COLLECTION);
+
+  const pipeline = [];
+
+  pipeline.push({
+    $search: {
+      index: IN_SEASON_SEARCH_INDEX_NAME,
+      compound: {
+        must: [
+          {
+            text: {
+              query: zone,
+              path: "zones",
+              fuzzy: {},
+            },
+          },
+          {
+            text: {
+              query: month,
+              path: "harvest_dates",
+            },
+          },
+        ],
+      },
+    },
+  });
 
   try {
     const marketItems = await MarketItemModel.find(query).exec();
