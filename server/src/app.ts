@@ -7,6 +7,7 @@ import MongoStore from "connect-mongo";
 import env from "./util/validateEnv";
 import shoppingListRoutes from "./routes/shoppingLists";
 import userRoutes from "./routes/users";
+import marketItemRoutes from "./routes/marketItems";
 import { requiresAuth } from "./middleware/auth";
 
 const app = express();
@@ -38,6 +39,9 @@ app.use("/api/users", userRoutes);
 
 // Put all shoppingList endpoints at this URL and auth.
 app.use("/api/shoppingLists", requiresAuth, shoppingListRoutes);
+
+// Put all market items at this URL
+app.use("/api/marketItems", marketItemRoutes);
 
 // Custom error for non-existent endpoints.
 app.use((req, res, next) => {
