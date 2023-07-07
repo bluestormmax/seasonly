@@ -45,3 +45,17 @@ export const getMarketItemTypes: RequestHandler = async (req, res, next) => {
     next(error);
   }
 };
+
+// Get all in-season market items for the selected zone.
+export const getSeasonalMarketItems: RequestHandler = async (
+  req,
+  res,
+  next
+) => {
+  try {
+    const marketItems = await MarketItemModel.find().exec();
+    res.status(200).json(marketItems);
+  } catch (error) {
+    next(error);
+  }
+};
