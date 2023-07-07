@@ -149,7 +149,7 @@ export const updateUserProfile: RequestHandler<
       throw createHttpError(400, "Invalid user id");
     }
 
-    if (!newState || !newZone || !newZip) {
+    if (!newState && !newZone && !newZip) {
       throw createHttpError(400, "No profile fields to update");
     }
 
