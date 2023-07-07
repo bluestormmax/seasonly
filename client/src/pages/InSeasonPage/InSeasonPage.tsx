@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, CircularProgress } from "@mui/material";
 import { User as UserModel } from "@models/user";
 import { MarketItem as MarketItemModel } from "@models/marketItem";
 import * as MarketItemsApi from "@api/marketItems.api";
@@ -14,6 +14,7 @@ type InSeasonPageProps = {
 const InSeasonPage = ({ loggedInUser }: InSeasonPageProps) => {
   const [usState, setUsState] = useState<string>("");
   const [zone, setZone] = useState<ZoneData | null>(null);
+  const [itemsLoading, setItemsLoading] = useState(true);
   const [marketItems, setMarketItems] = useState<MarketItemModel[]>([]);
 
   const zoneText = `Your growing zone is: ${zone?.zone} in ${usState}`;
@@ -37,14 +38,14 @@ const InSeasonPage = ({ loggedInUser }: InSeasonPageProps) => {
     async function loadMarketItems() {
       try {
         // setShowListsLoadingError(false);
-        // setListsLoading(true);
+        setItemsLoading(true);
         const initialMarketItems = await MarketItemsApi.fetchAllMarketItems();
         setMarketItems(initialMarketItems);
       } catch (error) {
         console.error(error);
         // setShowListsLoadingError(true);
       } finally {
-        // setListsLoading(false);
+        setItemsLoading(false);
       }
     }
     loadMarketItems();
@@ -67,13 +68,18 @@ const InSeasonPage = ({ loggedInUser }: InSeasonPageProps) => {
           setUsStateFromZip(zip);
         }}
       />
-      {marketItems ? (
-        <Box>
-          {marketItems.map((item) => (
-            <h3 key={item.name}>{item.displayName}</h3>
-          ))}
-        </Box>
-      ) : null}
+
+      {!itemsLoading ? (
+        marketItems ? (
+          <Box>
+            {marketItems.map((item) => (
+              <h3 key={item.name}>{item.displayName}</h3>
+            ))}
+          </Box>
+        ) : null
+      ) : (
+        <CircularProgress />
+      )}
     </>
   );
 };
