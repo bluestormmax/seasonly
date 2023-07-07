@@ -61,6 +61,7 @@ export interface ProfileFields {
   userId: string;
   state?: string;
   zone?: ZoneData;
+  zip?: string;
 }
 
 export async function updateUser(profileFields: ProfileFields): Promise<User> {
