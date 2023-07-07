@@ -1,6 +1,19 @@
 import { RequestHandler } from "express";
 import createHttpError from "http-errors";
+import env from "../util/validateEnv";
 import MarketItemModel from "../models/marketItems";
+
+const ATLAS_API_BASE_URL = "https://cloud.mongodb.com/api/atlas/v1.0";
+const ATLAS_PROJECT_ID = env.MONGODB_ATLAS_PROJECT_ID;
+const ATLAS_CLUSTER_NAME = env.MONGODB_ATLAS_CLUSTER;
+const ATLAS_CLUSTER_API_URL = `${ATLAS_API_BASE_URL}/groups/${ATLAS_PROJECT_ID}/clusters/${ATLAS_CLUSTER_NAME}`;
+const ATLAS_SEARCH_INDEX_API_URL = `${ATLAS_CLUSTER_API_URL}/fts/indexes`;
+
+const ATLAS_API_PUBLIC_KEY = env.MONGODB_ATLAS_PUBLIC_KEY;
+const ATLAS_API_PRIVATE_KEY = env.MONGODB_ATLAS_PRIVATE_KEY;
+const DIGEST_AUTH = `${ATLAS_API_PUBLIC_KEY}:${ATLAS_API_PRIVATE_KEY}`;
+
+const IN_SEASON_SEARCH_INDEX_NAME = "in_season_search";
 
 // Get all market items.
 export const getMarketItems: RequestHandler = async (req, res, next) => {
@@ -52,8 +65,18 @@ export const getSeasonalMarketItems: RequestHandler = async (
   res,
   next
 ) => {
+  const zone = "6a";
+  const month = "July";
+  const zoneDigit = zone.replace(/[^0-9]/g, "");
+  const zoneToFind = new RegExp(zoneDigit + "$");
+  console.log("ZONE: ", zoneToFind);
+  const query = { zone: zoneToFind };
+
   try {
-    const marketItems = await MarketItemModel.find().exec();
+    const marketItems = await MarketItemModel.find(query).exec();
+    if (marketItems.length === 0) {
+      throw createHttpError(404, "No in-season items found");
+    }
     res.status(200).json(marketItems);
   } catch (error) {
     next(error);
