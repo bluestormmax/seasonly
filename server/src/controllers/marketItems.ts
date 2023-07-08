@@ -66,6 +66,7 @@ export const getSeasonalMarketItems: RequestHandler = async (
 
   const pipeline = [];
 
+  // Create the aggregate search query.
   pipeline.push({
     $search: {
       index: "searchMarketItems",
@@ -73,15 +74,14 @@ export const getSeasonalMarketItems: RequestHandler = async (
         must: [
           {
             text: {
-              query: zoneDigit,
               path: "zones.zone",
-              fuzzy: {},
+              query: zoneDigit,
             },
           },
           {
             text: {
+              path: "zones.dates.harvest",
               query: month,
-              path: "zones.harvest_dates",
             },
           },
         ],
@@ -89,6 +89,7 @@ export const getSeasonalMarketItems: RequestHandler = async (
     },
   });
 
+  // Only return the fields we need.
   pipeline.push({
     $project: {
       _id: 1,
