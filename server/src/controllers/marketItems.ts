@@ -58,7 +58,8 @@ export const getSeasonalMarketItems: RequestHandler = async (
   next
 ) => {
   const zone = req.params.zone;
-  const month = req.params.month.toUpperCase();
+  const month = req.params.month;
+  const monthFormatted = month.charAt(0).toUpperCase() + month.slice(1);
   const zoneDigit = zone.replace(/[^0-9]/g, "");
 
   const db = mongoClient.db(MONGODB_DATABASE);
@@ -66,51 +67,28 @@ export const getSeasonalMarketItems: RequestHandler = async (
 
   const pipeline = [];
 
-  // Create the aggregate search query.
+  // Create the aggregate pipeline (MQL).
   pipeline.push(
-    //   {
-    //   $search: {
-    //     index: "searchMarketItems",
-    //     compound: {
-    //       must: [
-    //         {
-    //           text: {
-    //             path: "zones.zone",
-    //             query: zoneDigit,
-    //           },
-    //         },
-    //         {
-    //           text: {
-    //             path: "zones.dates.harvest",
-    //             query: month,
-    //           },
-    //         },
-    //       ],
-    //     },
-    //   },
-    // }
-    [
-      {
-        $unwind: {
-          path: "$zones",
-        },
+    {
+      $unwind: {
+        path: "$zones",
       },
-      {
-        $match: {
-          "zones.zone": zoneDigit,
-        },
+    },
+    {
+      $match: {
+        "zones.zone": zoneDigit,
       },
-      {
-        $unwind: {
-          path: "$zones.dates.harvest",
-        },
+    },
+    {
+      $unwind: {
+        path: "$zones.dates.harvest",
       },
-      {
-        $match: {
-          "zones.dates.harvest": month,
-        },
+    },
+    {
+      $match: {
+        "zones.dates.harvest": monthFormatted,
       },
-    ]
+    }
   );
 
   // Only return the fields we need.
