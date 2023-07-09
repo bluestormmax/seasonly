@@ -3,6 +3,7 @@
     "itemType": "vegetable",
     "name": "garlic", 
     "displayName": "Garlic",
+    "image": "https://www.pexels.com/photo/photo-of-white-garlic-bulbs-2920402/",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -71,7 +72,9 @@
   }
   {
     "itemType": "vegetable",
-    "name": "sweet_potatoes", "displayName": "Sweet Potatoes",
+    "name": "sweet_potatoes",
+    "displayName":"Sweet Potatoes",
+    "image": "https://www.pexels.com/photo/sweet-potatoes-in-a-crate-7456548/",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -138,7 +141,9 @@
   }
   {
     "itemType": "vegetable",
-    "name": "leeks", "displayName": "Leeks",
+    "name": "leeks",
+    "displayName": "Leeks",
+    "image": "https://www.pexels.com/photo/close-up-of-onion-leeks-14460074/",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -268,7 +273,9 @@
   }
   {
     "itemType": "vegetable",
-    "name": "potatoes", "displayName": "Potatoes",
+    "name": "potatoes",
+    "displayName": "Potatoes",
+    "image": "https://www.pexels.com/photo/close-up-photo-of-potato-4110476/",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -355,7 +362,9 @@
   }
   {
     "itemType": "vegetable",
-    "name": "cabbage", "displayName": "Cabbage",
+    "name": "cabbage",
+    "displayName": "Cabbage",
+    "image": "https://www.pexels.com/photo/bunch-of-bok-choi-2518893/",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -496,6 +505,7 @@
     "itemType": "vegetable",
     "name": "kale", 
     "displayName": "Kale",
+    "image": "https://www.pexels.com/photo/fresh-kale-leaves-on-a-stainless-bowl-12363201/",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -717,6 +727,7 @@
     "itemType": "vegetable",
     "name": "swiss_chard", 
     "displayName": "Swiss chard",
+    "image": "https://www.pexels.com/photo/leaves-of-chard-5852255/", 
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -951,6 +962,7 @@
     "itemType": "vegetable",
     "name": "onions", 
     "displayName": "Onions",
+    "image": "https://www.pexels.com/photo/close-up-photo-of-onions-9591187/",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -1073,6 +1085,7 @@
     "itemType": "vegetable",
     "name": "shallots", 
     "displayName": "Shallots",
+    "image": "https://www.pexels.com/photo/brown-onions-144206/",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -1182,6 +1195,7 @@
     "itemType": "vegetable",
     "name": "basil", 
     "displayName": "Basil",
+    "image": "https://www.pexels.com/photo/selective-focus-photography-of-green-basil-leaf-1391505/",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -1359,6 +1373,7 @@
     "itemType": "vegetable",
     "name": "thyme", 
     "displayName": "Thyme",
+    "image": "https://www.pexels.com/photo/bunch-of-thyme-in-bags-12720260/",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -1536,6 +1551,7 @@
     "itemType": "vegetable",
     "name": "oregano", 
     "displayName": "Oregano",
+    "image": "https://www.pexels.com/photo/green-oregano-leaves-9476495/",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -1710,7 +1726,9 @@
   }
   {
     "itemType": "vegetable",
-    "name": "mint", "displayName": "Mint",
+    "name": "mint",
+    "displayName": "Mint",
+    "image": "https://www.pexels.com/photo/green-leaves-of-a-spearmint-plant-4599920/",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -1885,7 +1903,9 @@
   }
   {
     "itemType": "vegetable",
-    "name": "parsley", "displayName": "Parsley",
+    "name": "parsley",
+    "displayName": "Parsley",
+    "image": "https://www.pexels.com/photo/glass-with-bunch-of-green-parsley-on-table-4021619/",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -2167,7 +2187,9 @@
   }
   {
     "itemType": "vegetable",
-    "name": "carrots", "displayName": "Carrots",
+    "name": "carrots",
+    "displayName": "Carrots",
+    "image": "https://www.pexels.com/photo/close-up-photography-of-orange-carrots-1306559/",
     "zones": [
       {
         "zone": "1", "dates":  {
@@ -2311,7 +2333,9 @@
   }
   {
     "itemType": "vegetable",
-    "name": "asparagus", "displayName": "Asparagus",
+    "name": "asparagus",
+    "displayName": "Asparagus",
+    "image": "https://www.pexels.com/photo/flat-lay-photography-of-asparagus-351679/",
     "zones": [
       {
         "zone": "3", "dates":  {
@@ -2428,7 +2452,9 @@
   }
   {
     "itemType": "vegetable",
-    "name": "cauliflower", "displayName": "Cauliflower",
+    "name": "cauliflower",
+    "displayName": "Cauliflower",
+    "image": "https://www.pexels.com/photo/overhead-shot-of-cauliflower-6316515/",
     "zones": [
       {
         "zone": "1", "dates":  {
@@ -2534,7 +2560,9 @@
   }
   {
     "itemType": "vegetable",
-    "name": "cucumbers", "displayName": "Cucumbers",
+    "name": "cucumbers",
+    "displayName": "Cucumbers",
+    "image": "https://www.pexels.com/photo/pile-of-cucumbers-3568039/",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -2645,7 +2673,9 @@
   }
   {
     "itemType": "vegetable",
-    "name": "green_beans", "displayName": "Green beans",
+    "name": "green_beans",
+    "displayName": "Green beans",
+    "image": "https://www.pexels.com/photo/close-up-photo-of-raw-green-beans-3004798/",
     "zones": [
       {
         "zone": "1", "dates":  {
@@ -2762,7 +2792,9 @@
   }
   {
     "itemType": "vegetable",
-    "name": "peas", "displayName": "Peas",
+    "name": "peas",
+    "displayName": "Peas",
+    "image": "https://www.pexels.com/photo/full-frame-shot-of-green-peas-255469/",
     "zones": [
       {
         "zone": "1", "dates":  {
@@ -2869,7 +2901,9 @@
   }
   {
     "itemType": "vegetable",
-    "name": "radishes", "displayName": "Radishes",
+    "name": "radishes",
+    "displayName": "Radishes",
+    "image": "https://www.pexels.com/photo/bunch-of-fresh-radish-on-the-ground-12612093/",
     "zones": [
       {
         "zone": "1", "dates":  {
@@ -2990,7 +3024,9 @@
   }
   {
     "itemType": "vegetable",
-    "name": "spinach", "displayName": "Spinach",
+    "name": "spinach",
+    "displayName": "Spinach",
+    "image": "https://www.pexels.com/photo/green-leaves-in-close-up-photography-8845078/",
     "zones": [
       {
         "zone": "1", "dates":  {
@@ -3140,7 +3176,9 @@
   }
   {
     "itemType": "vegetable",
-    "name": "zucchini", "displayName": "Zucchini",
+    "name": "zucchini",
+    "displayName": "Zucchini",
+    "image": "https://www.pexels.com/photo/3-zuchini-brown-wooden-surface-128420/",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -3271,6 +3309,7 @@
     "name": "sage",
     "displayName": "Sage",
     "itemType": "vegetable",
+    "image": "https://www.pexels.com/photo/green-leaves-in-close-up-photography-10981727/",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -3339,6 +3378,7 @@
     "name": "rosemary",
     "displayName": "Rosemary",
     "itemType": "vegetable",
+    "image": "https://www.pexels.com/photo/potted-lush-rosemary-plant-placed-on-market-stall-6280436/",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -3407,6 +3447,7 @@
     "name": "brussels_sprouts",
     "displayName": "Brussels Sprouts",
     "itemType": "vegetable",
+    "image": "https://www.pexels.com/photo/close-up-shot-of-brussels-sprouts-6630123/",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -3474,7 +3515,8 @@
   {
   "name": "bell_peppers",
   "displayName": "Bell Peppers",
-  "itemType": "vegetable", 
+  "itemType": "vegetable",
+  "image": "https://www.pexels.com/photo/close-up-shot-of-bell-peppers-on-a-wooden-surface-10487761/",
   "zones": [
     {
       "zone": "2", "dates":  {
@@ -3592,6 +3634,7 @@
   "displayName": "Chili Peppers",
   "name": "chili_peppers",
   "itemType": "vegetable", 
+  "image": "https://www.pexels.com/photo/pile-of-red-and-green-chili-peppers-2893882/",
   "zones": [
     {
       "zone": "2", "dates":  {
@@ -3659,7 +3702,9 @@
 {
   "name": "celery",
   "displayName": "Celery",
-  "itemType": "vegetable", "zones": [
+  "itemType": "vegetable",
+  "image": "https://www.pexels.com/photo/close-up-photo-of-celery-stalks-13044694/",
+  "zones": [
     {
       "zone": "2", "dates":  {
       "plant": [],
