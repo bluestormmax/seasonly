@@ -3,6 +3,7 @@ export interface MarketItem {
   name: string;
   displayName: string;
   image: string;
+  imageUrl: string;
   zones: [
     {
       zone: string;

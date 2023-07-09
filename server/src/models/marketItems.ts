@@ -11,6 +11,7 @@ const marketItemSchema = new Schema({
   displayName: { type: String, required: true },
   name: { type: String, required: true },
   image: { type: String, required: true },
+  imageUrl: { type: String },
   zones: [
     {
       ZonesSchema,
