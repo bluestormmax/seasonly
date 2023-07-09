@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Box, Typography, CircularProgress } from "@mui/material";
+import { Box, Typography, CircularProgress, Link } from "@mui/material";
 import { User as UserModel } from "@models/user";
 import { MarketItem as MarketItemModel } from "@models/marketItem";
 import * as MarketItemsApi from "@api/marketItems.api";
@@ -38,22 +38,24 @@ const InSeasonPage = ({ loggedInUser }: InSeasonPageProps) => {
   });
 
   useEffect(() => {
-    async function loadInSeasonMarketItems() {
-      const seasonalData = { zone: zone?.zone, month: month };
-      try {
-        setShowItemsLoadingError(false);
-        setItemsLoading(true);
-        const initialMarketItems =
-          await MarketItemsApi.fetchInSeasonMarketItems(seasonalData);
-        setMarketItems(initialMarketItems);
-      } catch (error) {
-        console.error(error);
-        setShowItemsLoadingError(true);
-      } finally {
-        setItemsLoading(false);
+    if (zone) {
+      async function loadInSeasonMarketItems() {
+        const seasonalData = { zone: zone?.zone, month: month };
+        try {
+          setShowItemsLoadingError(false);
+          setItemsLoading(true);
+          const initialMarketItems =
+            await MarketItemsApi.fetchInSeasonMarketItems(seasonalData);
+          setMarketItems(initialMarketItems);
+        } catch (error) {
+          console.error(error);
+          setShowItemsLoadingError(true);
+        } finally {
+          setItemsLoading(false);
+        }
       }
+      loadInSeasonMarketItems();
     }
-    loadInSeasonMarketItems();
   }, [zone, month]);
 
   return (
@@ -78,13 +80,20 @@ const InSeasonPage = ({ loggedInUser }: InSeasonPageProps) => {
         marketItems ? (
           <Box>
             {marketItems.map((item) => (
-              <h3 key={item.name}>{item.displayName}</h3>
+              <Box key={item.name}>
+                <h3>{item.displayName}</h3>
+                {item.image}
+                <img src={item.image} alt={item.name} />
+              </Box>
             ))}
           </Box>
         ) : null
       ) : (
         <CircularProgress />
       )}
+      <Link href="https://www.pexels.com/" target="blank">
+        Images provided by Pexels
+      </Link>
     </>
   );
 };
