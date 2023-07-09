@@ -1,17 +1,24 @@
 
     {
-      "itemType": "fruit", "name": "nectarines", "displayName": "Nectarines",
+      "itemType": "fruit",
+      "name": "nectarines",
+      "displayName": "Nectarines",
+      "image": "https://www.pexels.com/photo/food-fall-market-health-17406435/",
       "zones": [
         {
-          "zone": "10", "dates": {
-          "plant": ["January", "February"],
-          "harvest": ["June", "July", "August"]
-        }},
+          "zone": "10",
+          "dates": {
+            "plant": ["January", "February"],
+            "harvest": ["June", "July", "August"]
+          }
+        },
         {
-          "zone": "11", "dates": {
-          "plant": ["December", "January"],
-          "harvest": ["May", "June", "July"]
-        }},
+          "zone": "11",
+          "dates": {
+            "plant": ["December", "January"],
+            "harvest": ["May", "June", "July"]
+          }
+        },
         {
           "zone": "12", "dates": {
           "plant": ["November", "December"],
@@ -26,7 +33,10 @@
       ]
     }
     {
-      "itemType": "fruit", "name": "oranges", "displayName": "Oranges",
+      "itemType": "fruit",
+      "name": "oranges",
+      "displayName": "Oranges",
+      "image": "https://www.pexels.com/photo/orange-fruits-on-brown-wooden-table-4502957/",
       "zones": [
         {
           "zone": "10", "dates": {
@@ -80,7 +90,10 @@
       ]
     }
     {
-      "itemType": "fruit", "name": "lemons", "displayName": "Lemons",
+      "itemType": "fruit",
+      "name": "lemons",
+      "displayName": "Lemons",
+      "image":"https://www.pexels.com/photo/citrus-citrus-fruits-close-up-delicious-266346/",
       "zones": [
         {
           "zone": "10", "dates": {
@@ -134,7 +147,10 @@
       ]
     }
     {
-      "itemType": "fruit", "name": "limes", "displayName": "Limes",
+      "itemType": "fruit",
+      "name": "limes",
+      "displayName": "Limes",
+      "image": "https://www.pexels.com/photo/calamansis-2363347/",
       "zones": [
         {
           "zone": "10", "dates": {
@@ -188,7 +204,10 @@
       ]
     }
     {
-      "itemType": "fruit", "name": "avocados", "displayName": "Avocados",
+      "itemType": "fruit",
+      "name": "avocados",
+      "displayName": "Avocados",
+      "image":"https://www.pexels.com/photo/photo-of-sliced-green-avocados-4144459/",
       "zones": [
         {
           "zone": "9", "dates": {
@@ -296,7 +315,10 @@
       ]
     }
     {
-      "itemType": "fruit", "name": "apples", "displayName": "Apples",
+      "itemType": "fruit",
+      "name": "apples",
+      "displayName": "Apples",
+      "image": "https://www.pexels.com/photo/red-and-green-apples-1402659/",
       "zones": [
         {
           "zone": "3", "dates": {
@@ -364,7 +386,10 @@
       ]
     }
     {
-      "itemType": "fruit", "name": "blackberries", "displayName": "Blackberries",
+      "itemType": "fruit",
+      "name": "blackberries",
+      "displayName": "Blackberries",
+      "image": "https://www.pexels.com/photo/blackberries-on-table-892808/",
       "zones": [
         {
           "zone": "4", "dates": {
@@ -448,7 +473,10 @@
       ]
     }
     {
-      "itemType": "fruit", "name": "blueberries", "displayName": "Blueberries",
+      "itemType": "fruit",
+      "name": "blueberries",
+      "displayName": "Blueberries",
+      "image": "https://www.pexels.com/photo/blueberry-fruit-on-gray-container-70862/",
       "zones": [
         {
           "zone": "3", "dates": {
@@ -523,7 +551,10 @@
       ]
     }
     {
-      "itemType": "fruit", "name": "cherries", "displayName": "Cherries",
+      "itemType": "fruit",
+      "name": "cherries",
+      "displayName": "Cherries",
+      "image": "https://www.pexels.com/photo/close-up-photo-of-cherries-in-bowl-3123909/",
       "zones": [
         {
           "zone": "4", "dates": {
@@ -600,7 +631,10 @@
       ]
     }
     {
-      "itemType": "fruit", "name": "grapes", "displayName": "Grapes",
+      "itemType": "fruit",
+      "name": "grapes",
+      "displayName": "Grapes",
+      "image": "https://www.pexels.com/photo/red-black-and-green-grapes-in-round-blue-and-white-floral-ceramic-bowl-1098537/",
       "zones": [
         {
           "zone": "4", "dates": {
@@ -677,7 +711,10 @@
       ]
     }
     {
-      "itemType": "fruit", "name": "melons", "displayName": "Melons",
+      "itemType": "fruit",
+      "name": "melons",
+      "displayName": "Melons",
+      "image": "https://www.pexels.com/photo/close-up-shot-of-melons-2714323/",
       "zones": [
         {
           "zone": "1", "dates": {
@@ -784,7 +821,10 @@
       ]
     }
     {
-      "itemType": "fruit", "name": "peaches", "displayName": "Peaches",
+      "itemType": "fruit",
+      "name": "peaches",
+      "displayName": "Peaches",
+      "image": "https://www.pexels.com/photo/red-round-fruits-in-a-box-8085336/",
       "zones": [
         {
           "zone": "4", "dates": {
@@ -840,7 +880,10 @@
       ]
     }
     {
-      "itemType": "fruit", "name": "pears", "displayName": "Pears",
+      "itemType": "fruit",
+      "name": "pears",
+      "displayName": "Pears",
+      "image": "https://www.pexels.com/photo/close-up-photo-of-bunch-of-pears-2067574/",
       "zones": [
         {
           "zone": "3", "dates": {
@@ -923,7 +966,10 @@
       ]
     }
     {
-      "itemType": "fruit", "name": "plums", "displayName": "Plums",
+      "itemType": "fruit",
+      "name": "plums",
+      "displayName": "Plums",
+      "image": "https://www.pexels.com/photo/plums-stack-in-close-up-view-16484012/",
       "zones": [
         {
           "zone": "4", "dates": {
@@ -992,7 +1038,10 @@
       ]
     }
     {
-      "itemType": "fruit", "name": "raspberries", "displayName": "Raspberries",
+      "itemType": "fruit",
+      "name": "raspberries",
+      "displayName": "Raspberries",
+      "image": "https://www.pexels.com/photo/healthy-red-fruits-raspberries-45875/",
       "zones": [
         {
           "zone": "1", "dates": {
@@ -1083,7 +1132,10 @@
       ]
     }
     {
-      "itemType": "fruit", "name": "strawberries", "displayName": "Strawberries",
+      "itemType": "fruit",
+      "name": "strawberries",
+      "displayName": "Strawberries",
+      "image": "https://www.pexels.com/photo/red-strawberry-fruits-106148/",
       "zones": [
         {
           "zone": "1", "dates": {
@@ -1169,7 +1221,10 @@
       ]
     }
     {
-      "itemType": "fruit", "name": "watermelons", "displayName": "Watermelons",
+      "itemType": "fruit",
+      "name": "watermelons",
+      "displayName": "Watermelons",
+      "image": "https://www.pexels.com/photo/pieces-of-fresh-juicy-watermelon-5946081/",
       "zones": [
         {
           "zone": "2", "dates": {
@@ -1263,7 +1318,9 @@
     {
     "name": "kiwis",
     "displayName": "Kiwis",
-    "itemType": "fruit", "zones": [
+    "itemType": "fruit", 
+    "image": "https://www.pexels.com/photo/close-up-shot-of-kiwis-on-a-wooden-tray-7255620/",
+    "zones": [
       {
         "zone": "6", "dates": {
         "plant": ["April", "May"],
@@ -1311,6 +1368,7 @@
     "name": "mangoes",
     "displayName": "Mangoes",
     "itemType": "fruit",
+    "image": "https://www.pexels.com/photo/close-up-of-mangoes-16850673/",
     "zones": [
       {
         "zone": "10", "dates": {
@@ -1339,6 +1397,7 @@
     "name": "grapefruit",
     "displayName": "Grapefruit",
     "itemType": "fruit", 
+    "image": "https://www.pexels.com/photo/close-up-photo-of-fresh-grapefruits-14840380/",
     "zones": [
       {
         "zone": "10", "dates": {
@@ -1366,7 +1425,9 @@
   {
     "name": "mandarins",
     "displayName": "Mandarins",
-    "itemType": "fruit", "zones": [
+    "image": "https://www.pexels.com/photo/citrus-fruit-food-fruit-oranges-207085/",
+    "itemType": "fruit",
+    "zones": [
       {
         "zone": "10", "dates": {
         "plant": ["January", "February", "March"],
@@ -1393,7 +1454,9 @@
   {
     "name": "bananas",
     "displayName": "Bananas",
-    "itemType": "fruit", "zones": [
+    "itemType": "fruit",
+    "image": "https://www.pexels.com/photo/bunch-of-fresh-yellow-banana-fruits-7543209/",
+    "zones": [
       {
         "zone": "12", "dates": {
         "plant": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
