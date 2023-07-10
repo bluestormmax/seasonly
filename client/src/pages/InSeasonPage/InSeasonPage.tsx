@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
-import { createClient } from "pexels";
-import { Box, Typography, CircularProgress, Link } from "@mui/material";
+import {
+  Typography,
+  CircularProgress,
+  Link,
+  ImageList,
+  ImageListItem,
+  ImageListItemBar,
+} from "@mui/material";
 import { User as UserModel } from "@models/user";
 import { MarketItem as MarketItemModel } from "@models/marketItem";
 import * as MarketItemsApi from "@api/marketItems.api";
@@ -20,9 +26,6 @@ const InSeasonPage = ({ loggedInUser }: InSeasonPageProps) => {
   const [showItemsLoadingError, setShowItemsLoadingError] = useState(false);
   const [marketItems, setMarketItems] = useState<MarketItemModel[]>([]);
   const [month, setMonth] = useState<string>(getMonthName());
-  const pexelsClient = createClient(
-    "3QhQS8c66nweCU5fbJq5qouyYBQaC3vi0URYkWdyYuXHPAPvoGlzYnTH"
-  );
 
   const zoneText = `Your growing zone is: ${zone?.zone} in ${usState}`;
 
@@ -39,7 +42,7 @@ const InSeasonPage = ({ loggedInUser }: InSeasonPageProps) => {
       setUsState(loggedInUser.state);
       setZone(loggedInUser.zone);
     }
-  });
+  }, []);
 
   useEffect(() => {
     if (zone) {
@@ -51,23 +54,12 @@ const InSeasonPage = ({ loggedInUser }: InSeasonPageProps) => {
           const initialMarketItems =
             await MarketItemsApi.fetchInSeasonMarketItems(seasonalData);
 
-          console.log("INITIAL: ", initialMarketItems);
           const marketItemsWithImageUrls = initialMarketItems.map((item) => {
-            if (item.name === "nectarines") {
-              try {
-                const res = pexelsClient.photos.show({ id: item.image });
-                res.then((photo) => {
-                  console.log("PHOTO: ", photo);
-                  item.imageUrl = photo.src.medium;
-                  return item;
-                });
-              } catch (error) {
-                console.log(error);
-              }
-            }
+            const imgSrcLg = `https://images.pexels.com/photos/${item.imageId}/pexels-photo-${item.imageId}.jpeg?auto=compress&cs=tinysrgb&h=650&w=940`;
+            item.imageUrl = imgSrcLg;
             return item;
           });
-          console.log("IMAGES: ", marketItemsWithImageUrls);
+
           setMarketItems(marketItemsWithImageUrls);
         } catch (error) {
           console.error(error);
@@ -100,14 +92,26 @@ const InSeasonPage = ({ loggedInUser }: InSeasonPageProps) => {
 
       {!itemsLoading ? (
         marketItems ? (
-          <Box>
+          <ImageList variant="masonry" cols={3} gap={8}>
             {marketItems.map((item) => (
-              <Box key={item.name}>
-                <h3>{item.displayName}</h3>
-                <img src="https://images.pexels.com/photos/17406435/pexels-photo-17406435.jpeg?auto=compress&cs=tinysrgb&h=350" />
-              </Box>
+              <ImageListItem
+                key={item.name}
+                sx={{
+                  ".MuiImageListItemBar-title": {
+                    fontSize: "24px",
+                  },
+                }}
+              >
+                <img
+                  src={`${item.imageUrl}?w=248&fit=crop&auto=format`}
+                  srcSet={`${item.imageUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                  alt={item.name}
+                  loading="lazy"
+                />
+                <ImageListItemBar title={item.displayName} />
+              </ImageListItem>
             ))}
-          </Box>
+          </ImageList>
         ) : null
       ) : (
         <CircularProgress />
