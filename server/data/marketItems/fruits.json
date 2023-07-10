@@ -969,7 +969,7 @@
       "itemType": "fruit",
       "name": "plums",
       "displayName": "Plums",
-      "imageUrl": "16484012/pexels-photo-16484012.jpeg?auto=compress&cs=tinysrgb&h=350",
+      "imageUrl": "https://images.pexels.com/photos/16484012/pexels-photo-16484012.jpeg?auto=compress&cs=tinysrgb&h=350",
       "zones": [
         {
           "zone": "4", "dates": {
@@ -1135,7 +1135,7 @@
       "itemType": "fruit",
       "name": "strawberries",
       "displayName": "Strawberries",
-      "imageUrl": "106148",
+      "imageUrl": "https://images.pexels.com/photos/106148/strawberries-fruit-red-sweet-106148.jpeg?auto=compress&cs=tinysrgb&h=350",
       "zones": [
         {
           "zone": "1", "dates": {
