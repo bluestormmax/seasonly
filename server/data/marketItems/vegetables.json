@@ -74,7 +74,7 @@
     "itemType": "vegetable",
     "name": "sweet_potatoes",
     "displayName":"Sweet Potatoes",
-    "imageId": "https://images.pexels.com/photos/7456548/pexels-photo-7456548.jpeg?auto=compress&cs=tinysrgb&h=350",
+    "imageUrl": "https://images.pexels.com/photos/7456548/pexels-photo-7456548.jpeg?auto=compress&cs=tinysrgb&h=350",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -143,7 +143,7 @@
     "itemType": "vegetable",
     "name": "leeks",
     "displayName": "Leeks",
-    "imageId": "https://images.pexels.com/photos/14460074/pexels-photo-14460074.jpeg?auto=compress&cs=tinysrgb&h=350"
+    "imageUrl": "https://images.pexels.com/photos/14460074/pexels-photo-14460074.jpeg?auto=compress&cs=tinysrgb&h=350",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -276,7 +276,7 @@
     "itemType": "vegetable",
     "name": "potatoes",
     "displayName": "Potatoes",
-    "imageId": "https://images.pexels.com/photos/4110476/pexels-photo-4110476.jpeg?auto=compress&cs=tinysrgb&h=350",
+    "imageUrl": "https://images.pexels.com/photos/4110476/pexels-photo-4110476.jpeg?auto=compress&cs=tinysrgb&h=350",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -365,7 +365,7 @@
     "itemType": "vegetable",
     "name": "cabbage",
     "displayName": "Cabbage",
-    "imageId": "https://images.pexels.com/photos/2518893/pexels-photo-2518893.jpeg?auto=compress&cs=tinysrgb&h=350",
+    "imageUrl": "https://images.pexels.com/photos/2518893/pexels-photo-2518893.jpeg?auto=compress&cs=tinysrgb&h=350",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -506,7 +506,7 @@
     "itemType": "vegetable",
     "name": "kale", 
     "displayName": "Kale",
-    "imageId": "https://images.pexels.com/photos/12363201/pexels-photo-12363201.jpeg?auto=compress&cs=tinysrgb&h=350",
+    "imageUrl": "https://images.pexels.com/photos/12363201/pexels-photo-12363201.jpeg?auto=compress&cs=tinysrgb&h=350",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -728,7 +728,7 @@
     "itemType": "vegetable",
     "name": "swiss_chard", 
     "displayName": "Swiss chard",
-    "imageId": "https://images.pexels.com/photos/5852255/pexels-photo-5852255.jpeg?auto=compress&cs=tinysrgb&h=350",
+    "imageUrl": "https://images.pexels.com/photos/5852255/pexels-photo-5852255.jpeg?auto=compress&cs=tinysrgb&h=350",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -964,7 +964,7 @@
     "itemType": "vegetable",
     "name": "onions", 
     "displayName": "Onions",
-    "imageId": "https://images.pexels.com/photos/9591187/pexels-photo-9591187.jpeg?auto=compress&cs=tinysrgb&h=350",
+    "imageUrl": "https://images.pexels.com/photos/9591187/pexels-photo-9591187.jpeg?auto=compress&cs=tinysrgb&h=350",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -1087,7 +1087,7 @@
     "itemType": "vegetable",
     "name": "shallots", 
     "displayName": "Shallots",
-    "imageId": "144206",
+    "imageUrl": "https://images.pexels.com/photos/144206/pexels-photo-144206.jpeg?auto=compress&cs=tinysrgb&h=350",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -1197,7 +1197,7 @@
     "itemType": "vegetable",
     "name": "basil", 
     "displayName": "Basil",
-    "imageId": "1391505",
+    "imageUrl": "https://images.pexels.com/photos/1391505/pexels-photo-1391505.jpeg?auto=compress&cs=tinysrgb&h=350",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -1375,7 +1375,7 @@
     "itemType": "vegetable",
     "name": "thyme", 
     "displayName": "Thyme",
-    "imageId": "12720260",
+    "imageUrl": "https://images.pexels.com/photos/12720260/pexels-photo-12720260.jpeg?auto=compress&cs=tinysrgb&h=350",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -1553,7 +1553,7 @@
     "itemType": "vegetable",
     "name": "oregano", 
     "displayName": "Oregano",
-    "imageId": "9476495",
+    "imageUrl": "https://images.pexels.com/photos/9476495/pexels-photo-9476495.jpeg?auto=compress&cs=tinysrgb&h=350",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -1731,7 +1731,7 @@
     "itemType": "vegetable",
     "name": "mint",
     "displayName": "Mint",
-    "imageId": "4599920",
+    "imageUrl": "https://images.pexels.com/photos/4599920/pexels-photo-4599920.jpeg?auto=compress&cs=tinysrgb&h=350",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -1909,7 +1909,7 @@
     "itemType": "vegetable",
     "name": "parsley",
     "displayName": "Parsley",
-    "imageId": "4021619",
+    "imageUrl": "https://images.pexels.com/photos/4021619/pexels-photo-4021619.jpeg?auto=compress&cs=tinysrgb&h=350",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -2085,7 +2085,9 @@
   }
   {
     "itemType": "vegetable",
-    "name": "tomatoes", "displayName": "Tomatoes",
+    "name": "tomatoes",
+    "displayName": "Tomatoes",
+    "imageUrl": "https://images.pexels.com/photos/162830/pexels-photo-162830.jpeg?auto=compress&cs=tinysrgb&h=350",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -2195,7 +2197,7 @@
     "itemType": "vegetable",
     "name": "carrots",
     "displayName": "Carrots",
-    "imageId": "1306559",
+    "imageUrl": "https://images.pexels.com/photos/1306559/pexels-photo-1306559.jpeg?auto=compress&cs=tinysrgb&h=350",
     "zones": [
       {
         "zone": "1", "dates":  {
@@ -2342,7 +2344,7 @@
     "itemType": "vegetable",
     "name": "asparagus",
     "displayName": "Asparagus",
-    "imageId": "351679",
+    "imageUrl": "https://images.pexels.com/photos/351679/pexels-photo-351679.jpeg?auto=compress&cs=tinysrgb&h=350",
     "zones": [
       {
         "zone": "3", "dates":  {
@@ -2461,7 +2463,7 @@
     "itemType": "vegetable",
     "name": "cauliflower",
     "displayName": "Cauliflower",
-    "imageId": "6316515",
+    "imageUrl": "https://images.pexels.com/photos/6316515/pexels-photo-6316515.jpeg?auto=compress&cs=tinysrgb&h=350",
     "zones": [
       {
         "zone": "1", "dates":  {
@@ -2569,7 +2571,7 @@
     "itemType": "vegetable",
     "name": "cucumbers",
     "displayName": "Cucumbers",
-    "imageId": "3568039",
+    "imageUrl": "https://images.pexels.com/photos/3568039/pexels-photo-3568039.jpeg?auto=compress&cs=tinysrgb&h=350",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -2682,7 +2684,7 @@
     "itemType": "vegetable",
     "name": "green_beans",
     "displayName": "Green beans",
-    "imageId": "3004798",
+    "imageUrl": "https://images.pexels.com/photos/3004798/pexels-photo-3004798.jpeg?auto=compress&cs=tinysrgb&h=350",
     "zones": [
       {
         "zone": "1", "dates":  {
@@ -2801,7 +2803,7 @@
     "itemType": "vegetable",
     "name": "peas",
     "displayName": "Peas",
-    "imageId": "255469",
+    "imageUrl": "https://images.pexels.com/photos/255469/pexels-photo-255469.jpeg?auto=compress&cs=tinysrgb&h=350",
     "zones": [
       {
         "zone": "1", "dates":  {
@@ -2910,7 +2912,7 @@
     "itemType": "vegetable",
     "name": "radishes",
     "displayName": "Radishes",
-    "imageId": "12612093",
+    "imageUrl": "https://images.pexels.com/photos/12612093/pexels-photo-12612093.jpeg?auto=compress&cs=tinysrgb&h=350",
     "zones": [
       {
         "zone": "1", "dates":  {
@@ -3033,7 +3035,7 @@
     "itemType": "vegetable",
     "name": "spinach",
     "displayName": "Spinach",
-    "imageId": "8845078",
+    "imageUrl": "https://images.pexels.com/photos/8845078/pexels-photo-8845078.jpeg?auto=compress&cs=tinysrgb&h=350",
     "zones": [
       {
         "zone": "1", "dates":  {
@@ -3185,7 +3187,7 @@
     "itemType": "vegetable",
     "name": "zucchini",
     "displayName": "Zucchini",
-    "imageId": "128420",
+    "imageUrl": "https://images.pexels.com/photos/128420/pexels-photo-128420.jpeg?auto=compress&cs=tinysrgb&h=350",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -3316,7 +3318,7 @@
     "name": "sage",
     "displayName": "Sage",
     "itemType": "vegetable",
-    "imageId": "10981727",
+    "imageUrl": "https://images.pexels.com/photos/10981727/pexels-photo-10981727.jpeg?auto=compress&cs=tinysrgb&h=350",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -3385,7 +3387,7 @@
     "name": "rosemary",
     "displayName": "Rosemary",
     "itemType": "vegetable",
-    "imageId": "6280436",
+    "imageUrl": "https://images.pexels.com/photos/6280436/pexels-photo-6280436.jpeg?auto=compress&cs=tinysrgb&h=350",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -3454,7 +3456,7 @@
     "name": "brussels_sprouts",
     "displayName": "Brussels Sprouts",
     "itemType": "vegetable",
-    "imageId": "6630123",
+    "imageUrl": "https://images.pexels.com/photos/6630123/pexels-photo-6630123.jpeg?auto=compress&cs=tinysrgb&h=350",
     "zones": [
       {
         "zone": "2", "dates":  {
@@ -3523,7 +3525,7 @@
   "name": "bell_peppers",
   "displayName": "Bell Peppers",
   "itemType": "vegetable",
-  "imageId": "10487761",
+  "imageUrl": "https://images.pexels.com/photos/10487761/pexels-photo-10487761.jpeg?auto=compress&cs=tinysrgb&h=350",
   "zones": [
     {
       "zone": "2", "dates":  {
@@ -3641,7 +3643,7 @@
   "displayName": "Chili Peppers",
   "name": "chili_peppers",
   "itemType": "vegetable", 
-  "imageId": "2893882",
+  "imageUrl": "https://images.pexels.com/photos/2893882/pexels-photo-2893882.jpeg?auto=compress&cs=tinysrgb&h=350",
   "zones": [
     {
       "zone": "2", "dates":  {
@@ -3710,7 +3712,7 @@
   "name": "celery",
   "displayName": "Celery",
   "itemType": "vegetable",
-  "imageId": "13044694",
+  "imageUrl": "https://images.pexels.com/photos/13044694/pexels-photo-13044694.jpeg?auto=compress&cs=tinysrgb&h=350",
   "zones": [
     {
       "zone": "2", "dates":  {

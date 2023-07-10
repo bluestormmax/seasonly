@@ -3,7 +3,7 @@
       "itemType": "fruit",
       "name": "nectarines",
       "displayName": "Nectarines",
-      "imageId": "17406435",
+      "imageUrl": "https://images.pexels.com/photos/17406435/pexels-photo-17406435.jpeg?auto=compress&cs=tinysrgb&h=350",
       "zones": [
         {
           "zone": "10",
@@ -36,7 +36,7 @@
       "itemType": "fruit",
       "name": "oranges",
       "displayName": "Oranges",
-      "imageId": "4502957",
+      "imageUrl": "https://images.pexels.com/photos/4502957/pexels-photo-4502957.jpeg?auto=compress&cs=tinysrgb&h=350",
       "zones": [
         {
           "zone": "10", "dates": {
@@ -93,7 +93,7 @@
       "itemType": "fruit",
       "name": "lemons",
       "displayName": "Lemons",
-      "imageId":"266346",
+      "imageUrl":"https://images.pexels.com/photos/266346/pexels-photo-266346.jpeg?auto=compress&cs=tinysrgb&h=350",
       "zones": [
         {
           "zone": "10", "dates": {
@@ -150,7 +150,7 @@
       "itemType": "fruit",
       "name": "limes",
       "displayName": "Limes",
-      "imageId": "2363347",
+      "imageUrl": "https://images.pexels.com/photos/2363347/pexels-photo-2363347.jpeg?auto=compress&cs=tinysrgb&h=350",
       "zones": [
         {
           "zone": "10", "dates": {
@@ -207,7 +207,7 @@
       "itemType": "fruit",
       "name": "avocados",
       "displayName": "Avocados",
-      "imageId":"4144459",
+      "imageUrl":"https://images.pexels.com/photos/4144459/pexels-photo-4144459.jpeg?auto=compress&cs=tinysrgb&h=350",
       "zones": [
         {
           "zone": "9", "dates": {
@@ -318,7 +318,7 @@
       "itemType": "fruit",
       "name": "apples",
       "displayName": "Apples",
-      "imageId": "1402659",
+      "imageUrl": "https://images.pexels.com/photos/1402659/pexels-photo-1402659.jpeg?auto=compress&cs=tinysrgb&h=350",
       "zones": [
         {
           "zone": "3", "dates": {
@@ -389,7 +389,7 @@
       "itemType": "fruit",
       "name": "blackberries",
       "displayName": "Blackberries",
-      "imageId": "892808",
+      "imageUrl": "https://images.pexels.com/photos/892808/pexels-photo-892808.jpeg?auto=compress&cs=tinysrgb&h=350",
       "zones": [
         {
           "zone": "4", "dates": {
@@ -476,7 +476,7 @@
       "itemType": "fruit",
       "name": "blueberries",
       "displayName": "Blueberries",
-      "imageId": "70862",
+      "imageUrl": "https://images.pexels.com/photos/70862/pexels-photo-70862.jpeg?auto=compress&cs=tinysrgb&h=350",
       "zones": [
         {
           "zone": "3", "dates": {
@@ -554,7 +554,7 @@
       "itemType": "fruit",
       "name": "cherries",
       "displayName": "Cherries",
-      "imageId": "3123909",
+      "imageUrl": "https://images.pexels.com/photos/3123909/pexels-photo-3123909.jpeg?auto=compress&cs=tinysrgb&h=350",
       "zones": [
         {
           "zone": "4", "dates": {
@@ -634,7 +634,7 @@
       "itemType": "fruit",
       "name": "grapes",
       "displayName": "Grapes",
-      "imageId": "1098537",
+      "imageUrl": " https://images.pexels.com/photos/1098537/pexels-photo-1098537.jpeg?auto=compress&cs=tinysrgb&h=350",
       "zones": [
         {
           "zone": "4", "dates": {
@@ -714,7 +714,7 @@
       "itemType": "fruit",
       "name": "melons",
       "displayName": "Melons",
-      "imageId": "2714323",
+      "imageUrl": "https://images.pexels.com/photos/2714323/pexels-photo-2714323.jpeg?auto=compress&cs=tinysrgb&h=350",
       "zones": [
         {
           "zone": "1", "dates": {
@@ -824,7 +824,7 @@
       "itemType": "fruit",
       "name": "peaches",
       "displayName": "Peaches",
-      "imageId": "8085336",
+      "imageUrl": "https://images.pexels.com/photos/8085336/pexels-photo-8085336.jpeg?auto=compress&cs=tinysrgb&h=350",
       "zones": [
         {
           "zone": "4", "dates": {
@@ -883,7 +883,7 @@
       "itemType": "fruit",
       "name": "pears",
       "displayName": "Pears",
-      "imageId": "2067574",
+      "imageUrl": "https://images.pexels.com/photos/2067574/pexels-photo-2067574.jpeg?auto=compress&cs=tinysrgb&h=350",
       "zones": [
         {
           "zone": "3", "dates": {
@@ -969,7 +969,7 @@
       "itemType": "fruit",
       "name": "plums",
       "displayName": "Plums",
-      "imageId": "16484012",
+      "imageUrl": "16484012/pexels-photo-16484012.jpeg?auto=compress&cs=tinysrgb&h=350",
       "zones": [
         {
           "zone": "4", "dates": {
@@ -1041,7 +1041,7 @@
       "itemType": "fruit",
       "name": "raspberries",
       "displayName": "Raspberries",
-      "imageId": "45875",
+      "imageUrl": "https://images.pexels.com/photos/45875/raspberries-berries-fruits-red-45875.jpeg?auto=compress&cs=tinysrgb&h=350",
       "zones": [
         {
           "zone": "1", "dates": {
@@ -1135,7 +1135,7 @@
       "itemType": "fruit",
       "name": "strawberries",
       "displayName": "Strawberries",
-      "imageId": "106148",
+      "imageUrl": "106148",
       "zones": [
         {
           "zone": "1", "dates": {
@@ -1224,7 +1224,7 @@
       "itemType": "fruit",
       "name": "watermelons",
       "displayName": "Watermelons",
-      "imageId": "5946081",
+      "imageUrl": "https://images.pexels.com/photos/5946081/pexels-photo-5946081.jpeg?auto=compress&cs=tinysrgb&h=350",
       "zones": [
         {
           "zone": "2", "dates": {
@@ -1319,7 +1319,7 @@
     "name": "kiwis",
     "displayName": "Kiwis",
     "itemType": "fruit", 
-    "imageId": "7255620",
+    "imageUrl": "https://images.pexels.com/photos/7255620/pexels-photo-7255620.jpeg?auto=compress&cs=tinysrgb&h=350",
     "zones": [
       {
         "zone": "6", "dates": {
@@ -1368,7 +1368,7 @@
     "name": "mangoes",
     "displayName": "Mangoes",
     "itemType": "fruit",
-    "imageId": "16850673",
+    "imageUrl": "https://images.pexels.com/photos/16850673/pexels-photo-16850673.jpeg?auto=compress&cs=tinysrgb&h=350",
     "zones": [
       {
         "zone": "10", "dates": {
@@ -1397,7 +1397,7 @@
     "name": "grapefruit",
     "displayName": "Grapefruit",
     "itemType": "fruit", 
-    "imageId": "14840380",
+    "imageUrl": "https://images.pexels.com/photos/14840380/pexels-photo-14840380.jpeg?auto=compress&cs=tinysrgb&h=350",
     "zones": [
       {
         "zone": "10", "dates": {
@@ -1425,7 +1425,7 @@
   {
     "name": "mandarins",
     "displayName": "Mandarins",
-    "imageId": "207085",
+    "imageUrl": "https://images.pexels.com/photos/207085/pexels-photo-207085.jpeg?auto=compress&cs=tinysrgb&h=350",
     "itemType": "fruit",
     "zones": [
       {
@@ -1455,7 +1455,7 @@
     "name": "bananas",
     "displayName": "Bananas",
     "itemType": "fruit",
-    "imageId": "7543209",
+    "imageUrl": "https://images.pexels.com/photos/7543209/pexels-photo-7543209.jpeg?auto=compress&cs=tinysrgb&h=350",
     "zones": [
       {
         "zone": "12", "dates": {
