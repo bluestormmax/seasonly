@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { createClient } from "pexels";
 import {
   Typography,
   CircularProgress,
@@ -27,9 +26,6 @@ const InSeasonPage = ({ loggedInUser }: InSeasonPageProps) => {
   const [showItemsLoadingError, setShowItemsLoadingError] = useState(false);
   const [marketItems, setMarketItems] = useState<MarketItemModel[]>([]);
   const [month, setMonth] = useState<string>(getMonthName());
-  const client = createClient(
-    "3QhQS8c66nweCU5fbJq5qouyYBQaC3vi0URYkWdyYuXHPAPvoGlzYnTH"
-  );
 
   const zoneText = `Your growing zone is: ${zone?.zone} in ${usState}`;
 
@@ -107,12 +103,16 @@ const InSeasonPage = ({ loggedInUser }: InSeasonPageProps) => {
                   },
                 }}
               >
-                <img
-                  src={`${item.imageUrl}?w=248&fit=crop&auto=format`}
-                  srcSet={`${item.imageUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                  alt={item.name}
-                  loading="lazy"
-                />
+                {item.imageUrl ? (
+                  <img
+                    src={`${item.imageUrl}?w=248&fit=crop&auto=format`}
+                    srcSet={`${item.imageUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                    alt={item.name}
+                    loading="lazy"
+                  />
+                ) : (
+                  <CircularProgress />
+                )}
                 <ImageListItemBar title={item.displayName} />
               </ImageListItem>
             ))}
