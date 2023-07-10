@@ -98,7 +98,7 @@ export const getSeasonalMarketItems: RequestHandler = async (
       itemType: 1,
       displayName: 1,
       name: 1,
-      image: 1,
+      imageUrl: 1,
     },
   });
 
