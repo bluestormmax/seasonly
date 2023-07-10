@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { createClient } from "pexels";
 import {
   Typography,
   CircularProgress,
@@ -26,6 +27,9 @@ const InSeasonPage = ({ loggedInUser }: InSeasonPageProps) => {
   const [showItemsLoadingError, setShowItemsLoadingError] = useState(false);
   const [marketItems, setMarketItems] = useState<MarketItemModel[]>([]);
   const [month, setMonth] = useState<string>(getMonthName());
+  const client = createClient(
+    "3QhQS8c66nweCU5fbJq5qouyYBQaC3vi0URYkWdyYuXHPAPvoGlzYnTH"
+  );
 
   const zoneText = `Your growing zone is: ${zone?.zone} in ${usState}`;
 
@@ -54,13 +58,14 @@ const InSeasonPage = ({ loggedInUser }: InSeasonPageProps) => {
           const initialMarketItems =
             await MarketItemsApi.fetchInSeasonMarketItems(seasonalData);
 
-          const marketItemsWithImageUrls = initialMarketItems.map((item) => {
-            const imgSrcLg = `https://images.pexels.com/photos/${item.imageId}/pexels-photo-${item.imageId}.jpeg?auto=compress&cs=tinysrgb&h=650&w=940`;
-            item.imageUrl = imgSrcLg;
+          const marketItemsWithImageUrls = ["106148"].map(async (item) => {
+            await client.photos.show({ id: item }).then((photo) => {
+              console.log(photo);
+            });
             return item;
           });
 
-          setMarketItems(marketItemsWithImageUrls);
+          setMarketItems(initialMarketItems);
         } catch (error) {
           console.error(error);
           setShowItemsLoadingError(true);
