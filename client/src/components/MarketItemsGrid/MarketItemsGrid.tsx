@@ -1,5 +1,5 @@
 import { ImageList, ImageListItem, ImageListItemBar } from "@mui/material";
-import { MarketItem as MarketItemModel } from "@models/marketItem";
+import { MarketItemModel } from "@models/marketItem";
 import styles from "./MarketItemsGrid.module.css";
 
 type MarketItemsGridProps = {

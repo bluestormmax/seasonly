@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { User as UserModel } from "@models/user";
+import { UserModel } from "@models/user";
 import * as UserApi from "@api/user.api";
 import { Box } from "@mui/material";
 import { BrowserRouter, Routes, Route } from "react-router-dom";

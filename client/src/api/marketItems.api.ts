@@ -1,7 +1,7 @@
-import { MarketItem } from "@models/marketItem";
+import { MarketItemModel } from "@models/marketItem";
 import { fetchData } from "./fetchData.api";
 
-export async function fetchAllMarketItems(): Promise<MarketItem[]> {
+export async function fetchAllMarketItems(): Promise<MarketItemModel[]> {
   const response = await fetchData("/api/marketItems", {
     headers: {
       Accept: "application/json",
@@ -19,7 +19,7 @@ export interface SeasonalData {
 
 export async function fetchInSeasonMarketItems(
   data: SeasonalData
-): Promise<MarketItem[]> {
+): Promise<MarketItemModel[]> {
   const response = await fetchData(
     `/api/marketItems/seasonal/${data.zone}/${data.month}`,
     {

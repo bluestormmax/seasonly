@@ -1,5 +1,5 @@
 import { Button, Typography } from "@mui/material";
-import { User as UserModel } from "@models/user";
+import { UserModel } from "@models/user";
 import * as UserApi from "@api/user.api";
 
 type NavBarLoggedInViewProps = {

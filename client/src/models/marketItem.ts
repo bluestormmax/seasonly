@@ -1,4 +1,4 @@
-export interface MarketItem {
+export interface MarketItemModel {
   _id: string;
   name: string;
   displayName: string;

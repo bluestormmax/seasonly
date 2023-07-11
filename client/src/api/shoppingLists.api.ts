@@ -1,7 +1,7 @@
-import { ShoppingList, ListItem } from "@models/shoppingList";
+import { ShoppingListModel, ListItemModel } from "@models/shoppingList";
 import { fetchData } from "./fetchData.api";
 
-export async function fetchShoppingLists(): Promise<ShoppingList[]> {
+export async function fetchShoppingLists(): Promise<ShoppingListModel[]> {
   const response = await fetchData("/api/shoppingLists", {
     headers: {
       Accept: "application/json",
@@ -13,12 +13,12 @@ export async function fetchShoppingLists(): Promise<ShoppingList[]> {
 }
 export interface ShoppingListInputs {
   title: string;
-  list: Array<ListItem>;
+  list: Array<ListItemModel>;
 }
 
 export async function createShoppingList(
   shoppingList: ShoppingListInputs
-): Promise<ShoppingList> {
+): Promise<ShoppingListModel> {
   const response = await fetchData("/api/shoppingLists", {
     method: "POST",
     headers: {

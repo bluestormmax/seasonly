@@ -9,14 +9,14 @@ import {
   IconButton,
 } from "@mui/material";
 import { Close } from "@mui/icons-material";
-import { User } from "@models/user";
+import { UserModel } from "@models/user";
 import { SignUpCredentials } from "@api/user.api";
 import * as UserApi from "@api/user.api";
 import { TextInputField } from "../../formFields/TextInputField";
 
 type SignUpDialogProps = {
   onDismiss: () => void;
-  onSignupSuccess: (user: User) => void;
+  onSignupSuccess: (user: UserModel) => void;
 };
 
 const SignUpDialog = ({ onDismiss, onSignupSuccess }: SignUpDialogProps) => {

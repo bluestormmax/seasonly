@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Typography, CircularProgress, Link, Box } from "@mui/material";
-import { User as UserModel } from "@models/user";
-import { MarketItem as MarketItemModel } from "@models/marketItem";
+import { UserModel } from "@models/user";
+import { MarketItemModel } from "@models/marketItem";
 import * as MarketItemsApi from "@api/marketItems.api";
 import { ZoneData } from "@api/user.api";
 import { getStateFromZip } from "@/utils/getStateFromZip";

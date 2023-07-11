@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { IconButton, CircularProgress } from "@mui/material";
 import { Add as AddIcon } from "@mui/icons-material";
-import { ShoppingList as ShoppingListModel } from "@models/shoppingList";
+import { ShoppingListModel } from "@models/shoppingList";
 import * as ShoppingListsApi from "@api/shoppingLists.api";
 import { ShoppingList, GridWrapper, AddEditListDialog } from "../../components";
 

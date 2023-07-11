@@ -1,4 +1,4 @@
-import { User as UserModel } from "@models/user";
+import { UserModel } from "@models/user";
 import { Typography } from "@mui/material";
 import { ListsPageLoggedInView } from "./ListsPageLoggedInView";
 import { ListsPageLoggedOutView } from "./ListsPageLoggedOutView";

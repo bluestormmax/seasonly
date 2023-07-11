@@ -1,7 +1,7 @@
-import { User } from "@models/user";
+import { UserModel } from "@models/user";
 import { fetchData } from "./fetchData.api";
 
-export async function getLoggedInUser(): Promise<User> {
+export async function getLoggedInUser(): Promise<UserModel> {
   const response = await fetchData("/api/users", {
     method: "GET",
   });
@@ -14,7 +14,9 @@ export interface SignUpCredentials {
   password: string;
 }
 
-export async function signUp(credentials: SignUpCredentials): Promise<User> {
+export async function signUp(
+  credentials: SignUpCredentials
+): Promise<UserModel> {
   const response = await fetchData("/api/users/signup", {
     method: "POST",
     headers: {
@@ -30,7 +32,7 @@ export interface LoginCredentials {
   password: string;
 }
 
-export async function login(credentials: LoginCredentials): Promise<User> {
+export async function login(credentials: LoginCredentials): Promise<UserModel> {
   const response = await fetchData("/api/users/login", {
     method: "POST",
     headers: {
@@ -64,7 +66,9 @@ export interface ProfileFields {
   zip?: string;
 }
 
-export async function updateUser(profileFields: ProfileFields): Promise<User> {
+export async function updateUser(
+  profileFields: ProfileFields
+): Promise<UserModel> {
   const response = await fetchData("/api/user/" + profileFields.userId, {
     method: "PATCH",
     headers: {

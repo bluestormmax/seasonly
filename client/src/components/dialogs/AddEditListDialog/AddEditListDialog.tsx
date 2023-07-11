@@ -15,10 +15,7 @@ import {
   FormGroup,
   FormHelperText,
 } from "@mui/material";
-import {
-  ShoppingList as ShoppingListModel,
-  ListItem as ListItemModel,
-} from "@models/shoppingList";
+import { ShoppingListModel, ListItemModel } from "@models/shoppingList";
 import { useForm, Controller } from "react-hook-form";
 import { ShoppingListInputs } from "@/api/shoppingLists.api";
 import * as ShoppingListApi from "@/api/shoppingLists.api";
