@@ -1,0 +1,8 @@
+.market_items_grid {
+  background-color: "#000";
+  min-height: "200px";
+
+  .muiimagelistitembar-title {
+    font-size: "24px";
+  }
+}

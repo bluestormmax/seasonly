@@ -1,20 +1,12 @@
 import { useState, useEffect } from "react";
-import {
-  Typography,
-  CircularProgress,
-  Link,
-  ImageList,
-  ImageListItem,
-  ImageListItemBar,
-  Box,
-} from "@mui/material";
+import { Typography, CircularProgress, Link, Box } from "@mui/material";
 import { User as UserModel } from "@models/user";
 import { MarketItem as MarketItemModel } from "@models/marketItem";
 import * as MarketItemsApi from "@api/marketItems.api";
 import { ZoneData } from "@api/user.api";
 import { getStateFromZip } from "@/utils/getStateFromZip";
 import { getMonthName } from "@/utils/dateHelpers";
-import { GrowingZoneInput } from "../../components";
+import { GrowingZoneInput, MarketItemsGrid } from "../../components";
 
 type InSeasonPageProps = {
   loggedInUser: UserModel | null;
@@ -101,30 +93,7 @@ const InSeasonPage = ({ loggedInUser }: InSeasonPageProps) => {
             <Typography variant="h5" component="h5">
               {`${month}'s most popular fruits and vegetables:`}{" "}
             </Typography>
-            <ImageList variant="masonry" cols={3} gap={8}>
-              {marketItems.map((item) => (
-                <ImageListItem
-                  key={item.name}
-                  sx={{
-                    bgcolor: "#000",
-                    minHeight: "200px",
-                    ".MuiImageListItemBar-title": {
-                      fontSize: "24px",
-                    },
-                  }}
-                >
-                  {item.imageUrl ? (
-                    <img
-                      src={`${item.imageUrl}?w=248&fit=crop&auto=format`}
-                      srcSet={`${item.imageUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                      alt={item.name}
-                      loading="lazy"
-                    />
-                  ) : null}
-                  <ImageListItemBar title={item.displayName} />
-                </ImageListItem>
-              ))}
-            </ImageList>
+            <MarketItemsGrid marketItems={marketItems} />
             <Box textAlign="center">
               <Link href="https://www.pexels.com/" target="blank">
                 Images provided by Pexels
