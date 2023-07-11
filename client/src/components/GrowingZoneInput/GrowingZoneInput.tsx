@@ -27,8 +27,8 @@ const GrowingZoneInput = ({
     setUserState(zip);
 
     try {
-      let response = await fetch(`https://phzmapi.org/${data.zip}.json`);
-      let zone = await response.json();
+      const response = await fetch(`https://phzmapi.org/${data.zip}.json`);
+      const zone = await response.json();
       onZoneSet(zone);
     } catch (error) {
       console.log(error);
@@ -36,12 +36,14 @@ const GrowingZoneInput = ({
   }
 
   return (
-    <form id="growingZoneInput" onSubmit={handleSubmit(onZoneSubmit)}>
+    <form
+      id="growingZoneInput"
+      onSubmit={handleSubmit(onZoneSubmit)}
+      style={{ width: "400px", margin: "0 auto" }}
+    >
       <Stack>
-        <FormLabel sx={{ mb: 2 }}>
-          Enter a zip code to find the growing zone:
-        </FormLabel>
-        <Stack direction="row">
+        <FormLabel sx={{ mb: 2 }}>Enter a zip code to find out:</FormLabel>
+        <Stack direction="row" spacing={2}>
           <TextInputField
             name="zip"
             label="Zip Code"
@@ -50,8 +52,10 @@ const GrowingZoneInput = ({
               required: "A zip code is required!",
             }}
             error={errors.zip}
+            fullWidth
+            sx={{ borderTopRightRadius: "0", borderBottomRightRadius: "0" }}
           />
-          <Button type="submit" disabled={isSubmitting}>
+          <Button type="submit" disabled={isSubmitting} variant="outlined">
             Submit
           </Button>
         </Stack>
