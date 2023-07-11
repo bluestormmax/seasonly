@@ -85,7 +85,9 @@ const InSeasonPage = ({ loggedInUser }: InSeasonPageProps) => {
         {zone ? (
           <Typography component="p" variant="body1" sx={{ p: "32px 0" }}>
             <strong>
-              <em>{`Fetching the harvest data for:`}</em>{" "}
+              <em>{`${
+                !itemsLoading ? `Showing` : `Fetching`
+              } the harvest data for:`}</em>{" "}
               {`Hardiness zone ${zone?.zone} in 
             ${usState}`}
             </strong>
@@ -123,9 +125,11 @@ const InSeasonPage = ({ loggedInUser }: InSeasonPageProps) => {
                 </ImageListItem>
               ))}
             </ImageList>
-            <Link href="https://www.pexels.com/" target="blank">
-              Images provided by Pexels
-            </Link>
+            <Box textAlign="center">
+              <Link href="https://www.pexels.com/" target="blank">
+                Images provided by Pexels
+              </Link>
+            </Box>
           </>
         ) : null
       ) : (
