@@ -3,6 +3,7 @@ import { UserModel } from "@models/user";
 import * as UserApi from "@api/user.api";
 import { Box } from "@mui/material";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { UserProvider } from "./context/userContext";
 import { SignUpDialog, LoginDialog, NavBar, OffCanvasMenu } from "./components";
 import { ListsPage, InSeasonPage, NotFoundPage } from "./pages";
 
@@ -25,54 +26,56 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
-      <div className="app">
-        <NavBar
-          loggedInUser={loggedInUser}
-          onLoginClicked={() => setShowLoginDialog(true)}
-          onSignUpClicked={() => setShowSignUpDialog(true)}
-          onLogOutSuccess={() => setLoggedInUser(null)}
-          onMenuIconClicked={() => setShowOffCanvasMenu(true)}
-        />
-        <OffCanvasMenu
-          open={showOffCanvasMenu}
-          onCloseIconClicked={() => setShowOffCanvasMenu(false)}
-          onLinkClicked={() => setShowOffCanvasMenu(false)}
-        />
-        <Box className="main" p={4}>
-          <Routes>
-            <Route
-              path="/"
-              element={<InSeasonPage loggedInUser={loggedInUser} />}
-            />
-            <Route
-              path="/shopping-lists"
-              element={<ListsPage loggedInUser={loggedInUser} />}
-            />
-            <Route path="/*" element={<NotFoundPage />} />
-          </Routes>
-        </Box>
+    <UserProvider value={{ user: loggedInUser, setUser: setLoggedInUser }}>
+      <BrowserRouter>
+        <div className="app">
+          <NavBar
+            loggedInUser={loggedInUser}
+            onLoginClicked={() => setShowLoginDialog(true)}
+            onSignUpClicked={() => setShowSignUpDialog(true)}
+            onLogOutSuccess={() => setLoggedInUser(null)}
+            onMenuIconClicked={() => setShowOffCanvasMenu(true)}
+          />
+          <OffCanvasMenu
+            open={showOffCanvasMenu}
+            onCloseIconClicked={() => setShowOffCanvasMenu(false)}
+            onLinkClicked={() => setShowOffCanvasMenu(false)}
+          />
+          <Box className="main" p={4}>
+            <Routes>
+              <Route
+                path="/"
+                element={<InSeasonPage loggedInUser={loggedInUser} />}
+              />
+              <Route
+                path="/shopping-lists"
+                element={<ListsPage loggedInUser={loggedInUser} />}
+              />
+              <Route path="/*" element={<NotFoundPage />} />
+            </Routes>
+          </Box>
 
-        {showSignUpDialog ? (
-          <SignUpDialog
-            onDismiss={() => setShowSignUpDialog(false)}
-            onSignupSuccess={(user) => {
-              setLoggedInUser(user);
-              setShowSignUpDialog(false);
-            }}
-          />
-        ) : null}
-        {showLoginDialog ? (
-          <LoginDialog
-            onDismiss={() => setShowLoginDialog(false)}
-            onLoginSuccess={(user) => {
-              setLoggedInUser(user);
-              setShowLoginDialog(false);
-            }}
-          />
-        ) : null}
-      </div>
-    </BrowserRouter>
+          {showSignUpDialog ? (
+            <SignUpDialog
+              onDismiss={() => setShowSignUpDialog(false)}
+              onSignupSuccess={(user) => {
+                setLoggedInUser(user);
+                setShowSignUpDialog(false);
+              }}
+            />
+          ) : null}
+          {showLoginDialog ? (
+            <LoginDialog
+              onDismiss={() => setShowLoginDialog(false)}
+              onLoginSuccess={(user) => {
+                setLoggedInUser(user);
+                setShowLoginDialog(false);
+              }}
+            />
+          ) : null}
+        </div>
+      </BrowserRouter>
+    </UserProvider>
   );
 }
 
