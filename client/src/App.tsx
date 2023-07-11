@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
-import { UserModel } from "@models/user";
 import * as UserApi from "@api/user.api";
 import { Box } from "@mui/material";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { UserProvider } from "./context/userContext";
+import { UserProvider, useLoggedInUser } from "./context/userContext";
 import { SignUpDialog, LoginDialog, NavBar, OffCanvasMenu } from "./components";
 import { ListsPage, InSeasonPage, NotFoundPage } from "./pages";
 
 function App() {
-  const [loggedInUser, setLoggedInUser] = useState<UserModel | null>(null);
+  const { loggedInUser, setLoggedInUser } = useLoggedInUser();
   const [showSignUpDialog, setShowSignUpDialog] = useState(false);
   const [showLoginDialog, setShowLoginDialog] = useState(false);
   const [showOffCanvasMenu, setShowOffCanvasMenu] = useState(false);
@@ -23,14 +22,13 @@ function App() {
       }
     }
     fetchLoggedInUser();
-  }, []);
+  }, [loggedInUser]);
 
   return (
-    <UserProvider value={{ user: loggedInUser, setUser: setLoggedInUser }}>
+    <UserProvider>
       <BrowserRouter>
         <div className="app">
           <NavBar
-            loggedInUser={loggedInUser}
             onLoginClicked={() => setShowLoginDialog(true)}
             onSignUpClicked={() => setShowSignUpDialog(true)}
             onLogOutSuccess={() => setLoggedInUser(null)}

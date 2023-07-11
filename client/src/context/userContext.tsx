@@ -9,12 +9,12 @@ import {
 import { UserModel } from "@/models/user";
 
 interface UserContextModel {
-  user: UserModel | null;
-  setUser: Dispatch<SetStateAction<UserModel | null>>;
+  loggedInUser: UserModel | null;
+  setLoggedInUser: Dispatch<SetStateAction<UserModel | null>>;
 }
 
 const defaultUserContext = {
-  user: {
+  loggedInUser: {
     _id: "",
     username: "",
     email: "",
@@ -29,7 +29,7 @@ const defaultUserContext = {
       temperature_range: "",
     },
   },
-  setUser: (user: UserModel) => {},
+  setLoggedInUser: () => {},
 } as UserContextModel;
 
 const UserContext = createContext(defaultUserContext);
@@ -40,10 +40,10 @@ type UserProviderProps = {
 };
 
 function UserProvider({ children }: UserProviderProps) {
-  const [user, setUser] = useState<UserModel | null>(null);
+  const [loggedInUser, setLoggedInUser] = useState<UserModel | null>(null);
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ loggedInUser, setLoggedInUser }}>
       {children}
     </UserContext.Provider>
   );

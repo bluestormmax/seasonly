@@ -1,12 +1,11 @@
 import { AppBar, IconButton, Typography, Toolbar } from "@mui/material";
 import { Menu } from "@mui/icons-material";
-import { UserModel } from "@models/user";
+import { useLoggedInUser } from "@/context/userContext";
 import { NavBarLoggedInView } from "./NavBarLoggedInView";
 import { NavBarLoggedOutView } from "./NavBarLoggedOutView";
 
 // Null if user not logged in, but we don't want an optional prop here
 type NavBarProps = {
-  loggedInUser: UserModel | null;
   onSignUpClicked: () => void;
   onLoginClicked: () => void;
   onLogOutSuccess: () => void;
@@ -14,12 +13,15 @@ type NavBarProps = {
 };
 
 const NavBar = ({
-  loggedInUser,
   onSignUpClicked,
   onLoginClicked,
   onLogOutSuccess,
   onMenuIconClicked,
 }: NavBarProps) => {
+  const { loggedInUser } = useLoggedInUser();
+
+  console.log("LOGGED NAV: ", loggedInUser);
+
   return (
     <AppBar position="static">
       <Toolbar>
