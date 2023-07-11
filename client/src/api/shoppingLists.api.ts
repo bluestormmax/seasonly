@@ -1,4 +1,4 @@
-import { ShoppingList } from "@models/shoppingList";
+import { ShoppingList, ListItem } from "@models/shoppingList";
 import { fetchData } from "./fetchData.api";
 
 export async function fetchShoppingLists(): Promise<ShoppingList[]> {
@@ -14,7 +14,7 @@ export async function fetchShoppingLists(): Promise<ShoppingList[]> {
 
 export interface ShoppingListInput {
   title: string;
-  list: string;
+  list: Array<ListItem>;
 }
 
 export async function createShoppingList(
