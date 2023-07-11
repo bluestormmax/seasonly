@@ -29,14 +29,15 @@ const InSeasonPage = ({ loggedInUser }: InSeasonPageProps) => {
   }
 
   useEffect(() => {
-    if (loggedInUser) {
+    if (loggedInUser?.username !== "") {
       setUsState(loggedInUser.state);
-      setZone(loggedInUser.zone);
+      setZone(loggedInUser?.zone);
     }
   }, [loggedInUser]);
 
   useEffect(() => {
-    if (zone) {
+    if (zone?.zone) {
+      console.log("this is running");
       async function loadInSeasonMarketItems() {
         const seasonalData = { zone: zone?.zone, month: month };
         try {

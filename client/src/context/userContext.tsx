@@ -1,49 +1,55 @@
 import {
   ReactNode,
   createContext,
-  Dispatch,
-  SetStateAction,
   useState,
   useContext,
+  useMemo,
+  Dispatch,
+  SetStateAction,
 } from "react";
 import { UserModel } from "@/models/user";
 
 interface UserContextModel {
-  loggedInUser: UserModel | null;
-  setLoggedInUser: Dispatch<SetStateAction<UserModel | null>>;
+  loggedInUser: UserModel;
+  setLoggedInUser: Dispatch<SetStateAction<UserContextModel>>;
 }
 
-const defaultUserContext = {
-  loggedInUser: {
-    _id: "",
-    username: "",
-    email: "",
-    state: "",
-    zip: "",
-    zone: {
-      zone: "",
-      coordinates: {
-        lat: "",
-        lon: "",
-      },
-      temperature_range: "",
-    },
-  },
-  setLoggedInUser: () => {},
-} as UserContextModel;
-
-const UserContext = createContext(defaultUserContext);
+const UserContext = createContext<UserContextModel | null>(null);
 
 type UserProviderProps = {
-  value?: UserContextModel;
   children: ReactNode;
 };
 
 function UserProvider({ children }: UserProviderProps) {
-  const [loggedInUser, setLoggedInUser] = useState<UserModel | null>(null);
+  const [loggedInUser, setLoggedInUser] = useState<UserContextModel>({
+    loggedInUser: {} as UserModel,
+    setLoggedInUser: () => {},
+  });
+
+  const memoizedValue = useMemo<UserContextModel>(
+    () => ({
+      loggedInUser: {
+        _id: "",
+        username: "",
+        email: "",
+        state: "",
+        zip: "",
+        zone: {
+          zone: "",
+          coordinates: {
+            lat: "",
+            lon: "",
+          },
+          temperature_range: "",
+        },
+      },
+      setLoggedInUser,
+    }),
+    [loggedInUser]
+  );
 
   return (
-    <UserContext.Provider value={{ loggedInUser, setLoggedInUser }}>
+    <UserContext.Provider value={memoizedValue}>
       {children}
     </UserContext.Provider>
   );

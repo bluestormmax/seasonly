@@ -20,7 +20,7 @@ const NavBar = ({
 }: NavBarProps) => {
   const { loggedInUser } = useLoggedInUser();
 
-  console.log("LOGGED NAV: ", loggedInUser);
+  console.log("LOGGED-NAV NAV: ", loggedInUser);
 
   return (
     <AppBar position="static">

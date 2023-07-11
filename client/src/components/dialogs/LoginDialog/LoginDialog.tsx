@@ -29,6 +29,7 @@ const LoginDialog = ({ onDismiss, onLoginSuccess }: LoginDialogProps) => {
   async function onLoginSubmit(credentials: LoginCredentials) {
     try {
       const user = await UserApi.login(credentials);
+      console.log("LOGIN SUCCESS: ", user);
       onLoginSuccess(user);
     } catch (error) {
       console.log(error);
