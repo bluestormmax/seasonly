@@ -7,7 +7,7 @@ const shoppingListSchema = new Schema(
     list: {
       type: [
         {
-          itemId: { type: String, required: true },
+          itemId: { type: String },
           name: { type: String, required: true },
           displayName: { type: String, required: true },
         },

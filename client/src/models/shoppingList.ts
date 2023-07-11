@@ -1,5 +1,5 @@
 export interface ListItem {
-  itemId: string;
+  itemId?: string;
   name: string;
   displayName: string;
 }

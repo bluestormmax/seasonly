@@ -51,7 +51,7 @@ export const getShoppingList: RequestHandler = async (req, res, next) => {
 interface CreateShoppingListBody {
   // Make both of these optional in case the request is missing one or the other
   title?: string;
-  list?: string;
+  list?: Array<ListItem>;
 }
 
 // Create new shopping list
@@ -84,7 +84,7 @@ export const createShoppingList: RequestHandler<
 };
 
 interface ListItem {
-  itemId: string;
+  itemId?: string;
   name: string;
   displayName: string;
 }
