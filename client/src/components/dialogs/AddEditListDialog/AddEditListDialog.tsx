@@ -103,8 +103,6 @@ const AddEditListDialog = ({
     setValue("list", selectedMarketItems);
   }, [selectedItems, setValue]);
 
-  console.log("ERRORS: ", errors);
-
   return (
     <Dialog open onClose={handleClose} fullWidth maxWidth="sm">
       <DialogTitle>
