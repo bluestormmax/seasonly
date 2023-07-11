@@ -83,13 +83,19 @@ export const createShoppingList: RequestHandler<
   }
 };
 
+interface ListItem {
+  itemId: string;
+  name: string;
+  displayName: string;
+}
+
 interface UpdateShoppingListParams {
   shoppingListId: string;
 }
 
 interface UpdateShoppingListBody {
   title?: string;
-  list?: string;
+  list?: Array<ListItem>;
 }
 
 export const updateShoppingList: RequestHandler<
