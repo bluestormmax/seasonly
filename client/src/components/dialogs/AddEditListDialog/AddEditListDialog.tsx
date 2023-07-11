@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Close } from "@mui/icons-material";
 import {
   Button,
@@ -7,17 +8,31 @@ import {
   DialogTitle,
   IconButton,
   Stack,
+  FormLabel,
+  Checkbox,
+  FormControl,
+  FormControlLabel,
+  FormGroup,
+  Typography,
 } from "@mui/material";
-import { ShoppingList } from "@models/shoppingList";
-import { useForm } from "react-hook-form";
-import { ShoppingListInput } from "@/api/shoppingLists.api";
+import {
+  ShoppingList as ShoppingListModel,
+  ListItem as ListItemModel,
+} from "@models/shoppingList";
+import { useForm, Controller } from "react-hook-form";
+import { ShoppingListInputs } from "@/api/shoppingLists.api";
 import * as ShoppingListApi from "@/api/shoppingLists.api";
 import { TextInputField } from "../../formFields/TextInputField";
 
 type AddEditListDialogProps = {
-  listToEdit?: ShoppingList;
+  listToEdit?: ShoppingListModel;
   onClose: () => void;
-  onListSave: (shoppingList: ShoppingList) => void;
+  onListSave: (shoppingList: ShoppingListModel) => void;
+};
+
+type ListOption = {
+  name: string;
+  displayName: string;
 };
 
 const AddEditListDialog = ({
@@ -26,23 +41,22 @@ const AddEditListDialog = ({
   onListSave,
 }: AddEditListDialogProps) => {
   const {
+    control,
     register,
     handleSubmit,
+    setValue,
     formState: { errors, isSubmitting },
-  } = useForm<ShoppingListInput>({
+  } = useForm<ShoppingListInputs>({
     defaultValues: {
       title: listToEdit?.title || "",
-      list: listToEdit?.list || "",
+      list: listToEdit?.list || [],
     },
   });
+  const [selectedItems, setSelectedItems] = useState<string[]>([]);
 
-  const handleClose = () => {
-    onClose();
-  };
-
-  async function onListSubmit(input: ShoppingListInput) {
+  async function onListSubmit(input: ShoppingListInputs) {
     try {
-      let listResponse: ShoppingList;
+      let listResponse: ShoppingListModel;
       if (listToEdit) {
         listResponse = await ShoppingListApi.updateShoppingList(
           listToEdit._id,
@@ -58,6 +72,37 @@ const AddEditListDialog = ({
       alert(error); // TODO: dev only.
     }
   }
+
+  const options = [
+    { name: "apples", displayName: "Apples" },
+    { name: "pears", displayName: "Pears" },
+    { name: "garlic", displayName: "Garlic" },
+  ];
+
+  const handleSelect = (value: string): void => {
+    const isPresent = selectedItems.indexOf(value);
+    if (isPresent !== -1) {
+      const remaining = selectedItems.filter((item: any) => item !== value);
+      setSelectedItems(remaining);
+    } else {
+      setSelectedItems((prevItems: any) => [...prevItems, value]);
+    }
+  };
+
+  const handleClose = () => {
+    onClose();
+  };
+
+  useEffect(() => {
+    const selectedMarketItems: ListItemModel[] = [];
+    selectedItems.forEach((item) => {
+      const itemObj = { name: item, displayName: item };
+      selectedMarketItems.push(itemObj);
+    });
+    setValue("list", selectedMarketItems);
+  }, [selectedItems, setValue]);
+
+  console.log("ERRORS: ", errors);
 
   return (
     <Dialog open onClose={handleClose} fullWidth maxWidth="sm">
@@ -78,15 +123,43 @@ const AddEditListDialog = ({
             />
           </Stack>
           <Stack>
-            <TextInputField
-              name="list"
-              label="List"
-              multiline
-              rows={4}
-              register={register}
-              registerOptions={{ required: "List items are required!" }}
-              error={errors.list}
-            />
+            <FormControl
+              size={"small"}
+              variant={"outlined"}
+              required
+              error={Boolean(errors.list)}
+            >
+              <FormLabel component="legend">In-Season Market Items:</FormLabel>
+              <FormGroup>
+                {options.map((option: ListOption) => {
+                  return (
+                    <FormControlLabel
+                      control={
+                        <Controller
+                          name={"list"}
+                          rules={{
+                            required:
+                              "You must select some items to save this list",
+                          }}
+                          render={() => {
+                            return (
+                              <Checkbox
+                                key={option.name}
+                                checked={selectedItems.includes(option.name)}
+                                onChange={() => handleSelect(option.name)}
+                              />
+                            );
+                          }}
+                          control={control}
+                        />
+                      }
+                      label={option.displayName}
+                      key={option.name}
+                    />
+                  );
+                })}
+              </FormGroup>
+            </FormControl>
           </Stack>
         </form>
       </DialogContent>
