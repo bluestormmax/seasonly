@@ -35,9 +35,13 @@ const ShoppingList = ({
     <Card className={classNames}>
       <CardHeader title={title} />
       <CardContent className={styles.card_content}>
-        <Typography variant="body1" component="p">
-          {list}
-        </Typography>
+        {list ? (
+          <ul>
+            {list.map((item) => (
+              <li key={item.name}>{item.displayName}</li>
+            ))}
+          </ul>
+        ) : null}
       </CardContent>
       <Box className={styles.card_footer}>
         <Typography variant="body2" component="span">
