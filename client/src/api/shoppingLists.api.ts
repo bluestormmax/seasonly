@@ -11,14 +11,13 @@ export async function fetchShoppingLists(): Promise<ShoppingList[]> {
   });
   return response.json();
 }
-
-export interface ShoppingListInput {
+export interface ShoppingListInputs {
   title: string;
   list: Array<ListItem>;
 }
 
 export async function createShoppingList(
-  shoppingList: ShoppingListInput
+  shoppingList: ShoppingListInputs
 ): Promise<ShoppingList> {
   const response = await fetchData("/api/shoppingLists", {
     method: "POST",
@@ -32,7 +31,7 @@ export async function createShoppingList(
 
 export async function updateShoppingList(
   shoppingListId: string,
-  shoppingList: ShoppingListInput
+  shoppingList: ShoppingListInputs
 ): Promise<ShoppingList> {
   const response = await fetchData("/api/shoppingLists/" + shoppingListId, {
     method: "PATCH",
