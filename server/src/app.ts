@@ -26,8 +26,6 @@ app.use(
     saveUninitialized: false,
     cookie: {
       maxAge: 1000 * 60 * 60 * 24 * 3, // 3 days
-      sameSite: "none",
-      secure: true,
     },
     rolling: true, // refresh cookie automatically within 1hr if user active
     store: MongoStore.create({
