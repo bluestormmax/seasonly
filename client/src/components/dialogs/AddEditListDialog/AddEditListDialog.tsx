@@ -14,6 +14,7 @@ import {
   FormControlLabel,
   FormGroup,
   Typography,
+  FormHelperText,
 } from "@mui/material";
 import {
   ShoppingList as ShoppingListModel,
@@ -159,6 +160,9 @@ const AddEditListDialog = ({
                   );
                 })}
               </FormGroup>
+              {errors.list && errors.list.message ? (
+                <FormHelperText>{errors.list.message}</FormHelperText>
+              ) : null}
             </FormControl>
           </Stack>
         </form>
