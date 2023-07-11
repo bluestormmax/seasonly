@@ -6,6 +6,7 @@ import {
   ImageList,
   ImageListItem,
   ImageListItemBar,
+  Box,
 } from "@mui/material";
 import { User as UserModel } from "@models/user";
 import { MarketItem as MarketItemModel } from "@models/marketItem";
@@ -27,8 +28,6 @@ const InSeasonPage = ({ loggedInUser }: InSeasonPageProps) => {
   const [marketItems, setMarketItems] = useState<MarketItemModel[]>([]);
   const [month, setMonth] = useState<string>(getMonthName());
 
-  const zoneText = `Your growing zone is: ${zone?.zone} in ${usState}`;
-
   function setUsStateFromZip(zip: string): void {
     const state = getStateFromZip(zip);
 
@@ -42,7 +41,7 @@ const InSeasonPage = ({ loggedInUser }: InSeasonPageProps) => {
       setUsState(loggedInUser.state);
       setZone(loggedInUser.zone);
     }
-  }, []);
+  }, [loggedInUser]);
 
   useEffect(() => {
     if (zone) {
@@ -53,13 +52,6 @@ const InSeasonPage = ({ loggedInUser }: InSeasonPageProps) => {
           setItemsLoading(true);
           const initialMarketItems =
             await MarketItemsApi.fetchInSeasonMarketItems(seasonalData);
-
-          const marketItemsWithImageUrls = ["106148"].map(async (item) => {
-            await client.photos.show({ id: item }).then((photo) => {
-              console.log(photo);
-            });
-            return item;
-          });
 
           setMarketItems(initialMarketItems);
         } catch (error) {
@@ -75,55 +67,70 @@ const InSeasonPage = ({ loggedInUser }: InSeasonPageProps) => {
 
   return (
     <>
-      <Typography
-        className="heading welcome"
-        variant="h3"
-        component="h1"
-        mb={3}
-      >
-        What's In Season
-      </Typography>
-      {zone ? <Typography>{zoneText}</Typography> : null}
-      <GrowingZoneInput
-        onZoneSet={(zone) => setZone(zone)}
-        setUserState={(zip) => {
-          setUsStateFromZip(zip);
-        }}
-      />
+      <Box sx={{ textAlign: "center" }}>
+        <Typography
+          className="heading welcome"
+          variant="h3"
+          component="h1"
+          mb={3}
+        >
+          What's In Season
+        </Typography>
+        <GrowingZoneInput
+          onZoneSet={(zone) => setZone(zone)}
+          setUserState={(zip) => {
+            setUsStateFromZip(zip);
+          }}
+        />
+        {zone ? (
+          <Typography component="p" variant="body1" sx={{ p: "32px 0" }}>
+            <strong>
+              <em>{`Fetching the harvest data for:`}</em>{" "}
+              {`Hardiness zone ${zone?.zone} in 
+            ${usState}`}
+            </strong>
+          </Typography>
+        ) : null}
+      </Box>
 
       {!itemsLoading ? (
-        marketItems ? (
-          <ImageList variant="masonry" cols={3} gap={8}>
-            {marketItems.map((item) => (
-              <ImageListItem
-                key={item.name}
-                sx={{
-                  ".MuiImageListItemBar-title": {
-                    fontSize: "24px",
-                  },
-                }}
-              >
-                {item.imageUrl ? (
-                  <img
-                    src={`${item.imageUrl}?w=248&fit=crop&auto=format`}
-                    srcSet={`${item.imageUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                    alt={item.name}
-                    loading="lazy"
-                  />
-                ) : (
-                  <CircularProgress />
-                )}
-                <ImageListItemBar title={item.displayName} />
-              </ImageListItem>
-            ))}
-          </ImageList>
+        marketItems.length !== 0 ? (
+          <>
+            <Typography variant="h5" component="h5">
+              {`${month}'s most popular fruits and vegetables:`}{" "}
+            </Typography>
+            <ImageList variant="masonry" cols={3} gap={8}>
+              {marketItems.map((item) => (
+                <ImageListItem
+                  key={item.name}
+                  sx={{
+                    bgcolor: "#000",
+                    minHeight: "200px",
+                    ".MuiImageListItemBar-title": {
+                      fontSize: "24px",
+                    },
+                  }}
+                >
+                  {item.imageUrl ? (
+                    <img
+                      src={`${item.imageUrl}?w=248&fit=crop&auto=format`}
+                      srcSet={`${item.imageUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                      alt={item.name}
+                      loading="lazy"
+                    />
+                  ) : null}
+                  <ImageListItemBar title={item.displayName} />
+                </ImageListItem>
+              ))}
+            </ImageList>
+            <Link href="https://www.pexels.com/" target="blank">
+              Images provided by Pexels
+            </Link>
+          </>
         ) : null
       ) : (
         <CircularProgress />
       )}
-      <Link href="https://www.pexels.com/" target="blank">
-        Images provided by Pexels
-      </Link>
     </>
   );
 };
