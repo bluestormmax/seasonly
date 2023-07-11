@@ -13,7 +13,6 @@ import {
   FormControl,
   FormControlLabel,
   FormGroup,
-  Typography,
   FormHelperText,
 } from "@mui/material";
 import {
@@ -82,6 +81,7 @@ const AddEditListDialog = ({
 
   const handleSelect = (value: string): void => {
     const isPresent = selectedItems.indexOf(value);
+
     if (isPresent !== -1) {
       const remaining = selectedItems.filter((item: any) => item !== value);
       setSelectedItems(remaining);
@@ -95,11 +95,23 @@ const AddEditListDialog = ({
   };
 
   useEffect(() => {
+    if (listToEdit) {
+      const existingListItems: ListItemModel[] = listToEdit.list;
+      const itemNames = existingListItems.map((item) => item.name);
+      setSelectedItems(itemNames);
+    }
+  }, [listToEdit]);
+
+  // Set list selected items value manually.
+  useEffect(() => {
     const selectedMarketItems: ListItemModel[] = [];
+    console.log("SELECTEDITEMS: ", selectedItems);
     selectedItems.forEach((item) => {
       const itemObj = { name: item, displayName: item };
       selectedMarketItems.push(itemObj);
     });
+
+    console.log(selectedMarketItems);
     setValue("list", selectedMarketItems);
   }, [selectedItems, setValue]);
 
