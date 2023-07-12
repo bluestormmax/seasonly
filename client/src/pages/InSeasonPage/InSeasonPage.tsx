@@ -21,23 +21,14 @@ const InSeasonPage = ({ loggedInUser }: InSeasonPageProps) => {
   const [month, setMonth] = useState<string>(getMonthName());
 
   function setUsStateFromZip(zip: string): void {
-    const state = getStateFromZip(zip);
-
-    if (state) {
-      setUsState(state);
+    const usState = getStateFromZip(zip);
+    if (usState) {
+      setUsState(usState);
     }
   }
 
   useEffect(() => {
-    if (loggedInUser?.username !== "") {
-      setUsState(loggedInUser.state);
-      setZone(loggedInUser?.zone);
-    }
-  }, [loggedInUser]);
-
-  useEffect(() => {
-    if (zone?.zone) {
-      console.log("this is running");
+    if (zone?.zone && marketItems.length === 0) {
       async function loadInSeasonMarketItems() {
         const seasonalData = { zone: zone?.zone, month: month };
         try {
