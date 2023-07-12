@@ -7,7 +7,7 @@ import { SignUpDialog, LoginDialog, NavBar, OffCanvasMenu } from "./components";
 import { ListsPage, InSeasonPage, NotFoundPage } from "./pages";
 
 function App() {
-  const { loggedInUser, setLoggedInUser } = useLoggedInUser();
+  const { loggedInUser, setLoggedInUser, defaultUser } = useLoggedInUser();
   const [showSignUpDialog, setShowSignUpDialog] = useState(false);
   const [showLoginDialog, setShowLoginDialog] = useState(false);
   const [showOffCanvasMenu, setShowOffCanvasMenu] = useState(false);
@@ -30,7 +30,7 @@ function App() {
         <NavBar
           onLoginClicked={() => setShowLoginDialog(true)}
           onSignUpClicked={() => setShowSignUpDialog(true)}
-          onLogOutSuccess={() => setLoggedInUser(null)}
+          onLogOutSuccess={() => setLoggedInUser(defaultUser)}
           onMenuIconClicked={() => setShowOffCanvasMenu(true)}
         />
         <OffCanvasMenu
