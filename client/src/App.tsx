@@ -28,11 +28,6 @@ function App() {
     }
   }, [loggedInUser]);
 
-  function handleLogin(user: UserModel): void {
-    console.log("handle login");
-    setLoggedInUser(user);
-  }
-
   return (
     <BrowserRouter>
       <div className="app">
@@ -74,7 +69,7 @@ function App() {
           <LoginDialog
             onDismiss={() => setShowLoginDialog(false)}
             onLoginSuccess={(user) => {
-              handleLogin(user);
+              setLoggedInUser(user);
               setShowLoginDialog(false);
             }}
           />
