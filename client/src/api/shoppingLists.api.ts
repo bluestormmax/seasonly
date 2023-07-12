@@ -32,7 +32,7 @@ export async function createShoppingList(
 export async function updateShoppingList(
   shoppingListId: string,
   shoppingList: ShoppingListInputs
-): Promise<ShoppingList> {
+): Promise<ShoppingListModel> {
   const response = await fetchData("/api/shoppingLists/" + shoppingListId, {
     method: "PATCH",
     headers: {
