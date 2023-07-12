@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Button, FormLabel, Stack } from "@mui/material";
 import { ZoneData } from "@api/user.api";
+import { fetchUserZoneData } from "@api/user.api";
 import { TextInputField } from "../formFields/TextInputField";
 
 type GrowingZoneInputProps = {
@@ -27,8 +28,7 @@ const GrowingZoneInput = ({
     setUserState(zip);
 
     try {
-      const response = await fetch(`https://phzmapi.org/${data.zip}.json`);
-      const zone = await response.json();
+      const zone = await fetchUserZoneData(data.zip);
       onZoneSet(zone);
     } catch (error) {
       console.log(error);

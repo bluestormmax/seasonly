@@ -78,3 +78,8 @@ export async function updateUser(
   });
   return response.json();
 }
+
+export async function fetchUserZoneData(zip: string): Promise<ZoneData> {
+  const response = await fetch(`https://phzmapi.org/${zip}.json`);
+  return response.json();
+}
