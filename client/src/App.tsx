@@ -79,7 +79,10 @@ function App() {
         ) : null}
         {showUpdateProfileDialog && loggedInUser?.zone.zone === "" ? (
           <UpdateProfileDialog
-            onUpdateProfileSuccess={() => setShowUpdateProfileDialog(false)}
+            onUpdateProfileSuccess={(user) => {
+              setLoggedInUser(user);
+              setShowUpdateProfileDialog(false);
+            }}
           />
         ) : null}
       </div>
