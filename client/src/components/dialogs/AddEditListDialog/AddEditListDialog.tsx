@@ -15,10 +15,13 @@ import {
   FormGroup,
   FormHelperText,
 } from "@mui/material";
-import { ShoppingListModel, ListItemModel } from "@models/shoppingList";
 import { useForm, Controller } from "react-hook-form";
+import { ShoppingListModel, ListItemModel } from "@models/shoppingList";
+import { useLoggedInUser } from "@/context/userContext";
 import { ShoppingListInputs } from "@/api/shoppingLists.api";
 import * as ShoppingListApi from "@/api/shoppingLists.api";
+import * as MarketItemsApi from "@/api/marketItems.api";
+import { getMonthName } from "@/utils/dateHelpers";
 import { TextInputField } from "../../formFields/TextInputField";
 
 type AddEditListDialogProps = {
@@ -51,9 +54,11 @@ const AddEditListDialog = ({
       list: listToEdit?.list || [],
     },
   });
+  const { loggedInUser } = useLoggedInUser();
   const [selectedItems, setSelectedItems] = useState<string[]>([
     ...basketItems,
   ]);
+  const [listOptions, setListOptions] = useState<ListOption[]>([]);
 
   async function onListSubmit(input: ShoppingListInputs) {
     try {
@@ -74,10 +79,6 @@ const AddEditListDialog = ({
     }
   }
 
-  const inSeasonItemOptions = [
-    // fetch all in season items from db.
-  ];
-
   const handleSelect = (value: string): void => {
     const isPresent = selectedItems.indexOf(value);
 
@@ -94,6 +95,29 @@ const AddEditListDialog = ({
   };
 
   useEffect(() => {
+    async function loadInSeasonMarketItems() {
+      const seasonalData = {
+        zone: loggedInUser?.zone?.zone,
+        month: getMonthName(),
+      };
+      try {
+        const inSeasonItems = await MarketItemsApi.fetchInSeasonMarketItems(
+          seasonalData
+        );
+        const inSeasonOptions = inSeasonItems.map((item) => {
+          return { name: item.name, displayName: item.displayName };
+        });
+
+        console.log(inSeasonOptions);
+        setListOptions(inSeasonOptions);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    loadInSeasonMarketItems();
+  }, []);
+
+  useEffect(() => {
     if (listToEdit) {
       const existingListItems: ListItemModel[] = listToEdit.list;
       const itemNames = existingListItems.map((item) => item.name);
@@ -104,13 +128,10 @@ const AddEditListDialog = ({
   // Set list selected items value manually.
   useEffect(() => {
     const selectedMarketItems: ListItemModel[] = [];
-    console.log("SELECTEDITEMS: ", selectedItems);
     selectedItems.forEach((item) => {
       const itemObj = { name: item, displayName: item };
       selectedMarketItems.push(itemObj);
     });
-
-    console.log(selectedMarketItems);
     setValue("list", selectedMarketItems);
   }, [selectedItems, setValue]);
 
@@ -139,9 +160,9 @@ const AddEditListDialog = ({
               required
               error={Boolean(errors.list)}
             >
-              <FormLabel component="legend">In-Season Market Items:</FormLabel>
+              <FormLabel component="legend">Market Items:</FormLabel>
               <FormGroup>
-                {options.map((option: ListOption) => {
+                {listOptions.map((option) => {
                   return (
                     <FormControlLabel
                       control={
