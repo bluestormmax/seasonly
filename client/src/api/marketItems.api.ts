@@ -38,9 +38,11 @@ export interface SelectedMarketItems {
 }
 
 export async function fetchSelectedMarketItems(
-  data: SelectedMarketItems
+  items: SelectedMarketItems
 ): Promise<MarketItemModel[]> {
-  const response = await fetchData(`/api/marketItems/selected`, {
+  const queryString = "?items=" + items.join(",");
+  console.log("QUERY STRING: ", queryString);
+  const response = await fetchData(`/api/marketItems/selected${queryString}`, {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
