@@ -1,8 +1,8 @@
-export function getStateFromZip(zip: string): string | null {
+export function getStateFromZip(zip: string): string {
   /* Ensure we have exactly 5 characters to parse */
   if (zip.length !== 5) {
     console.error("Must pass a 5-digit zipcode.");
-    return null;
+    return "";
   }
 
   /* Ensure we don't parse strings starting with 0 as octal values */
