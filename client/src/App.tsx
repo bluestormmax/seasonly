@@ -5,7 +5,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useLoggedInUser } from "./context/userContext";
 import { SignUpDialog, LoginDialog, NavBar, OffCanvasMenu } from "./components";
 import { ListsPage, InSeasonPage, NotFoundPage } from "./pages";
-import { UserModel } from "./models/user";
 
 function App() {
   const { loggedInUser, setLoggedInUser } = useLoggedInUser();
