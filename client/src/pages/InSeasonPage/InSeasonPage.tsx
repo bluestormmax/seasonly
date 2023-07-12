@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Typography, CircularProgress, Link, Box } from "@mui/material";
-import { UserModel } from "@models/user";
 import { MarketItemModel } from "@models/marketItem";
 import * as MarketItemsApi from "@api/marketItems.api";
 import { ZoneData } from "@api/user.api";
@@ -8,11 +7,7 @@ import { getStateFromZip } from "@/utils/getStateFromZip";
 import { getMonthName } from "@/utils/dateHelpers";
 import { GrowingZoneInput, MarketItemsGrid } from "../../components";
 
-type InSeasonPageProps = {
-  loggedInUser: UserModel | null;
-};
-
-const InSeasonPage = ({ loggedInUser }: InSeasonPageProps) => {
+const InSeasonPage = () => {
   const [usState, setUsState] = useState<string>("");
   const [zone, setZone] = useState<ZoneData>();
   const [itemsLoading, setItemsLoading] = useState(false);
