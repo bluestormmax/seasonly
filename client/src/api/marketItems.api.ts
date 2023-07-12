@@ -32,3 +32,20 @@ export async function fetchInSeasonMarketItems(
   );
   return response.json();
 }
+
+export interface SelectedMarketItems {
+  items: string[];
+}
+
+export async function fetchSelectedMarketItems(
+  data: SelectedMarketItems
+): Promise<MarketItemModel[]> {
+  const response = await fetchData(`/api/marketItems/selected`, {
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    method: "GET",
+  });
+  return response.json();
+}
