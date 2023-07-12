@@ -1,9 +1,15 @@
 import { useState } from "react";
-import { IconButton, ImageListItem, ImageListItemBar } from "@mui/material";
+import {
+  IconButton,
+  ImageListItem,
+  ImageListItemBar,
+  Snackbar,
+  Alert,
+} from "@mui/material";
 import { ShoppingBasket, RemoveCircle } from "@mui/icons-material";
+import { useLoggedInUser } from "@/context/userContext";
 import { MarketItemModel } from "@/models/marketItem";
 import styles from "./MarketItemCard.module.css";
-import { set } from "react-hook-form";
 
 type MarketItemCardProps = {
   item: MarketItemModel;
@@ -16,12 +22,21 @@ const MarketItemCard = ({
   onBasketButtonClick,
   onRemoveButtonClick,
 }: MarketItemCardProps) => {
+  const { loggedInUser } = useLoggedInUser();
+  const [snackBarOpen, setSnackBarOpen] = useState(false);
   const [isInBasket, setIsInBasket] = useState(false);
   const imgUrl = `/${item.name}.jpg`;
 
+  console.log("USER: ", loggedInUser);
+
   const handleBasketButtonClick = () => {
-    onBasketButtonClick(item.name);
-    setIsInBasket(true);
+    if (loggedInUser?.username === "") {
+      setSnackBarOpen(true);
+    } else {
+      setSnackBarOpen(true);
+      onBasketButtonClick(item.name);
+      setIsInBasket(true);
+    }
   };
 
   const handleRemoveButtonClick = () => {
@@ -29,20 +44,43 @@ const MarketItemCard = ({
     setIsInBasket(false);
   };
 
+  const handleSnackBarClose = () => {
+    setSnackBarOpen(false);
+  };
+
+  const actionSnackBar = () =>
+    loggedInUser?.username !== "" ? (
+      <Alert
+        onClose={handleSnackBarClose}
+        severity="success"
+        sx={{ width: "100%" }}
+      >
+        Item added to shopping list.
+      </Alert>
+    ) : (
+      <Alert
+        onClose={handleSnackBarClose}
+        severity="warning"
+        sx={{ width: "100%" }}
+      >
+        Sign up or log in to save shopping lists.
+      </Alert>
+    );
+
   const cardButton = () => {
     const button = isInBasket ? (
       <IconButton
         aria-label={`Remove ${item.displayName} from shopping list`}
         onClick={handleRemoveButtonClick}
       >
-        <RemoveCircle className={styles.basket_icon} />
+        <RemoveCircle className={styles.button_icon} />
       </IconButton>
     ) : (
       <IconButton
         aria-label={`Save ${item.displayName} to new shopping list`}
         onClick={handleBasketButtonClick}
       >
-        <ShoppingBasket className={styles.basket_icon} />
+        <ShoppingBasket className={styles.button_icon} />
       </IconButton>
     );
     return button;
@@ -58,6 +96,13 @@ const MarketItemCard = ({
           loading="lazy"
         />
       ) : null}
+      <Snackbar
+        open={snackBarOpen}
+        autoHideDuration={2000}
+        onClose={handleSnackBarClose}
+      >
+        {actionSnackBar()}
+      </Snackbar>
       <ImageListItemBar title={item.displayName} actionIcon={cardButton()} />
     </ImageListItem>
   );
