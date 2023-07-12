@@ -23,7 +23,7 @@ const InSeasonPage = () => {
   }
 
   useEffect(() => {
-    if (zone?.zone && marketItems.length === 0) {
+    if (zone?.zone) {
       async function loadInSeasonMarketItems() {
         const seasonalData = { zone: zone?.zone, month: month };
         try {
@@ -78,7 +78,7 @@ const InSeasonPage = () => {
         marketItems.length !== 0 ? (
           <>
             <Typography variant="h5" component="h5">
-              {`${month}'s most popular fruits and vegetables:`}{" "}
+              {`${month}'s ${marketItems.length} most popular fruits and vegetables:`}{" "}
             </Typography>
             <MarketItemsGrid marketItems={marketItems} />
             <Box textAlign="center">
