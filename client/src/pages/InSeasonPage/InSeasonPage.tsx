@@ -7,7 +7,11 @@ import { ZoneData } from "@api/user.api";
 import { ShoppingListInputs } from "@api/shoppingLists.api";
 import { getStateFromZip } from "@/utils/getStateFromZip";
 import { getMonthName } from "@/utils/dateHelpers";
-import { GrowingZoneInput, MarketItemsGrid } from "../../components";
+import {
+  AddEditListDialog,
+  GrowingZoneInput,
+  MarketItemsGrid,
+} from "../../components";
 import { ShoppingBasket } from "@mui/icons-material";
 
 const InSeasonPage = () => {
@@ -105,8 +109,12 @@ const InSeasonPage = () => {
                 {`${month}'s ${marketItems.length} most popular fruits and vegetables:`}{" "}
               </Typography>
               {shoppingBasketItems.length !== 0 ? (
-                <Button variant="text" endIcon={<ShoppingBasket />}>
-                  View Shopping Basket
+                <Button
+                  variant="text"
+                  endIcon={<ShoppingBasket />}
+                  onClick={() => setViewShoppingBasket(true)}
+                >
+                  View Shopping List
                 </Button>
               ) : null}
             </Box>
@@ -125,6 +133,15 @@ const InSeasonPage = () => {
       ) : (
         <CircularProgress />
       )}
+      {viewShoppingBasket ? (
+        <AddEditListDialog
+          onClose={() => setViewShoppingBasket(false)}
+          onListSave={() => {
+            console.log("new list saved");
+            setViewShoppingBasket(false);
+          }}
+        />
+      ) : null}
     </>
   );
 };
