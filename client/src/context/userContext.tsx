@@ -10,6 +10,7 @@ import { UserModel } from "@/models/user";
 
 interface UserContextModel {
   loggedInUser: UserModel | null;
+  defaultUser: UserModel;
   setLoggedInUser: Dispatch<SetStateAction<UserModel>>;
 }
 
@@ -19,45 +20,29 @@ type UserProviderProps = {
   children: ReactNode;
 };
 
-function UserProvider({ children }: UserProviderProps) {
-  const [loggedInUser, setLoggedInUser] = useState<UserModel>({
-    _id: "",
-    username: "",
-    email: "",
-    state: "",
-    zip: "",
-    zone: {
-      zone: "",
-      coordinates: {
-        lat: "",
-        lon: "",
-      },
-      temperature_range: "",
+const defaultUser: UserModel = {
+  _id: "",
+  username: "",
+  email: "",
+  state: "",
+  zip: "",
+  zone: {
+    zone: "",
+    coordinates: {
+      lat: "",
+      lon: "",
     },
-  });
-  //   () => ({
-  //     loggedInUser: {
-  //       _id: "",
-  //       username: "",
-  //       email: "",
-  //       state: "",
-  //       zip: "",
-  //       zone: {
-  //         zone: "",
-  //         coordinates: {
-  //           lat: "",
-  //           lon: "",
-  //         },
-  //         temperature_range: "",
-  //       },
-  //     },
-  //     setLoggedInUser,
-  //   }),
-  //   [loggedInUser]
-  // );
+    temperature_range: "",
+  },
+};
+
+function UserProvider({ children }: UserProviderProps) {
+  const [loggedInUser, setLoggedInUser] = useState<UserModel>(defaultUser);
 
   return (
-    <UserContext.Provider value={{ loggedInUser, setLoggedInUser }}>
+    <UserContext.Provider
+      value={{ loggedInUser, setLoggedInUser, defaultUser }}
+    >
       {children}
     </UserContext.Provider>
   );
@@ -72,4 +57,4 @@ function useLoggedInUser() {
   return context;
 }
 
-export { UserProvider, useLoggedInUser, UserContext };
+export { UserProvider, useLoggedInUser, UserContext, defaultUser };
