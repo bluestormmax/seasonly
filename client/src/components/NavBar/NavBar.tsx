@@ -36,7 +36,7 @@ const NavBar = ({
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           Seasonly
         </Typography>
-        {loggedInUser?.username ? (
+        {loggedInUser?.username !== "" ? (
           <NavBarLoggedInView onLogoutSuccess={onLogOutSuccess} />
         ) : (
           <NavBarLoggedOutView
