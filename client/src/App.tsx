@@ -13,19 +13,16 @@ function App() {
   const [showOffCanvasMenu, setShowOffCanvasMenu] = useState(false);
 
   useEffect(() => {
-    if (loggedInUser.username !== "") {
-      console.log("fetch user effect");
-      async function fetchLoggedInUser() {
-        try {
-          const user = await UserApi.getLoggedInUser();
-          setLoggedInUser(user);
-        } catch (error) {
-          console.log(error);
-        }
+    async function fetchLoggedInUser() {
+      try {
+        const user = await UserApi.getLoggedInUser();
+        setLoggedInUser(user);
+      } catch (error) {
+        console.log(error);
       }
-      fetchLoggedInUser();
     }
-  }, [loggedInUser]);
+    fetchLoggedInUser();
+  }, []);
 
   return (
     <BrowserRouter>
