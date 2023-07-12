@@ -27,8 +27,6 @@ const MarketItemCard = ({
   const [isInBasket, setIsInBasket] = useState(false);
   const imgUrl = `/${item.name}.jpg`;
 
-  console.log("USER: ", loggedInUser);
-
   const handleBasketButtonClick = () => {
     if (loggedInUser?.username === "") {
       setSnackBarOpen(true);
