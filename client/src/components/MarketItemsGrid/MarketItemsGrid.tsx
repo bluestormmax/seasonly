@@ -4,13 +4,24 @@ import { MarketItemCard } from "../MarketItemCard/MarketItemCard";
 
 type MarketItemsGridProps = {
   marketItems: MarketItemModel[];
+  onBasketButtonClick: (newItem: string) => void;
+  onRemoveButtonClick: (itemToRemove: string) => void;
 };
 
-const MarketItemsGrid = ({ marketItems }: MarketItemsGridProps) => {
+const MarketItemsGrid = ({
+  marketItems,
+  onBasketButtonClick,
+  onRemoveButtonClick,
+}: MarketItemsGridProps) => {
   return (
     <ImageList variant="masonry" cols={3} gap={8}>
       {marketItems.map((item: MarketItemModel) => (
-        <MarketItemCard key={`grid-${item.name}`} item={item} />
+        <MarketItemCard
+          key={`grid-${item.name}`}
+          item={item}
+          onBasketButtonClick={onBasketButtonClick}
+          onRemoveButtonClick={onRemoveButtonClick}
+        />
       ))}
     </ImageList>
   );
