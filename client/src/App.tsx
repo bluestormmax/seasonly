@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import * as UserApi from "@api/user.api";
+import { useState } from "react";
 import { Box } from "@mui/material";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useLoggedInUser } from "./context/userContext";
@@ -7,22 +6,10 @@ import { SignUpDialog, LoginDialog, NavBar, OffCanvasMenu } from "./components";
 import { ListsPage, InSeasonPage, NotFoundPage } from "./pages";
 
 function App() {
-  const { loggedInUser, setLoggedInUser, defaultUser } = useLoggedInUser();
+  const { setLoggedInUser, defaultUser } = useLoggedInUser();
   const [showSignUpDialog, setShowSignUpDialog] = useState(false);
   const [showLoginDialog, setShowLoginDialog] = useState(false);
   const [showOffCanvasMenu, setShowOffCanvasMenu] = useState(false);
-
-  useEffect(() => {
-    async function fetchLoggedInUser() {
-      try {
-        const user = await UserApi.getLoggedInUser();
-        setLoggedInUser(user);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    fetchLoggedInUser();
-  }, []);
 
   return (
     <BrowserRouter>
