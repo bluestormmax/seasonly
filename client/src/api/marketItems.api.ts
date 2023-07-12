@@ -1,4 +1,5 @@
 import { MarketItemModel } from "@models/marketItem";
+import { ListItemModel } from "@models/shoppingList";
 import { fetchData } from "./fetchData.api";
 
 export async function fetchAllMarketItems(): Promise<MarketItemModel[]> {
@@ -40,8 +41,9 @@ export interface SelectedMarketItems {
 export async function fetchSelectedMarketItems(
   items: SelectedMarketItems
 ): Promise<MarketItemModel[]> {
-  const queryString = "?items=" + items.join(",");
-  console.log("QUERY STRING: ", queryString);
+  const itemsArr = items.items;
+  const queryString = "?items=" + itemsArr.join(",");
+
   const response = await fetchData(`/api/marketItems/selected${queryString}`, {
     headers: {
       Accept: "application/json",
