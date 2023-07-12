@@ -1,15 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Box } from "@mui/material";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useLoggedInUser } from "./context/userContext";
-import { SignUpDialog, LoginDialog, NavBar, OffCanvasMenu } from "./components";
+import {
+  SignUpDialog,
+  LoginDialog,
+  NavBar,
+  OffCanvasMenu,
+  UpdateProfileDialog,
+} from "./components";
 import { ListsPage, InSeasonPage, NotFoundPage } from "./pages";
 
 function App() {
-  const { setLoggedInUser, defaultUser } = useLoggedInUser();
+  const { loggedInUser, setLoggedInUser, defaultUser } = useLoggedInUser();
   const [showSignUpDialog, setShowSignUpDialog] = useState(false);
   const [showLoginDialog, setShowLoginDialog] = useState(false);
   const [showOffCanvasMenu, setShowOffCanvasMenu] = useState(false);
+  const [showUpdateProfileDialog, setShowUpdateProfileDialog] = useState(false);
+
+  useEffect(() => {
+    if (loggedInUser?.username !== "" && loggedInUser?.zone.zone === "") {
+      setShowUpdateProfileDialog(true);
+    } else if (
+      loggedInUser?.zone.zone !== "" &&
+      loggedInUser?.zone.zone !== undefined
+    ) {
+      setShowUpdateProfileDialog(false);
+    } else {
+      setShowUpdateProfileDialog(false);
+    }
+  }, [loggedInUser]);
 
   return (
     <BrowserRouter>
@@ -39,6 +59,9 @@ function App() {
             onSignupSuccess={(user) => {
               setLoggedInUser(user);
               setShowSignUpDialog(false);
+              loggedInUser?.zone.zone === ""
+                ? setShowUpdateProfileDialog(true)
+                : null;
             }}
           />
         ) : null}
@@ -48,7 +71,15 @@ function App() {
             onLoginSuccess={(user) => {
               setLoggedInUser(user);
               setShowLoginDialog(false);
+              loggedInUser?.zone.zone === ""
+                ? setShowUpdateProfileDialog(true)
+                : null;
             }}
+          />
+        ) : null}
+        {showUpdateProfileDialog && loggedInUser?.zone.zone === "" ? (
+          <UpdateProfileDialog
+            onUpdateProfileSuccess={() => setShowUpdateProfileDialog(false)}
           />
         ) : null}
       </div>
