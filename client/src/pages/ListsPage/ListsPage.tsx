@@ -1,13 +1,10 @@
-import { UserModel } from "@models/user";
 import { Typography } from "@mui/material";
+import { useLoggedInUser } from "@/context/userContext";
 import { ListsPageLoggedInView } from "./ListsPageLoggedInView";
 import { ListsPageLoggedOutView } from "./ListsPageLoggedOutView";
 
-type ListsPageProps = {
-  loggedInUser: UserModel | null;
-};
-
-const ListsPage = ({ loggedInUser }: ListsPageProps) => {
+const ListsPage = () => {
+  const { loggedInUser } = useLoggedInUser();
   return (
     <>
       <Typography
@@ -18,7 +15,11 @@ const ListsPage = ({ loggedInUser }: ListsPageProps) => {
       >
         Saved shopping lists
       </Typography>
-      {loggedInUser ? <ListsPageLoggedInView /> : <ListsPageLoggedOutView />}
+      {loggedInUser?.username ? (
+        <ListsPageLoggedInView />
+      ) : (
+        <ListsPageLoggedOutView />
+      )}
     </>
   );
 };
