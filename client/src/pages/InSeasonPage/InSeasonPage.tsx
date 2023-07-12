@@ -5,8 +5,8 @@ import { ListItemModel } from "@/models/shoppingList";
 import { useLoggedInUser } from "@/context/userContext";
 import * as MarketItemsApi from "@api/marketItems.api";
 import * as ShoppingListApi from "@api/shoppingLists.api";
-import { ZoneData } from "@api/user.api";
 import { ShoppingListInputs } from "@api/shoppingLists.api";
+import { ZoneData } from "@api/user.api";
 import { getStateFromZip } from "@/utils/getStateFromZip";
 import { getMonthName } from "@/utils/dateHelpers";
 import {
@@ -15,7 +15,6 @@ import {
   MarketItemsGrid,
 } from "../../components";
 import { ShoppingBasket } from "@mui/icons-material";
-import { set } from "react-hook-form";
 
 const InSeasonPage = () => {
   const { loggedInUser, defaultUser } = useLoggedInUser();
@@ -37,35 +36,41 @@ const InSeasonPage = () => {
     }
   }
 
-  function addMarketItemToList(newItem: ListItemModel) {
-    if (shoppingBasketItems.length === 0) {
-      setShoppingBasketItems([newItem]);
-    } else {
+  function addMarketItemToList(newItem: MarketItemModel): void {
+    const newItemFormatted = {
+      name: newItem.name,
+      displayName: newItem.displayName,
+    };
+    const isInList = shoppingBasketItems.includes(newItemFormatted.name);
+
+    // Item is not in the list, add it.
+    if (isInList === false) {
+      const otherItems = shoppingBasketItems.filter((item) => {
+        return item.name !== newItemFormatted.name;
+      });
       const combinedBasketItems: ListItemModel[] = [
-        ...shoppingBasketItems,
-        ...newItem,
+        ...otherItems,
+        newItemFormatted,
       ];
       setShoppingBasketItems(combinedBasketItems);
     }
   }
 
-  function removeMarketItemFromList(itemToRemove: ListItemModel) {
-    const isPresent = shoppingBasketItems.indexOf(itemToRemove);
-
-    if (isPresent !== -1) {
-      const remaining = shoppingBasketItems.filter(
-        (item: ListItemModel) => item.name !== itemToRemove.name
-      );
-      setShoppingBasketItems(remaining);
-    }
+  // Item is in the list, remove it.
+  function removeMarketItemFromList(itemToRemove: MarketItemModel): void {
+    const remainingItems = shoppingBasketItems.filter(
+      (item: ListItemModel) => item.name !== itemToRemove.name
+    );
+    setShoppingBasketItems(remainingItems);
   }
 
+  // Set logged in user data if available.
   useEffect(() => {
-    console.log("loggedInUser", loggedInUser);
     if (loggedInUser?.username !== "" && loggedInUser?.zone.zone !== "") {
       setZone(loggedInUser?.zone);
+      setUsState(loggedInUser?.state);
     }
-  }, []);
+  }, [loggedInUser]);
 
   useEffect(() => {
     if (zone?.zone) {
@@ -106,7 +111,7 @@ const InSeasonPage = () => {
             setUsStateFromZip(zip);
           }}
         />
-        {zone ? (
+        {zone.zone !== "" ? (
           <Typography component="p" variant="body1" sx={{ p: "32px 0" }}>
             <strong>
               <em>{`${
@@ -162,6 +167,7 @@ const InSeasonPage = () => {
             setViewShoppingBasket(false);
           }}
           basketItems={shoppingBasketItems}
+          marketItems={marketItems}
         />
       ) : null}
     </>
