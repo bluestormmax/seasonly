@@ -32,7 +32,7 @@ const MarketItemCard = ({
       setSnackBarOpen(true);
     } else {
       setSnackBarOpen(true);
-      onBasketButtonClick(item.name);
+      onBasketButtonClick(item);
       setIsInBasket(true);
     }
   };

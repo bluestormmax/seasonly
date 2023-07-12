@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Typography, CircularProgress, Link, Box, Button } from "@mui/material";
 import { MarketItemModel } from "@models/marketItem";
+import { ListItemModel } from "@/models/shoppingList";
 import { useLoggedInUser } from "@/context/userContext";
 import * as MarketItemsApi from "@api/marketItems.api";
 import * as ShoppingListApi from "@api/shoppingLists.api";
@@ -14,6 +15,7 @@ import {
   MarketItemsGrid,
 } from "../../components";
 import { ShoppingBasket } from "@mui/icons-material";
+import { set } from "react-hook-form";
 
 const InSeasonPage = () => {
   const { loggedInUser, defaultUser } = useLoggedInUser();
@@ -22,7 +24,9 @@ const InSeasonPage = () => {
   const [itemsLoading, setItemsLoading] = useState(false);
   const [showItemsLoadingError, setShowItemsLoadingError] = useState(false);
   const [marketItems, setMarketItems] = useState<MarketItemModel[]>([]);
-  const [shoppingBasketItems, setShoppingBasketItems] = useState<string[]>([]);
+  const [shoppingBasketItems, setShoppingBasketItems] = useState<
+    ListItemModel[]
+  >([]);
   const [viewShoppingBasket, setViewShoppingBasket] = useState(false);
   const [month, setMonth] = useState<string>(getMonthName());
 
@@ -33,16 +37,24 @@ const InSeasonPage = () => {
     }
   }
 
-  function addMarketItemToList(newItem: string) {
-    setShoppingBasketItems([...shoppingBasketItems, ...newItem]);
+  function addMarketItemToList(newItem: ListItemModel) {
+    if (shoppingBasketItems.length === 0) {
+      setShoppingBasketItems([newItem]);
+    } else {
+      const combinedBasketItems: ListItemModel[] = [
+        ...shoppingBasketItems,
+        ...newItem,
+      ];
+      setShoppingBasketItems(combinedBasketItems);
+    }
   }
 
-  function removeMarketItemFromList(itemToRemove: string) {
+  function removeMarketItemFromList(itemToRemove: ListItemModel) {
     const isPresent = shoppingBasketItems.indexOf(itemToRemove);
 
     if (isPresent !== -1) {
       const remaining = shoppingBasketItems.filter(
-        (item: string) => item !== itemToRemove
+        (item: ListItemModel) => item.name !== itemToRemove.name
       );
       setShoppingBasketItems(remaining);
     }

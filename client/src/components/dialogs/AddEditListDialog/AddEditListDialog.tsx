@@ -31,16 +31,11 @@ type AddEditListDialogProps = {
   basketItems: string[];
 };
 
-type ListOption = {
-  name: string;
-  displayName: string;
-};
-
 const AddEditListDialog = ({
   listToEdit,
   onClose,
   onListSave,
-  basketItems = [],
+  basketItems,
 }: AddEditListDialogProps) => {
   const {
     control,
@@ -55,10 +50,10 @@ const AddEditListDialog = ({
     },
   });
   const { loggedInUser } = useLoggedInUser();
-  const [selectedItems, setSelectedItems] = useState<string[]>([
+  const [selectedItems, setSelectedItems] = useState<ListItemModel[] | []>([
     ...basketItems,
   ]);
-  const [listOptions, setListOptions] = useState<ListOption[]>([]);
+  const [listOptions, setListOptions] = useState<ListItemModel[]>([]);
 
   async function onListSubmit(input: ShoppingListInputs) {
     try {
@@ -108,8 +103,11 @@ const AddEditListDialog = ({
           return { name: item.name, displayName: item.displayName };
         });
 
-        console.log(inSeasonOptions);
-        setListOptions(inSeasonOptions);
+        if (basketItems.length > 0) {
+          setListOptions([...inSeasonOptions, ...selectedItems]);
+        } else {
+          setListOptions(inSeasonOptions);
+        }
       } catch (error) {
         console.log(error);
       }
