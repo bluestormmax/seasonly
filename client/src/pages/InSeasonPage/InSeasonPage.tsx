@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Typography, CircularProgress, Link, Box } from "@mui/material";
+import { Typography, CircularProgress, Link, Box, Button } from "@mui/material";
 import { MarketItemModel } from "@models/marketItem";
 import * as MarketItemsApi from "@api/marketItems.api";
 import * as ShoppingListApi from "@api/shoppingLists.api";
@@ -8,6 +8,7 @@ import { ShoppingListInputs } from "@api/shoppingLists.api";
 import { getStateFromZip } from "@/utils/getStateFromZip";
 import { getMonthName } from "@/utils/dateHelpers";
 import { GrowingZoneInput, MarketItemsGrid } from "../../components";
+import { ShoppingBasket } from "@mui/icons-material";
 
 const InSeasonPage = () => {
   const [usState, setUsState] = useState<string>("");
@@ -16,6 +17,7 @@ const InSeasonPage = () => {
   const [showItemsLoadingError, setShowItemsLoadingError] = useState(false);
   const [marketItems, setMarketItems] = useState<MarketItemModel[]>([]);
   const [shoppingBasketItems, setShoppingBasketItems] = useState<string[]>([]);
+  const [viewShoppingBasket, setViewShoppingBasket] = useState(false);
   const [month, setMonth] = useState<string>(getMonthName());
 
   function setUsStateFromZip(zip: string): void {
@@ -95,9 +97,19 @@ const InSeasonPage = () => {
       {!itemsLoading ? (
         marketItems.length !== 0 ? (
           <>
-            <Typography variant="h5" component="h5">
-              {`${month}'s ${marketItems.length} most popular fruits and vegetables:`}{" "}
-            </Typography>
+            <Box
+              className="grid-header"
+              sx={{ display: "flex", justifyContent: "space-between" }}
+            >
+              <Typography variant="h5" component="h5">
+                {`${month}'s ${marketItems.length} most popular fruits and vegetables:`}{" "}
+              </Typography>
+              {shoppingBasketItems.length !== 0 ? (
+                <Button variant="text" endIcon={<ShoppingBasket />}>
+                  View Shopping Basket
+                </Button>
+              ) : null}
+            </Box>
             <MarketItemsGrid
               marketItems={marketItems}
               onBasketButtonClick={(item) => addMarketItemToList(item)}
