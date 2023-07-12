@@ -40,14 +40,8 @@ function App() {
         />
         <Box className="main" p={4}>
           <Routes>
-            <Route
-              path="/"
-              element={<InSeasonPage loggedInUser={loggedInUser} />}
-            />
-            <Route
-              path="/shopping-lists"
-              element={<ListsPage loggedInUser={loggedInUser} />}
-            />
+            <Route path="/" element={<InSeasonPage />} />
+            <Route path="/shopping-lists" element={<ListsPage />} />
             <Route path="/*" element={<NotFoundPage />} />
           </Routes>
         </Box>
