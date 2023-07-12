@@ -8,12 +8,14 @@ type MarketItemCardProps = {
 };
 
 const MarketItemCard = ({ item }: MarketItemCardProps) => {
+  const imgUrl = `/${item.name}.jpg`;
+
   return (
     <ImageListItem key={item.name} className={styles.market_item_card}>
-      {item.imageUrl ? (
+      {imgUrl ? (
         <img
-          src={`${item.imageUrl}?w=248&fit=crop&auto=format`}
-          srcSet={`${item.imageUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
+          src={`${imgUrl}?w=248&fit=crop&auto=format`}
+          srcSet={`${imgUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
           alt={item.name}
           loading="lazy"
         />
