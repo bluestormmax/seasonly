@@ -1,4 +1,5 @@
-import { ImageListItem, ImageListItemBar } from "@mui/material";
+import { IconButton, ImageListItem, ImageListItemBar } from "@mui/material";
+import { ShoppingBasket } from "@mui/icons-material";
 import { MarketItemModel } from "@/models/marketItem";
 import styles from "./MarketItemCard.module.css";
 
@@ -17,7 +18,16 @@ const MarketItemCard = ({ item }: MarketItemCardProps) => {
           loading="lazy"
         />
       ) : null}
-      <ImageListItemBar title={item.displayName} />
+      <ImageListItemBar
+        title={item.displayName}
+        actionIcon={
+          <IconButton
+            aria-label={`Save ${item.displayName} to a shopping list`}
+          >
+            <ShoppingBasket className={styles.basket_icon} />
+          </IconButton>
+        }
+      />
     </ImageListItem>
   );
 };
