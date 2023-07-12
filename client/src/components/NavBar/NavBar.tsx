@@ -20,8 +20,6 @@ const NavBar = ({
 }: NavBarProps) => {
   const { loggedInUser } = useLoggedInUser();
 
-  console.log("LOGGED-NAV NAV: ", loggedInUser);
-
   return (
     <AppBar position="static">
       <Toolbar>
@@ -38,7 +36,7 @@ const NavBar = ({
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           Seasonly
         </Typography>
-        {loggedInUser ? (
+        {loggedInUser?.username ? (
           <NavBarLoggedInView onLogoutSuccess={onLogOutSuccess} />
         ) : (
           <NavBarLoggedOutView
