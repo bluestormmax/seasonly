@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Typography, CircularProgress, Link, Box } from "@mui/material";
 import { MarketItemModel } from "@models/marketItem";
 import * as MarketItemsApi from "@api/marketItems.api";
+import * as ShoppingListApi from "@api/shoppingLists.api";
 import { ZoneData } from "@api/user.api";
 import { getStateFromZip } from "@/utils/getStateFromZip";
 import { getMonthName } from "@/utils/dateHelpers";
@@ -13,12 +14,40 @@ const InSeasonPage = () => {
   const [itemsLoading, setItemsLoading] = useState(false);
   const [showItemsLoadingError, setShowItemsLoadingError] = useState(false);
   const [marketItems, setMarketItems] = useState<MarketItemModel[]>([]);
+  const [shoppingListItems, setShoppingListItems] = useState<string[]>([]);
   const [month, setMonth] = useState<string>(getMonthName());
 
   function setUsStateFromZip(zip: string): void {
     const usState = getStateFromZip(zip);
     if (usState) {
       setUsState(usState);
+    }
+  }
+
+  function addMarketItemToList(newItem: string) {
+    setShoppingListItems([...shoppingListItems, ...newItem]);
+  }
+
+  function removeMarketItemFromList(itemToRemove: string) {
+    const isPresent = shoppingListItems.indexOf(itemToRemove);
+
+    if (isPresent !== -1) {
+      const remaining = shoppingListItems.filter(
+        (item: string) => item !== itemToRemove
+      );
+      setShoppingListItems(remaining);
+    }
+  }
+
+  async function saveShoppingListFromMarketItems() {
+    const newShoppingListInputs = {
+      title: "Shopping List from Market Items",
+      list: [...shoppingListItems],
+    };
+    try {
+      // send list items
+    } catch (error) {
+      console.log(error);
     }
   }
 
