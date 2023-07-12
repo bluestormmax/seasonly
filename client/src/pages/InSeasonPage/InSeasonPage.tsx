@@ -140,6 +140,7 @@ const InSeasonPage = () => {
             console.log("new list saved");
             setViewShoppingBasket(false);
           }}
+          basketItems={shoppingBasketItems}
         />
       ) : null}
     </>

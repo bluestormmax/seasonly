@@ -25,6 +25,7 @@ type AddEditListDialogProps = {
   listToEdit?: ShoppingListModel;
   onClose: () => void;
   onListSave: (shoppingList: ShoppingListModel) => void;
+  basketItems: string[];
 };
 
 type ListOption = {
@@ -36,6 +37,7 @@ const AddEditListDialog = ({
   listToEdit,
   onClose,
   onListSave,
+  basketItems = [],
 }: AddEditListDialogProps) => {
   const {
     control,
@@ -49,7 +51,9 @@ const AddEditListDialog = ({
       list: listToEdit?.list || [],
     },
   });
-  const [selectedItems, setSelectedItems] = useState<string[]>([]);
+  const [selectedItems, setSelectedItems] = useState<string[]>([
+    ...basketItems,
+  ]);
 
   async function onListSubmit(input: ShoppingListInputs) {
     try {
@@ -70,10 +74,8 @@ const AddEditListDialog = ({
     }
   }
 
-  const options = [
-    { name: "apples", displayName: "Apples" },
-    { name: "pears", displayName: "Pears" },
-    { name: "garlic", displayName: "Garlic" },
+  const inSeasonItemOptions = [
+    // fetch all in season items from db.
   ];
 
   const handleSelect = (value: string): void => {
