@@ -12,8 +12,8 @@ const ListsPage = ({ loggedInUser }: ListsPageProps) => {
     <>
       <Typography
         className="heading welcome"
-        variant="h3"
-        component="h1"
+        variant="h4"
+        component="h2"
         mb={3}
       >
         Saved shopping lists
