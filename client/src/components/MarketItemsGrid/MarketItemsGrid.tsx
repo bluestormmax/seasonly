@@ -4,8 +4,8 @@ import { MarketItemCard } from "../MarketItemCard/MarketItemCard";
 
 type MarketItemsGridProps = {
   marketItems: MarketItemModel[];
-  onBasketButtonClick: (newItem: string) => void;
-  onRemoveButtonClick: (itemToRemove: string) => void;
+  onBasketButtonClick: (newItem: MarketItemModel) => void;
+  onRemoveButtonClick: (itemToRemove: MarketItemModel) => void;
 };
 
 const MarketItemsGrid = ({

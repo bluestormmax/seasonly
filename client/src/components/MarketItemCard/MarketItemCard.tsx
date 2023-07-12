@@ -13,8 +13,8 @@ import styles from "./MarketItemCard.module.css";
 
 type MarketItemCardProps = {
   item: MarketItemModel;
-  onBasketButtonClick: (newItem: string) => void;
-  onRemoveButtonClick: (itemToRemove: string) => void;
+  onBasketButtonClick: (newItem: MarketItemModel) => void;
+  onRemoveButtonClick: (itemToRemove: MarketItemModel) => void;
 };
 
 const MarketItemCard = ({
@@ -38,7 +38,7 @@ const MarketItemCard = ({
   };
 
   const handleRemoveButtonClick = () => {
-    onRemoveButtonClick(item.name);
+    onRemoveButtonClick(item);
     setIsInBasket(false);
   };
 
