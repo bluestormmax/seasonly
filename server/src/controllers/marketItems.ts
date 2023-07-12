@@ -20,7 +20,6 @@ export const getMarketItems: RequestHandler = async (req, res, next) => {
 // Get single market item
 export const getMarketItem: RequestHandler = async (req, res, next) => {
   const marketItemName = req.params.name;
-
   try {
     const marketItem = await MarketItemModel.findOne({
       name: marketItemName,
@@ -46,6 +45,29 @@ export const getMarketItemTypes: RequestHandler = async (req, res, next) => {
       throw createHttpError(404, "Item type not found");
     }
     res.status(200).json(marketItems);
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Get all seleceted market items
+export const getSelectedMarketItems: RequestHandler = async (
+  req,
+  res,
+  next
+) => {
+  const itemNames = req.body.selectedItems;
+
+  console.log("SELECTED: ", itemNames);
+
+  try {
+    const selectedMarketItems = await MarketItemModel.find({
+      name: { $in: itemNames },
+    }).exec();
+    if (!selectedMarketItems) {
+      throw createHttpError(404, "Selected items not found");
+    }
+    res.status(200).json(selectedMarketItems);
   } catch (error) {
     next(error);
   }

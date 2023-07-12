@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get("/", MarketItemController.getMarketItems);
 
-router.get("/:name", MarketItemController.getMarketItem);
+router.get("/selected", MarketItemController.getSelectedMarketItems);
 
 router.get("/type/:typeName", MarketItemController.getMarketItemTypes);
 
@@ -13,5 +13,7 @@ router.get(
   "/seasonal/:zone/:month",
   MarketItemController.getSeasonalMarketItems
 );
+
+router.get("/item/:name", MarketItemController.getMarketItem);
 
 export default router;
