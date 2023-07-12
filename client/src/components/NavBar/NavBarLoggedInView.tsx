@@ -1,16 +1,14 @@
 import { Button, Typography } from "@mui/material";
-import { UserModel } from "@models/user";
+import { useLoggedInUser } from "@/context/userContext";
 import * as UserApi from "@api/user.api";
 
 type NavBarLoggedInViewProps = {
-  user: UserModel;
   onLogoutSuccess: () => void;
 };
 
-const NavBarLoggedInView = ({
-  user,
-  onLogoutSuccess,
-}: NavBarLoggedInViewProps) => {
+const NavBarLoggedInView = ({ onLogoutSuccess }: NavBarLoggedInViewProps) => {
+  const { loggedInUser } = useLoggedInUser();
+
   async function logout() {
     try {
       await UserApi.logout();
@@ -28,7 +26,7 @@ const NavBarLoggedInView = ({
         component="div"
         sx={{ fontSize: "0.8rem", mr: 2 }}
       >
-        Logged in as: {user.username}
+        Logged in as: {loggedInUser?.username}
       </Typography>
       <Button color="inherit" onClick={logout}>
         Log out
