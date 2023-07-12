@@ -8,9 +8,10 @@ import {
   Typography,
 } from "@mui/material";
 import { UserModel } from "@models/user";
-import { ProfileFields } from "@api/user.api";
+import { ProfileFields, fetchUserZoneData } from "@api/user.api";
 import * as UserApi from "@api/user.api";
 import { useLoggedInUser } from "@/context/userContext";
+import { getStateFromZip } from "@/utils/getStateFromZip";
 import { TextInputField } from "../../formFields/TextInputField";
 
 type UpdateProfileDialogProps = {
@@ -28,13 +29,22 @@ const UpdateProfileDialog = ({
   const { loggedInUser } = useLoggedInUser();
 
   async function onUpdateProfileSubmit(data: ProfileFields) {
-    if (!loggedInUser) return; // TODO: dev only (should never happen)
+    if (!loggedInUser || !data.zip) {
+      // TODO: handle this better
+      console.log("No user or zip code found");
+      return;
+    }
     const userId = loggedInUser._id;
-    const userData = {
+    const state = getStateFromZip(data.zip);
+    const zone = await fetchUserZoneData(data.zip);
+    console.log("zone", zone);
+    const profileFields: ProfileFields = {
       zip: data.zip,
+      zone: { ...zone },
+      state: state,
     };
     try {
-      const user = await UserApi.updateUser(userData, userId);
+      const user = await UserApi.updateUser(profileFields, userId);
       onUpdateProfileSuccess(user);
     } catch (error) {
       console.log(error);
