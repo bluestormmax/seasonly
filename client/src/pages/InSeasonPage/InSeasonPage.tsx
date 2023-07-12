@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Typography, CircularProgress, Link, Box, Button } from "@mui/material";
 import { MarketItemModel } from "@models/marketItem";
+import { useLoggedInUser } from "@/context/userContext";
 import * as MarketItemsApi from "@api/marketItems.api";
 import * as ShoppingListApi from "@api/shoppingLists.api";
 import { ZoneData } from "@api/user.api";
@@ -15,8 +16,9 @@ import {
 import { ShoppingBasket } from "@mui/icons-material";
 
 const InSeasonPage = () => {
-  const [usState, setUsState] = useState<string>("");
-  const [zone, setZone] = useState<ZoneData>();
+  const { loggedInUser, defaultUser } = useLoggedInUser();
+  const [usState, setUsState] = useState<string>(loggedInUser?.state || "");
+  const [zone, setZone] = useState<ZoneData>(loggedInUser?.zone || {});
   const [itemsLoading, setItemsLoading] = useState(false);
   const [showItemsLoadingError, setShowItemsLoadingError] = useState(false);
   const [marketItems, setMarketItems] = useState<MarketItemModel[]>([]);
