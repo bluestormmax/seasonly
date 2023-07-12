@@ -10,7 +10,7 @@ const MarketItemsGrid = ({ marketItems }: MarketItemsGridProps) => {
   return (
     <ImageList variant="masonry" cols={3} gap={8}>
       {marketItems.map((item: MarketItemModel) => (
-        <MarketItemCard item={item} />
+        <MarketItemCard key={`grid-${item.name}`} item={item} />
       ))}
     </ImageList>
   );
