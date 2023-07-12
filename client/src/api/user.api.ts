@@ -60,16 +60,16 @@ export interface ZoneData {
 }
 
 export interface ProfileFields {
-  userId: string;
   state?: string;
   zone?: ZoneData;
   zip?: string;
 }
 
 export async function updateUser(
-  profileFields: ProfileFields
+  profileFields: ProfileFields,
+  userId: string
 ): Promise<UserModel> {
-  const response = await fetchData("/api/user/" + profileFields.userId, {
+  const response = await fetchData("/api/users/" + userId, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
