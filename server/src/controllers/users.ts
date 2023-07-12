@@ -55,6 +55,13 @@ export const signUp: RequestHandler<
       username: username,
       email: email,
       password: passwordHashed,
+      state: "",
+      zip: "",
+      zone: {
+        zone: "",
+        coordinates: { lat: "", lon: "" },
+        temperature_range: "",
+      },
     });
 
     // New user created, create session.
@@ -163,9 +170,9 @@ export const updateUserProfile: RequestHandler<
       throw createHttpError(401, "You cannot update this user");
     }
 
-    existingUser.state = newState;
-    existingUser.zone = newZone;
-    existingUser.zip = newZip;
+    existingUser.state = newState || existingUser.state;
+    existingUser.zone = newZone || existingUser.zone;
+    existingUser.zip = newZip || existingUser.zip;
 
     // Use the updated user immediately in UI.
     const updatedUser = await existingUser.save();
