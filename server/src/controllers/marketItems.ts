@@ -56,13 +56,11 @@ export const getSelectedMarketItems: RequestHandler = async (
   res,
   next
 ) => {
-  const itemNames = req.body.selectedItems;
-
-  console.log("SELECTED: ", itemNames);
-
+  const itemNames = req.query.items?.toString();
+  const selectedItems = itemNames?.split(",");
   try {
     const selectedMarketItems = await MarketItemModel.find({
-      name: { $in: itemNames },
+      name: { $in: selectedItems },
     }).exec();
     if (!selectedMarketItems) {
       throw createHttpError(404, "Selected items not found");
