@@ -120,7 +120,7 @@ const AddEditListDialog = ({
   // Manually set selected form value when selected items change.
   useEffect(() => {
     setValue("list", selectedItems);
-  }, [selectedItems]);
+  }, [selectedItems, setValue]);
 
   return (
     <Dialog open onClose={handleClose} fullWidth maxWidth="sm">
