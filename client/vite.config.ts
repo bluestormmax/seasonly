@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
+import { ViteWebfontDownload } from "vite-plugin-webfont-dl";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -14,7 +15,12 @@ export default defineConfig({
       "@api": path.resolve(__dirname, "./src/api"),
     },
   },
-  plugins: [react()],
+  plugins: [
+    react(),
+    ViteWebfontDownload([
+      "https://fonts.googleapis.com/css?family=Slabo+27px=swap",
+    ]),
+  ],
   server: {
     proxy: {
       "/api": "http://localhost:5000",
