@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import {
   Button,
   Dialog,
@@ -7,12 +7,15 @@ import {
   DialogActions,
   Stack,
   IconButton,
+  Alert,
 } from "@mui/material";
 import { Close } from "@mui/icons-material";
 import { UserModel } from "@models/user";
 import { SignUpCredentials } from "@api/user.api";
 import * as UserApi from "@api/user.api";
 import { TextInputField } from "../../formFields/TextInputField";
+import { useState } from "react";
+import { ConflictError } from "@/components/errors/httpErrors";
 
 type SignUpDialogProps = {
   onDismiss: () => void;
@@ -25,14 +28,17 @@ const SignUpDialog = ({ onDismiss, onSignupSuccess }: SignUpDialogProps) => {
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<SignUpCredentials>();
+  const [errorText, setErrorText] = useState<string | null>(null);
 
   async function onSignupSubmit(credentials: SignUpCredentials) {
     try {
       const newUser = await UserApi.signUp(credentials);
       onSignupSuccess(newUser);
     } catch (error) {
+      if (error instanceof ConflictError) {
+        setErrorText(error.message);
+      }
       console.log(error);
-      alert(error); // TODO: dev only
     }
   }
 
@@ -44,6 +50,11 @@ const SignUpDialog = ({ onDismiss, onSignupSuccess }: SignUpDialogProps) => {
     <Dialog open fullWidth maxWidth="sm">
       <DialogTitle>Sign Up for Seasonly</DialogTitle>
       <DialogContent>
+        {errorText ? (
+          <Alert severity="error" sx={{ mt: 1 }}>
+            {errorText}
+          </Alert>
+        ) : null}
         <form id="signupForm" onSubmit={handleSubmit(onSignupSubmit)}>
           <Stack my={2}>
             <TextInputField

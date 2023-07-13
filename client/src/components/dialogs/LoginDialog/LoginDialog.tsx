@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import {
   Dialog,
@@ -7,12 +8,14 @@ import {
   Stack,
   Button,
   IconButton,
+  Alert,
 } from "@mui/material";
 import { Close } from "@mui/icons-material";
 import { UserModel } from "@models/user";
 import { LoginCredentials } from "@api/user.api";
 import * as UserApi from "@api/user.api";
 import { TextInputField } from "../../formFields/TextInputField";
+import { UnauthorizedError } from "@/components/errors/httpErrors";
 
 type LoginDialogProps = {
   onDismiss: () => void;
@@ -25,14 +28,17 @@ const LoginDialog = ({ onDismiss, onLoginSuccess }: LoginDialogProps) => {
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<LoginCredentials>();
+  const [errorText, setErrorText] = useState<string | null>(null);
 
   async function onLoginSubmit(credentials: LoginCredentials) {
     try {
       const user = await UserApi.login(credentials);
       onLoginSuccess(user);
     } catch (error) {
+      if (error instanceof UnauthorizedError) {
+        setErrorText(error.message);
+      }
       console.log(error);
-      alert(error); // TODO: dev only
     }
   }
 
@@ -44,6 +50,11 @@ const LoginDialog = ({ onDismiss, onLoginSuccess }: LoginDialogProps) => {
     <Dialog open fullWidth maxWidth="sm">
       <DialogTitle>Log in to Seasonly</DialogTitle>
       <DialogContent>
+        {errorText ? (
+          <Alert severity="error" sx={{ mt: 1 }}>
+            {errorText}
+          </Alert>
+        ) : null}
         <form id="loginForm" onSubmit={handleSubmit(onLoginSubmit)}>
           <Stack my={2}>
             <TextInputField
