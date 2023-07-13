@@ -70,9 +70,9 @@ const AddEditListDialog = ({
     }
   }
 
+  // Add or remove item from selected items list.
   const handleSelect = (option: ListItemModel): void => {
     const isInList = selectedItems.some((item) => item.name === option.name);
-    console.log("IS IN LIST: ", isInList, option);
 
     if (isInList === true) {
       const remaining = selectedItems.filter(
@@ -165,7 +165,9 @@ const AddEditListDialog = ({
                             return (
                               <Checkbox
                                 key={option.name}
-                                checked={selectedItems.includes(option)}
+                                checked={selectedItems.some(
+                                  (item) => item.name === option.name
+                                )}
                                 onChange={() => handleSelect(option)}
                               />
                             );
