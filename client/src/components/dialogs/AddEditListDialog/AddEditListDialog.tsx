@@ -92,9 +92,7 @@ const AddEditListDialog = ({
 
   // Set list options to market items.
   useEffect(() => {
-    console.log("MARKET ITEMS: ", marketItems);
     if (marketItems && marketItems?.length !== 0) {
-      console.log("loading passed in items");
       setListOptions(marketItems);
     }
   }, [marketItems]);
@@ -115,14 +113,12 @@ const AddEditListDialog = ({
       ...existingListItems,
       ...selectedBasketItems,
     ];
-    console.log("ALL POSSIBLE: ", allPossibleSelectedItems);
     setSelectedItems(allPossibleSelectedItems);
     setValue("list", allPossibleSelectedItems);
   }, [listToEdit, basketItems, setValue]);
 
   // Manually set selected form value when selected items change.
   useEffect(() => {
-    console.log("SETTING FORM VALUE: ", selectedItems);
     setValue("list", selectedItems);
   }, [selectedItems]);
 
