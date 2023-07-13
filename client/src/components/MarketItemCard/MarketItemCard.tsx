@@ -77,13 +77,13 @@ const MarketItemCard = ({
     const button = isInBasket ? (
       <>
         <IconButton
-          aria-label={`View shopping list`}
+          title={`View shopping list`}
           onClick={onViewListButtonClick}
         >
           <ListAlt className={styles.button_icon} />
         </IconButton>
         <IconButton
-          aria-label={`Remove ${item.displayName} from shopping list`}
+          title={`Remove ${item.displayName} from shopping list`}
           onClick={handleRemoveButtonClick}
         >
           <HighlightOff className={styles.button_icon} />
@@ -91,7 +91,7 @@ const MarketItemCard = ({
       </>
     ) : (
       <IconButton
-        aria-label={`Save ${item.displayName} to new shopping list`}
+        title={`Save ${item.displayName} to new shopping list`}
         onClick={handleBasketButtonClick}
       >
         <ShoppingBasket className={styles.button_icon} />
@@ -121,6 +121,7 @@ const MarketItemCard = ({
         className="fancy_text"
         title={item.displayName}
         actionIcon={cardButton()}
+        sx={{ pr: 1 }}
       />
     </ImageListItem>
   );

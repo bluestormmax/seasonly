@@ -67,9 +67,14 @@ const theme = createTheme({
     MuiIconButton: {
       styleOverrides: {
         root: {
+          "&:hover": {
+            backgroundColor: "#769053",
+            color: "#ffffff",
+          },
           "&:focus": {
             backgroundColor: "#769053",
             outlineColor: "#ff5722",
+            color: "#ffffff",
           },
         },
       },
