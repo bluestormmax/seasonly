@@ -1,7 +1,15 @@
 import { useState, useEffect } from "react";
-import { Typography, CircularProgress, Link, Box, Button } from "@mui/material";
-import { MarketItemModel } from "@models/marketItem";
+import {
+  Typography,
+  CircularProgress,
+  Link,
+  Box,
+  Button,
+  Snackbar,
+  Alert,
+} from "@mui/material";
 import { ShoppingBasket } from "@mui/icons-material";
+import { MarketItemModel } from "@models/marketItem";
 import { ListItemModel } from "@/models/shoppingList";
 import { useLoggedInUser } from "@/context/userContext";
 import * as MarketItemsApi from "@api/marketItems.api";
@@ -19,6 +27,7 @@ const InSeasonPage = () => {
   const [zone, setZone] = useState<ZoneData>(loggedInUser?.zone || {});
   const [itemsLoading, setItemsLoading] = useState(false);
   const [showItemsLoadingError, setShowItemsLoadingError] = useState(false);
+  const [snackBarOpen, setSnackBarOpen] = useState(false);
   const [marketItems, setMarketItems] = useState<MarketItemModel[]>([]);
   const [shoppingBasketItems, setShoppingBasketItems] = useState<
     ListItemModel[]
@@ -32,6 +41,10 @@ const InSeasonPage = () => {
       setUsState(usState);
     }
   }
+
+  const handleSnackBarClose = () => {
+    setSnackBarOpen(false);
+  };
 
   function addMarketItemToList(newItem: MarketItemModel): void {
     const newItemFormatted = {
@@ -151,6 +164,20 @@ const InSeasonPage = () => {
                 Images provided by Pexels
               </Link>
             </Box>
+            <Snackbar
+              open={snackBarOpen}
+              autoHideDuration={2000}
+              onClose={handleSnackBarClose}
+            >
+              <Alert
+                onClose={handleSnackBarClose}
+                severity="success"
+                sx={{ width: "100%" }}
+              >
+                New shopping list saved.{" "}
+                <Link to="shopping-lists">View your saved lists</Link>
+              </Alert>
+            </Snackbar>
           </>
         ) : null
       ) : (
@@ -160,6 +187,7 @@ const InSeasonPage = () => {
         <AddEditListDialog
           onClose={() => setViewShoppingBasket(false)}
           onListSave={() => {
+            setSnackBarOpen(true);
             setShoppingBasketItems([]);
             setViewShoppingBasket(false);
           }}
