@@ -142,7 +142,7 @@ const InSeasonPage = () => {
               className="grid-header"
               sx={{ display: "flex", justifyContent: "space-between" }}
             >
-              <Typography variant="h5" component="h5">
+              <Typography variant="h5" component="h5" pb={"6px"}>
                 {`${month}'s ${marketItems.length} most popular fruits and vegetables:`}{" "}
               </Typography>
               {shoppingBasketItems.length !== 0 ? (
