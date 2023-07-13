@@ -19,6 +19,7 @@ import { useForm, Controller } from "react-hook-form";
 import { ShoppingListModel, ListItemModel } from "@models/shoppingList";
 import { ShoppingListInputs } from "@/api/shoppingLists.api";
 import * as ShoppingListApi from "@/api/shoppingLists.api";
+import { checkIfInList } from "@/utils";
 import { TextInputField } from "../../formFields/TextInputField";
 
 type AddEditListDialogProps = {
@@ -72,7 +73,7 @@ const AddEditListDialog = ({
 
   // Add or remove item from selected items list.
   const handleSelect = (option: ListItemModel): void => {
-    const isInList = selectedItems.some((item) => item.name === option.name);
+    const isInList = checkIfInList(selectedItems, option);
 
     if (isInList === true) {
       const remaining = selectedItems.filter(
@@ -165,9 +166,7 @@ const AddEditListDialog = ({
                             return (
                               <Checkbox
                                 key={option.name}
-                                checked={selectedItems.some(
-                                  (item) => item.name === option.name
-                                )}
+                                checked={checkIfInList(selectedItems, option)}
                                 onChange={() => handleSelect(option)}
                               />
                             );
