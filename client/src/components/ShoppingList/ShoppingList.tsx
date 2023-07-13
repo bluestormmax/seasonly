@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { DeleteOutline, Edit } from "@mui/icons-material";
 import { ShoppingListModel } from "@models/shoppingList";
-import { formatDate } from "@/utils/dateHelpers";
+import { formatDate } from "@/utils";
 import styles from "./ShoppingList.module.css";
 
 type ShoppingListProps = {

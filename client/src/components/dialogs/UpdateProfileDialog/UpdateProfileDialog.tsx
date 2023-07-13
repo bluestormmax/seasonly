@@ -11,7 +11,7 @@ import { UserModel } from "@models/user";
 import { ProfileFields, fetchUserZoneData } from "@api/user.api";
 import * as UserApi from "@api/user.api";
 import { useLoggedInUser } from "@/context/userContext";
-import { getStateFromZip } from "@/utils/getStateFromZip";
+import { getStateFromZip } from "@/utils";
 import { TextInputField } from "../../formFields/TextInputField";
 
 type UpdateProfileDialogProps = {
