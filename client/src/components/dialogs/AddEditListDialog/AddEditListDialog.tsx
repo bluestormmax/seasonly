@@ -21,6 +21,7 @@ import { ShoppingListInputs } from "@/api/shoppingLists.api";
 import * as ShoppingListApi from "@/api/shoppingLists.api";
 import { checkIfInList } from "@/utils";
 import { TextInputField } from "../../formFields/TextInputField";
+import styles from "./AddEditListDialog.module.css";
 
 type AddEditListDialogProps = {
   listToEdit?: ShoppingListModel;
@@ -150,8 +151,8 @@ const AddEditListDialog = ({
               required
               error={Boolean(errors.list)}
             >
-              <FormLabel component="legend">Market Items:</FormLabel>
-              <FormGroup>
+              <FormLabel component="legend">In-Season Market Items:</FormLabel>
+              <FormGroup className={styles.form_columns}>
                 {listOptions.map((option) => {
                   return (
                     <FormControlLabel
