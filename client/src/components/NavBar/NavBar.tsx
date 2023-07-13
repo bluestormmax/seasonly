@@ -33,7 +33,12 @@ const NavBar = ({
         >
           <Menu />
         </IconButton>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+        <Typography
+          variant="h6"
+          component="div"
+          sx={{ flexGrow: 1 }}
+          className="fancy_text"
+        >
           Seasonly
         </Typography>
         {loggedInUser?.username !== "" ? (

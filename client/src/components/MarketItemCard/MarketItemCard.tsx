@@ -118,7 +118,7 @@ const MarketItemCard = ({
         {actionSnackBar()}
       </Snackbar>
       <ImageListItemBar
-        className={styles.fancy_title}
+        className="fancy_text"
         title={item.displayName}
         actionIcon={cardButton()}
       />
