@@ -1,4 +1,4 @@
-import { ListItemModel } from "@/models/shoppingList";
+import { ListItemModel } from "@models/shoppingList";
 
 export function checkIfInList(
   arr: ListItemModel[],

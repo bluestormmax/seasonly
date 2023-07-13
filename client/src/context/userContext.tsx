@@ -8,8 +8,8 @@ import {
   useEffect,
   useMemo,
 } from "react";
-import * as UserApi from "@/api/user.api";
-import { UserModel } from "@/models/user";
+import * as UserApi from "@api/user.api";
+import { UserModel } from "@models/user";
 
 interface UserContextModel {
   loggedInUser: UserModel | null;

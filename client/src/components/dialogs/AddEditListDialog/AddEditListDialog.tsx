@@ -17,8 +17,8 @@ import {
 } from "@mui/material";
 import { useForm, Controller } from "react-hook-form";
 import { ShoppingListModel, ListItemModel } from "@models/shoppingList";
-import { ShoppingListInputs } from "@/api/shoppingLists.api";
-import * as ShoppingListApi from "@/api/shoppingLists.api";
+import { ShoppingListInputs } from "@api/shoppingLists.api";
+import * as ShoppingListApi from "@api/shoppingLists.api";
 import { checkIfInList } from "@/utils";
 import { TextInputField } from "../../formFields/TextInputField";
 import styles from "./AddEditListDialog.module.css";

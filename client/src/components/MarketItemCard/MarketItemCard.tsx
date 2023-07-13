@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { ShoppingBasket, HighlightOff, ListAlt } from "@mui/icons-material";
 import { useLoggedInUser } from "@/context/userContext";
-import { MarketItemModel } from "@/models/marketItem";
+import { MarketItemModel } from "@models/marketItem";
 import styles from "./MarketItemCard.module.css";
 
 type MarketItemCardProps = {
