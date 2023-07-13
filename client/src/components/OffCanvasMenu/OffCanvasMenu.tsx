@@ -26,7 +26,6 @@ const OffCanvasMenu = ({
     <ClickAwayListener
       mouseEvent="onMouseDown"
       touchEvent="onTouchStart"
-      open={open}
       onClickAway={onCloseIconClicked}
     >
       <Drawer variant="persistent" anchor="left" open={open}>
