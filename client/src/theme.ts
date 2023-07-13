@@ -65,12 +65,23 @@ const theme = createTheme({
         root: {
           backgroundColor: colors.irishGreen,
           color: colors.white,
+          boxShadow: "none",
           "&:hover": {
             backgroundColor: colors.avoGreen,
+            boxShadow: "none",
           },
           "&:focus": {
             backgroundColor: colors.avoGreen,
             outlineColor: colors.secondary,
+            boxShadow: "none",
+          },
+        },
+        text: {
+          backgroundColor: "transparent",
+          color: colors.white,
+          ".MuiAlert-message > &": {
+            backgroundColor: "transparent",
+            color: colors.darkGray,
           },
         },
       },

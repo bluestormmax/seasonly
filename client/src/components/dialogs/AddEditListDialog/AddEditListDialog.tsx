@@ -192,7 +192,12 @@ const AddEditListDialog = ({
         >
           <Close />
         </IconButton>
-        <Button form="addEditListForm" type="submit" disabled={isSubmitting}>
+        <Button
+          form="addEditListForm"
+          type="submit"
+          disabled={isSubmitting}
+          variant="contained"
+        >
           {listToEdit ? "Update list" : "Save List"}
         </Button>
       </DialogActions>

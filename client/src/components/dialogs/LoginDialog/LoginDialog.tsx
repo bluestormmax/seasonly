@@ -70,7 +70,12 @@ const LoginDialog = ({ onDismiss, onLoginSuccess }: LoginDialogProps) => {
         <IconButton onClick={handleClose} title="Cancel signup">
           <Close />
         </IconButton>
-        <Button form="loginForm" type="submit" disabled={isSubmitting}>
+        <Button
+          form="loginForm"
+          type="submit"
+          disabled={isSubmitting}
+          variant="contained"
+        >
           Log in
         </Button>
       </DialogActions>

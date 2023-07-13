@@ -80,7 +80,12 @@ const SignUpDialog = ({ onDismiss, onSignupSuccess }: SignUpDialogProps) => {
         <IconButton onClick={handleClose} title="Cancel signup">
           <Close />
         </IconButton>
-        <Button form="signupForm" type="submit" disabled={isSubmitting}>
+        <Button
+          form="signupForm"
+          type="submit"
+          disabled={isSubmitting}
+          variant="contained"
+        >
           Sign Up
         </Button>
       </DialogActions>
