@@ -11,7 +11,7 @@ const NavBarLoggedOutView = ({
 }: NavBarLoggedOutViewProps) => {
   return (
     <>
-      <Button color="inherit" onClick={onSignUpClicked}>
+      <Button color="inherit" onClick={onSignUpClicked} sx={{ mr: 1 }}>
         Sign Up
       </Button>
       <Button color="inherit" onClick={onLoginClicked}>
