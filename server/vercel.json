@@ -2,7 +2,7 @@
   "redirects": [
     {
       "src": "/(.*)",
-      "dest": "dist/index.js"
+      "dest": "src/index.ts"
     }
   ]
 }
