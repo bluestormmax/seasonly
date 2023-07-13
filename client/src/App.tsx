@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Box } from "@mui/material";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Box, Typography } from "@mui/material";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { useLoggedInUser } from "./context/userContext";
 import {
   SignUpDialog,
@@ -85,6 +85,14 @@ function App() {
             }}
           />
         ) : null}
+        <Box className="footer" component="footer">
+          <Typography variant="caption" component="span">
+            &copy;{new Date().getFullYear()}{" "}
+            <Link to="https://bluestormcreative.com" target="blank">
+              blue storm creative
+            </Link>
+          </Typography>
+        </Box>
       </div>
     </BrowserRouter>
   );

@@ -58,6 +58,17 @@ button:focus-visible {
   font-family: "Slabo 27px";
 }
 
+.app {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+.footer {
+  margin-top: auto;
+  padding: 16px;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #36474f;
