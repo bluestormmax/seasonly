@@ -41,6 +41,56 @@ const theme = createTheme({
       fontFamily: bodyFont,
     },
   },
+  components: {
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          backgroundColor: "#ffffff",
+        },
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          backgroundColor: "#376E66",
+          color: "#ffffff",
+          "&:hover": {
+            backgroundColor: "#769053",
+          },
+          "&:focus": {
+            backgroundColor: "#769053",
+            outlineColor: "#ff5722",
+          },
+        },
+      },
+    },
+    MuiIconButton: {
+      styleOverrides: {
+        root: {
+          "&:focus": {
+            backgroundColor: "#769053",
+            outlineColor: "#ff5722",
+          },
+        },
+      },
+    },
+    MuiImageListItemBar: {
+      styleOverrides: {
+        root: {
+          background: "rgba(54, 71, 79, 0.8)",
+        },
+      },
+    },
+    MuiFormGroup: {
+      styleOverrides: {
+        root: {
+          display: "grid",
+          gridTemplateColumns: "repeat(2, 50%)",
+          gridTemplateRows: "auto",
+        },
+      },
+    },
+  },
 });
 
 export default theme;
