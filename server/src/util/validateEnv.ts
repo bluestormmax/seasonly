@@ -9,4 +9,5 @@ export default cleanEnv(process.env, {
   MONGODB_ATLAS_CLUSTER: str(),
   MONGODB_ATLAS_PUBLIC_KEY: str(),
   MONGODB_ATLAS_PRIVATE_KEY: str(),
+  APP_BASE_URL: str(),
 });
