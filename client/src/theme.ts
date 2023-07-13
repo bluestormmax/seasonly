@@ -2,23 +2,34 @@ import { createTheme } from "@mui/material/styles";
 
 const headingsFont = `"Slabo 27px", serif`;
 const bodyFont = `"Lato", Arial, sans-serif`;
+const colors = {
+  primary: "#00796b",
+  secondary: "#ff5722",
+  error: "#d32f2f",
+  success: "#1e88e5",
+  info: "#76ff03",
+  white: "#ffffff",
+  darkGray: "#36474F",
+  irishGreen: "#376E66",
+  avoGreen: "#769053",
+};
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#00796b",
+      main: colors.primary,
     },
     secondary: {
-      main: "#ff5722",
+      main: colors.secondary,
     },
     error: {
-      main: "#d32f2f",
+      main: colors.error,
     },
     success: {
-      main: "#1e88e5",
+      main: colors.success,
     },
     info: {
-      main: "#76ff03",
+      main: colors.info,
     },
   },
   typography: {
@@ -45,21 +56,21 @@ const theme = createTheme({
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
-          backgroundColor: "#ffffff",
+          backgroundColor: colors.white,
         },
       },
     },
     MuiButton: {
       styleOverrides: {
         root: {
-          backgroundColor: "#376E66",
-          color: "#ffffff",
+          backgroundColor: colors.irishGreen,
+          color: colors.white,
           "&:hover": {
-            backgroundColor: "#769053",
+            backgroundColor: colors.avoGreen,
           },
           "&:focus": {
-            backgroundColor: "#769053",
-            outlineColor: "#ff5722",
+            backgroundColor: colors.avoGreen,
+            outlineColor: colors.secondary,
           },
         },
       },
@@ -68,13 +79,13 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           "&:hover": {
-            backgroundColor: "#769053",
-            color: "#ffffff",
+            backgroundColor: colors.avoGreen,
+            color: colors.white,
           },
           "&:focus": {
-            backgroundColor: "#769053",
-            outlineColor: "#ff5722",
-            color: "#ffffff",
+            backgroundColor: colors.avoGreen,
+            outlineColor: colors.secondary,
+            color: colors.white,
           },
         },
       },
@@ -82,7 +93,7 @@ const theme = createTheme({
     MuiImageListItemBar: {
       styleOverrides: {
         root: {
-          background: "rgba(54, 71, 79, 0.8)",
+          background: "rgba(54, 71, 79, 0.8)", // colors.darkGray
         },
       },
     },
@@ -114,8 +125,8 @@ const theme = createTheme({
     MuiDialogTitle: {
       styleOverrides: {
         root: {
-          color: "#ffffff",
-          backgroundColor: "#769053",
+          color: colors.white,
+          backgroundColor: colors.avoGreen,
         },
       },
     },
