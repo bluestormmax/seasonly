@@ -1,4 +1,4 @@
-import { ImageList } from "@mui/material";
+import { ImageList, useMediaQuery } from "@mui/material";
 import { MarketItemModel } from "@models/marketItem";
 import { MarketItemCard } from "../MarketItemCard/MarketItemCard";
 
@@ -17,8 +17,10 @@ const MarketItemsGrid = ({
   onSnackBarLinkClick,
   onViewListButtonClick,
 }: MarketItemsGridProps) => {
+  const matches = useMediaQuery("(min-width:720px)");
+
   return (
-    <ImageList variant="masonry" cols={3} gap={8}>
+    <ImageList variant="masonry" cols={matches ? 3 : 2} gap={8}>
       {marketItems.map((item: MarketItemModel) => (
         <MarketItemCard
           key={`grid-${item.name}`}
