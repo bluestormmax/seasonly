@@ -61,7 +61,7 @@ button:focus-visible {
 .app {
   min-height: 100vh;
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: 66px 0 1fr 56px;
 }
 
 .footer {
