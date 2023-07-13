@@ -5,6 +5,7 @@ import {
   ImageListItemBar,
   Snackbar,
   Alert,
+  Button,
 } from "@mui/material";
 import { ShoppingBasket, RemoveCircle } from "@mui/icons-material";
 import { useLoggedInUser } from "@/context/userContext";
@@ -15,12 +16,14 @@ type MarketItemCardProps = {
   item: MarketItemModel;
   onBasketButtonClick: (newItem: MarketItemModel) => void;
   onRemoveButtonClick: (itemToRemove: MarketItemModel) => void;
+  onSnackBarLinkClick: () => void;
 };
 
 const MarketItemCard = ({
   item,
   onBasketButtonClick,
   onRemoveButtonClick,
+  onSnackBarLinkClick,
 }: MarketItemCardProps) => {
   const { loggedInUser } = useLoggedInUser();
   const [snackBarOpen, setSnackBarOpen] = useState(false);
@@ -53,7 +56,10 @@ const MarketItemCard = ({
         severity="success"
         sx={{ width: "100%" }}
       >
-        Item added to shopping list.
+        Item added to shopping list.{" "}
+        <Button variant="text" onClick={onSnackBarLinkClick}>
+          View list
+        </Button>
       </Alert>
     ) : (
       <Alert

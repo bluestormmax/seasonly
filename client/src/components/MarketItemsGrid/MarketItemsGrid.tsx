@@ -6,12 +6,14 @@ type MarketItemsGridProps = {
   marketItems: MarketItemModel[];
   onBasketButtonClick: (newItem: MarketItemModel) => void;
   onRemoveButtonClick: (itemToRemove: MarketItemModel) => void;
+  onSnackBarLinkClick: () => void;
 };
 
 const MarketItemsGrid = ({
   marketItems,
   onBasketButtonClick,
   onRemoveButtonClick,
+  onSnackBarLinkClick,
 }: MarketItemsGridProps) => {
   return (
     <ImageList variant="masonry" cols={3} gap={8}>
@@ -21,6 +23,7 @@ const MarketItemsGrid = ({
           item={item}
           onBasketButtonClick={onBasketButtonClick}
           onRemoveButtonClick={onRemoveButtonClick}
+          onSnackBarLinkClick={onSnackBarLinkClick}
         />
       ))}
     </ImageList>

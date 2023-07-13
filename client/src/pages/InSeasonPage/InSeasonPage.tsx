@@ -158,6 +158,7 @@ const InSeasonPage = () => {
               marketItems={marketItems}
               onBasketButtonClick={(item) => addMarketItemToList(item)}
               onRemoveButtonClick={(item) => removeMarketItemFromList(item)}
+              onSnackBarLinkClick={() => setViewShoppingBasket(true)}
             />
             <Box textAlign="center">
               <Link href="https://www.pexels.com/" target="blank">
