@@ -7,9 +7,6 @@
 
 .card_content {
   flex-grow: 1;
-  max-height: 100px;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .card_footer {
