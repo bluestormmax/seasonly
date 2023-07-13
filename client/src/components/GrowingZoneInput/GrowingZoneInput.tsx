@@ -1,4 +1,5 @@
-import { useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
+import { Controller, useForm } from "react-hook-form";
 import { Button, FormLabel, Stack } from "@mui/material";
 import { ZoneData } from "@api/user.api";
 import { fetchUserZoneData } from "@api/user.api";
@@ -18,13 +19,18 @@ const GrowingZoneInput = ({
   setUserState,
 }: GrowingZoneInputProps) => {
   const {
+    control,
     register,
     handleSubmit,
+    reset,
+    formState,
     formState: { errors, isSubmitting },
-  } = useForm<ZipInput>({});
+  } = useForm<ZipInput>({ defaultValues: { zip: "" } });
+  const [submittedData, setSubmittedData] = useState({});
 
   async function onZoneSubmit(data: { zip: string }) {
     const zip = data.zip;
+    setSubmittedData(data);
     setUserState(zip);
 
     try {
@@ -35,6 +41,13 @@ const GrowingZoneInput = ({
     }
   }
 
+  // Reset the field on submit success.
+  useEffect(() => {
+    if (formState.isSubmitSuccessful) {
+      reset({ zip: "" });
+    }
+  }, [formState, submittedData, reset]);
+
   return (
     <form
       id="growingZoneInput"
@@ -44,18 +57,30 @@ const GrowingZoneInput = ({
       <Stack>
         <FormLabel sx={{ mb: 2 }}>Enter a zip code to find out:</FormLabel>
         <Stack direction="row" spacing={2}>
-          <TextInputField
+          <Controller
             name="zip"
-            label="Zip Code"
-            register={register}
-            registerOptions={{
-              required: "A zip code is required!",
-            }}
-            error={errors.zip}
-            fullWidth
-            sx={{ borderTopRightRadius: "0", borderBottomRightRadius: "0" }}
+            control={control}
+            defaultValue={""}
+            render={() => (
+              <TextInputField
+                name="zip"
+                label="Zip Code"
+                register={register}
+                registerOptions={{
+                  required: "A zip code is required!",
+                }}
+                error={errors.zip}
+                fullWidth
+                sx={{ borderTopRightRadius: "0", borderBottomRightRadius: "0" }}
+              />
+            )}
           />
-          <Button type="submit" disabled={isSubmitting} variant="outlined">
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            variant="outlined"
+            sx={{ height: "56px" }}
+          >
             Submit
           </Button>
         </Stack>
