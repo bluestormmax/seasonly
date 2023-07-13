@@ -54,6 +54,7 @@ function UserProvider({ children }: UserProviderProps) {
     getAuthedUser();
   }, []);
 
+  // Make the provider only update when these values change.
   const memoedUserValues = useMemo(
     () => ({
       loggedInUser,
