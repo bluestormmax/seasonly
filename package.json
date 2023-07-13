@@ -1,0 +1,9 @@
+{
+  "name": "seasonly",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/server.js",
+  "scripts": {
+    "start": "nodemon server/src/server.ts"
+  }
+}
