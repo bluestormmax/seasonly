@@ -24,6 +24,17 @@ const theme = createTheme({
       main: "#76ff03",
     },
   },
+  typography: {
+    h1: {
+      fontFamily: "Slabo 27px",
+    },
+    h2: {
+      fontFamily: "Slabo 27px",
+    },
+    h3: {
+      fontFamily: "Slabo 27px",
+    },
+  },
 });
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
