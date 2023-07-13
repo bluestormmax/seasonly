@@ -1,3 +1,4 @@
+/* eslint-disable no-inner-declarations */
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -22,7 +23,7 @@ import {
 } from "../../components";
 
 const InSeasonPage = () => {
-  const { loggedInUser, defaultUser } = useLoggedInUser();
+  const { loggedInUser } = useLoggedInUser();
   const [usState, setUsState] = useState<string>(loggedInUser?.state || "");
   const [zone, setZone] = useState<ZoneData>(loggedInUser?.zone || {});
   const [itemsLoading, setItemsLoading] = useState(false);
@@ -33,7 +34,7 @@ const InSeasonPage = () => {
     ListItemModel[]
   >([]);
   const [viewShoppingBasket, setViewShoppingBasket] = useState(false);
-  const [month, setMonth] = useState<string>(getMonthName());
+  const [month] = useState<string>(getMonthName());
 
   function setUsStateFromZip(zip: string): void {
     const usState = getStateFromZip(zip);
@@ -161,13 +162,13 @@ const InSeasonPage = () => {
               onSnackBarLinkClick={() => setViewShoppingBasket(true)}
             />
             <Box textAlign="center">
-              <Link href="https://www.pexels.com/" target="blank">
+              <Link to="https://www.pexels.com/" target="blank">
                 Images provided by Pexels
               </Link>
             </Box>
             <Snackbar
               open={snackBarOpen}
-              autoHideDuration={2000}
+              autoHideDuration={5000}
               onClose={handleSnackBarClose}
             >
               <Alert
