@@ -138,6 +138,7 @@ const AddEditListDialog = ({
                 required: "A list title is required!",
               }}
               error={errors.title}
+              required
             />
           </Stack>
           <Stack>
