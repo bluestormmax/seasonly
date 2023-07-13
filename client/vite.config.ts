@@ -17,7 +17,10 @@ export default defineConfig({
   },
   plugins: [
     react(),
-    ViteWebfontDownload(["https://fonts.googleapis.com/css?family=Slabo+27px"]),
+    ViteWebfontDownload([
+      "https://fonts.googleapis.com/css?family=Slabo+27px",
+      "https://fonts.googleapis.com/css?family=Lato",
+    ]),
   ],
   server: {
     proxy: {
