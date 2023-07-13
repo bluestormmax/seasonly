@@ -74,7 +74,12 @@ const UpdateProfileDialog = ({
         </Typography>
       </DialogContent>
       <DialogActions>
-        <Button form="zipForm" type="submit" disabled={isSubmitting}>
+        <Button
+          form="zipForm"
+          type="submit"
+          disabled={isSubmitting}
+          variant="contained"
+        >
           Save zone
         </Button>
       </DialogActions>
