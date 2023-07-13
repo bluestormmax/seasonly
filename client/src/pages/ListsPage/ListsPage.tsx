@@ -12,6 +12,7 @@ const ListsPage = () => {
         variant="h4"
         component="h2"
         mb={3}
+        align="center"
       >
         Saved shopping lists
       </Typography>
