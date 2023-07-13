@@ -1,8 +1,8 @@
 {
   "redirects": [
     {
-      "src": "/(.*)",
-      "dest": "dist/index.js"
+      "source": "/(.*)",
+      "destination": "dist/index.js"
     }
   ]
 }
