@@ -1,5 +1,5 @@
+import "dotenv/config";
 import app from "./app";
-import env from "./util/validateEnv";
 import mongoose from "mongoose";
 
 const port = env.PORT;
@@ -16,7 +16,7 @@ const port = env.PORT;
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(env.MONGO_CONNECTION_STRING);
+    const conn = await mongoose.connect(process.env.MONGO_CONNECTION_STRING);
     console.log(`MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
     console.log(error);
@@ -31,7 +31,7 @@ app.all("*", (req, res) => {
 
 // Connect to the database before listening
 connectDB().then(() => {
-  app.listen(env.PORT, () => {
+  app.listen(process.env.PORT, () => {
     console.log("listening for requests");
   });
 });
