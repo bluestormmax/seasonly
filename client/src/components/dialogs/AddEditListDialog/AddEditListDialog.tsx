@@ -17,24 +17,23 @@ import {
 } from "@mui/material";
 import { useForm, Controller } from "react-hook-form";
 import { ShoppingListModel, ListItemModel } from "@models/shoppingList";
-import { useLoggedInUser } from "@/context/userContext";
 import { ShoppingListInputs } from "@/api/shoppingLists.api";
 import * as ShoppingListApi from "@/api/shoppingLists.api";
-import * as MarketItemsApi from "@/api/marketItems.api";
-import { getMonthName } from "@/utils/dateHelpers";
 import { TextInputField } from "../../formFields/TextInputField";
 
 type AddEditListDialogProps = {
   listToEdit?: ShoppingListModel;
   onClose: () => void;
   onListSave: (shoppingList: ShoppingListModel) => void;
-  basketItems: string[];
+  marketItems: ListItemModel[];
+  basketItems?: ListItemModel[];
 };
 
 const AddEditListDialog = ({
   listToEdit,
   onClose,
   onListSave,
+  marketItems,
   basketItems,
 }: AddEditListDialogProps) => {
   const {
@@ -49,10 +48,7 @@ const AddEditListDialog = ({
       list: listToEdit?.list || [],
     },
   });
-  const { loggedInUser } = useLoggedInUser();
-  const [selectedItems, setSelectedItems] = useState<ListItemModel[] | []>([
-    ...basketItems,
-  ]);
+  const [selectedItems, setSelectedItems] = useState<ListItemModel[]>([]);
   const [listOptions, setListOptions] = useState<ListItemModel[]>([]);
 
   async function onListSubmit(input: ShoppingListInputs) {
@@ -74,14 +70,17 @@ const AddEditListDialog = ({
     }
   }
 
-  const handleSelect = (value: string): void => {
-    const isPresent = selectedItems.indexOf(value);
+  const handleSelect = (option: ListItemModel): void => {
+    const isInList = selectedItems.some((item) => item.name === option.name);
+    console.log("IS IN LIST: ", isInList, option);
 
-    if (isPresent !== -1) {
-      const remaining = selectedItems.filter((item: any) => item !== value);
+    if (isInList === true) {
+      const remaining = selectedItems.filter(
+        (item: ListItemModel) => item.name !== option.name
+      );
       setSelectedItems(remaining);
     } else {
-      setSelectedItems((prevItems: any) => [...prevItems, value]);
+      setSelectedItems((prevItems: ListItemModel[]) => [...prevItems, option]);
     }
   };
 
@@ -89,49 +88,41 @@ const AddEditListDialog = ({
     onClose();
   };
 
+  // Set list options to market items.
   useEffect(() => {
-    async function loadInSeasonMarketItems() {
-      const seasonalData = {
-        zone: loggedInUser?.zone?.zone,
-        month: getMonthName(),
-      };
-      try {
-        const inSeasonItems = await MarketItemsApi.fetchInSeasonMarketItems(
-          seasonalData
-        );
-        const inSeasonOptions = inSeasonItems.map((item) => {
-          return { name: item.name, displayName: item.displayName };
-        });
-
-        if (basketItems.length > 0) {
-          setListOptions([...inSeasonOptions, ...selectedItems]);
-        } else {
-          setListOptions(inSeasonOptions);
-        }
-      } catch (error) {
-        console.log(error);
-      }
+    console.log("MARKET ITEMS: ", marketItems);
+    if (marketItems && marketItems?.length !== 0) {
+      console.log("loading passed in items");
+      setListOptions(marketItems);
     }
-    loadInSeasonMarketItems();
-  }, []);
+  }, [marketItems]);
 
+  // Set list selected items value manually in the form.
   useEffect(() => {
+    let existingListItems: ListItemModel[] = [];
+    let selectedBasketItems: ListItemModel[] = [];
+
     if (listToEdit) {
-      const existingListItems: ListItemModel[] = listToEdit.list;
-      const itemNames = existingListItems.map((item) => item.name);
-      setSelectedItems(itemNames);
+      existingListItems = listToEdit.list;
     }
-  }, [listToEdit]);
 
-  // Set list selected items value manually.
+    if (basketItems) {
+      selectedBasketItems = basketItems;
+    }
+    const allPossibleSelectedItems = [
+      ...existingListItems,
+      ...selectedBasketItems,
+    ];
+    console.log("ALL POSSIBLE: ", allPossibleSelectedItems);
+    setSelectedItems(allPossibleSelectedItems);
+    setValue("list", allPossibleSelectedItems);
+  }, [listToEdit, basketItems, setValue]);
+
+  // Manually set selected form value when selected items change.
   useEffect(() => {
-    const selectedMarketItems: ListItemModel[] = [];
-    selectedItems.forEach((item) => {
-      const itemObj = { name: item, displayName: item };
-      selectedMarketItems.push(itemObj);
-    });
-    setValue("list", selectedMarketItems);
-  }, [selectedItems, setValue]);
+    console.log("SETTING FORM VALUE: ", selectedItems);
+    setValue("list", selectedItems);
+  }, [selectedItems]);
 
   return (
     <Dialog open onClose={handleClose} fullWidth maxWidth="sm">
@@ -174,8 +165,8 @@ const AddEditListDialog = ({
                             return (
                               <Checkbox
                                 key={option.name}
-                                checked={selectedItems.includes(option.name)}
-                                onChange={() => handleSelect(option.name)}
+                                checked={selectedItems.includes(option)}
+                                onChange={() => handleSelect(option)}
                               />
                             );
                           }}
