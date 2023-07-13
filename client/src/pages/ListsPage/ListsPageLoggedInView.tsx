@@ -1,11 +1,17 @@
 import { useState, useEffect } from "react";
 import { IconButton, CircularProgress } from "@mui/material";
 import { Add as AddIcon } from "@mui/icons-material";
-import { ShoppingListModel } from "@models/shoppingList";
+import { ListItemModel, ShoppingListModel } from "@models/shoppingList";
+import { MarketItemModel } from "@models/marketItem";
 import * as ShoppingListsApi from "@api/shoppingLists.api";
+import * as MarketItemsApi from "@api/marketItems.api";
+import { getMonthName } from "@utils/dateHelpers";
+import { useLoggedInUser } from "@/context/userContext";
 import { ShoppingList, GridWrapper, AddEditListDialog } from "../../components";
 
 const ListsPageLoggedInView = () => {
+  const { loggedInUser } = useLoggedInUser();
+  const [inSeasonOptions, setInSeasonOptions] = useState<ListItemModel[]>([]);
   const [shoppingLists, setShoppingLists] = useState<ShoppingListModel[]>([]);
   const [listsLoading, setListsLoading] = useState(true);
   const [showListsLoadingError, setShowListsLoadingError] = useState(false);
@@ -28,6 +34,27 @@ const ListsPageLoggedInView = () => {
       }
     }
     loadShoppingLists();
+  }, []);
+
+  useEffect(() => {
+    async function loadInSeasonMarketItems() {
+      console.log("FETCHING IN SEASON ITEMS FOR LISTS");
+      const seasonalData = {
+        zone: loggedInUser?.zone?.zone,
+        month: getMonthName(),
+      };
+      try {
+        const inSeasonItems: MarketItemModel[] =
+          await MarketItemsApi.fetchInSeasonMarketItems(seasonalData);
+        const inSeasonOptions: ListItemModel[] = inSeasonItems.map((item) => {
+          return { name: item.name, displayName: item.displayName };
+        });
+        setInSeasonOptions(inSeasonOptions);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    loadInSeasonMarketItems();
   }, []);
 
   async function deleteList(shoppingList: ShoppingListModel) {
@@ -79,6 +106,7 @@ const ListsPageLoggedInView = () => {
             setShoppingLists([...shoppingLists, newShoppingList]);
             setOpenAddEditListDialog(false);
           }}
+          marketItems={inSeasonOptions}
         />
       ) : null}
       {listToEdit ? (
@@ -95,6 +123,7 @@ const ListsPageLoggedInView = () => {
             );
             setListToEdit(null);
           }}
+          marketItems={inSeasonOptions}
         />
       ) : null}
       <IconButton
