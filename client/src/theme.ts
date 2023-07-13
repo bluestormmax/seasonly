@@ -104,6 +104,21 @@ const theme = createTheme({
         },
       },
     },
+    MuiFormLabel: {
+      styleOverrides: {
+        root: {
+          fontSize: "1.3rem",
+        },
+      },
+    },
+    MuiDialogTitle: {
+      styleOverrides: {
+        root: {
+          color: "#ffffff",
+          backgroundColor: "#769053",
+        },
+      },
+    },
   },
 });
 
