@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { ShoppingBasket } from "@mui/icons-material";
 import { MarketItemModel } from "@models/marketItem";
-import { ListItemModel } from "@/models/shoppingList";
+import { ListItemModel } from "@models/shoppingList";
 import { useLoggedInUser } from "@/context/userContext";
 import * as MarketItemsApi from "@api/marketItems.api";
 import { ZoneData } from "@api/user.api";
@@ -134,8 +134,12 @@ const InSeasonPage = () => {
           </Typography>
         ) : null}
       </Box>
-
-      {!itemsLoading ? (
+      {showItemsLoadingError ? (
+        <Alert severity="error">
+          Something went wrong while loading items.
+        </Alert>
+      ) : null}
+      {!itemsLoading && !showItemsLoadingError ? (
         marketItems.length !== 0 ? (
           <>
             <Box
