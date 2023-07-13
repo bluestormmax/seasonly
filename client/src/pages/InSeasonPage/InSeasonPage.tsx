@@ -150,6 +150,7 @@ const InSeasonPage = () => {
                   variant="text"
                   endIcon={<ShoppingBasket />}
                   onClick={() => setViewShoppingBasket(true)}
+                  variant="contained"
                 >
                   View Shopping List
                 </Button>
