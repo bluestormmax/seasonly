@@ -4,11 +4,8 @@ import { MarketItemModel } from "@models/marketItem";
 import { ListItemModel } from "@/models/shoppingList";
 import { useLoggedInUser } from "@/context/userContext";
 import * as MarketItemsApi from "@api/marketItems.api";
-import * as ShoppingListApi from "@api/shoppingLists.api";
-import { ShoppingListInputs } from "@api/shoppingLists.api";
 import { ZoneData } from "@api/user.api";
-import { getStateFromZip } from "@/utils/getStateFromZip";
-import { getMonthName } from "@/utils/dateHelpers";
+import { getStateFromZip, getMonthName, checkIfInList } from "@/utils";
 import {
   AddEditListDialog,
   GrowingZoneInput,
@@ -41,7 +38,7 @@ const InSeasonPage = () => {
       name: newItem.name,
       displayName: newItem.displayName,
     };
-    const isInList = shoppingBasketItems.includes(newItemFormatted.name);
+    const isInList = checkIfInList(shoppingBasketItems, newItemFormatted);
 
     // Item is not in the list, add it.
     if (isInList === false) {
