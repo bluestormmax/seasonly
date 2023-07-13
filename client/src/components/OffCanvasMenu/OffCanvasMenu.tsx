@@ -38,7 +38,12 @@ const OffCanvasMenu = ({
         >
           <ChevronLeft />
         </IconButton>
-        <Typography variant="h5" component="h2" pl={2} className="fancy_text">
+        <Typography
+          variant="h5"
+          component="h2"
+          pl="22px"
+          className="fancy_text"
+        >
           Seasonly
         </Typography>
         <List className={styles.menu} role="navigation">

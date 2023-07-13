@@ -90,6 +90,15 @@ const theme = createTheme({
         },
       },
     },
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          "&.fancy_text": {
+            fontFamily: headingsFont,
+          },
+        },
+      },
+    },
   },
 });
 
