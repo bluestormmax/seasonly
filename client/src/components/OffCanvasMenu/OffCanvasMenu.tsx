@@ -5,6 +5,7 @@ import {
   ListItem,
   ListItemText,
   Typography,
+  ClickAwayListener,
 } from "@mui/material";
 import { ChevronLeft, WbSunny, FoodBank } from "@mui/icons-material";
 import { Link } from "react-router-dom";
@@ -22,32 +23,39 @@ const OffCanvasMenu = ({
   onLinkClicked,
 }: OffCanvasMenuProps) => {
   return (
-    <Drawer variant="persistent" anchor="left" open={open}>
-      <IconButton
-        className={styles.close_icon}
-        onClick={onCloseIconClicked}
-        sx={{}}
-        color="secondary"
-      >
-        <ChevronLeft />
-      </IconButton>
-      <Typography variant="h5" component="h2" pl={2}>
-        Seasonly
-      </Typography>
-      <List className={styles.menu} role="navigation">
-        {["What's In Season", "Shopping Lists"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <Link
-              to={index % 2 === 0 ? "/" : "shopping-lists"}
-              onClick={onLinkClicked}
-            >
-              {index % 2 === 0 ? <WbSunny /> : <FoodBank />}
-              <ListItemText primary={text} />{" "}
-            </Link>
-          </ListItem>
-        ))}
-      </List>
-    </Drawer>
+    <ClickAwayListener
+      mouseEvent="onMouseDown"
+      touchEvent="onTouchStart"
+      open={open}
+      onClickAway={onCloseIconClicked}
+    >
+      <Drawer variant="persistent" anchor="left" open={open}>
+        <IconButton
+          className={styles.close_icon}
+          onClick={onCloseIconClicked}
+          sx={{}}
+          color="secondary"
+        >
+          <ChevronLeft />
+        </IconButton>
+        <Typography variant="h5" component="h2" pl={2}>
+          Seasonly
+        </Typography>
+        <List className={styles.menu} role="navigation">
+          {["What's In Season", "Shopping Lists"].map((text, index) => (
+            <ListItem key={text} disablePadding>
+              <Link
+                to={index % 2 === 0 ? "/" : "shopping-lists"}
+                onClick={onLinkClicked}
+              >
+                {index % 2 === 0 ? <WbSunny /> : <FoodBank />}
+                <ListItemText primary={text} />{" "}
+              </Link>
+            </ListItem>
+          ))}
+        </List>
+      </Drawer>
+    </ClickAwayListener>
   );
 };
 
