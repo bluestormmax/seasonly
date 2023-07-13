@@ -67,7 +67,11 @@ const GrowingZoneInput = ({
                 label="Zip Code"
                 register={register}
                 registerOptions={{
-                  required: "A zip code is required!",
+                  minLength: {
+                    value: 5,
+                    message: "Zip must be 5 digits",
+                  },
+                  required: "A zip code is required",
                 }}
                 error={errors.zip}
                 fullWidth
