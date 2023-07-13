@@ -5,7 +5,10 @@ import {
   useContext,
   Dispatch,
   SetStateAction,
+  useEffect,
+  useMemo,
 } from "react";
+import * as UserApi from "@/api/user.api";
 import { UserModel } from "@/models/user";
 
 interface UserContextModel {
@@ -39,10 +42,29 @@ const defaultUser: UserModel = {
 function UserProvider({ children }: UserProviderProps) {
   const [loggedInUser, setLoggedInUser] = useState<UserModel>(defaultUser);
 
+  useEffect(() => {
+    async function getAuthedUser() {
+      try {
+        const authedUser = await UserApi.getLoggedInUser();
+        setLoggedInUser(authedUser);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getAuthedUser();
+  }, []);
+
+  const memoedUserValues = useMemo(
+    () => ({
+      loggedInUser,
+      setLoggedInUser,
+      defaultUser,
+    }),
+    [loggedInUser, setLoggedInUser, defaultUser]
+  );
+
   return (
-    <UserContext.Provider
-      value={{ loggedInUser, setLoggedInUser, defaultUser }}
-    >
+    <UserContext.Provider value={memoedUserValues}>
       {children}
     </UserContext.Provider>
   );
