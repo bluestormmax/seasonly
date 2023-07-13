@@ -123,6 +123,9 @@ const theme = createTheme({
           "&.fancy_text": {
             fontFamily: headingsFont,
           },
+          "&.logo": {
+            color: colors.white,
+          },
         },
       },
     },

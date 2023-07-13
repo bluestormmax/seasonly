@@ -1,5 +1,6 @@
 import { AppBar, IconButton, Typography, Toolbar } from "@mui/material";
 import { Menu } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 import { useLoggedInUser } from "@/context/userContext";
 import { NavBarLoggedInView } from "./NavBarLoggedInView";
 import { NavBarLoggedOutView } from "./NavBarLoggedOutView";
@@ -35,9 +36,10 @@ const NavBar = ({
         </IconButton>
         <Typography
           variant="h6"
-          component="div"
+          component={Link}
+          to="/"
           sx={{ flexGrow: 1 }}
-          className="fancy_text"
+          className="fancy_text logo"
         >
           Seasonly
         </Typography>
