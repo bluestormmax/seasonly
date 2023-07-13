@@ -15,7 +15,6 @@ const NavBarLoggedInView = ({ onLogoutSuccess }: NavBarLoggedInViewProps) => {
       onLogoutSuccess();
     } catch (error) {
       console.log(error);
-      alert(error); // TODO: dev only
     }
   }
 

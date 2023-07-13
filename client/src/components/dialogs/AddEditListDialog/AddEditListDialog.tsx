@@ -68,7 +68,6 @@ const AddEditListDialog = ({
       onListSave(listResponse);
     } catch (error) {
       console.error(error);
-      alert(error); // TODO: dev only.
     }
   }
 

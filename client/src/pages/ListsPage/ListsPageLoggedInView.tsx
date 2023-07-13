@@ -66,7 +66,6 @@ const ListsPageLoggedInView = () => {
       );
     } catch (error) {
       console.error(error);
-      alert(error); // TODO: dev only
     }
   }
 

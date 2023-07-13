@@ -48,7 +48,6 @@ const UpdateProfileDialog = ({
       onUpdateProfileSuccess(user);
     } catch (error) {
       console.log(error);
-      alert(error); // TODO: dev only
     }
   }
 
