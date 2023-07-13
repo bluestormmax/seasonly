@@ -22,10 +22,21 @@ import {
   MarketItemsGrid,
 } from "../../components";
 
+type resetZone = {
+  zone?: string;
+  coordinates?: {
+    lat?: string;
+    lon?: string;
+  };
+  temperature_range?: string;
+};
+
 const InSeasonPage = () => {
   const { loggedInUser } = useLoggedInUser();
   const [usState, setUsState] = useState<string>(loggedInUser?.state || "");
-  const [zone, setZone] = useState<ZoneData | {}>(loggedInUser?.zone || {});
+  const [zone, setZone] = useState<ZoneData | resetZone>(
+    loggedInUser?.zone || {}
+  );
   const [itemsLoading, setItemsLoading] = useState(false);
   const [showItemsLoadingError, setShowItemsLoadingError] = useState(false);
   const [snackBarOpen, setSnackBarOpen] = useState(false);
