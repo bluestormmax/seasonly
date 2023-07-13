@@ -7,7 +7,7 @@ import {
   Alert,
   Button,
 } from "@mui/material";
-import { ShoppingBasket, RemoveCircle } from "@mui/icons-material";
+import { ShoppingBasket, HighlightOff, ListAlt } from "@mui/icons-material";
 import { useLoggedInUser } from "@/context/userContext";
 import { MarketItemModel } from "@/models/marketItem";
 import styles from "./MarketItemCard.module.css";
@@ -16,6 +16,7 @@ type MarketItemCardProps = {
   item: MarketItemModel;
   onBasketButtonClick: (newItem: MarketItemModel) => void;
   onRemoveButtonClick: (itemToRemove: MarketItemModel) => void;
+  onViewListButtonClick: () => void;
   onSnackBarLinkClick: () => void;
 };
 
@@ -23,6 +24,7 @@ const MarketItemCard = ({
   item,
   onBasketButtonClick,
   onRemoveButtonClick,
+  onViewListButtonClick,
   onSnackBarLinkClick,
 }: MarketItemCardProps) => {
   const { loggedInUser } = useLoggedInUser();
@@ -73,12 +75,20 @@ const MarketItemCard = ({
 
   const cardButton = () => {
     const button = isInBasket ? (
-      <IconButton
-        aria-label={`Remove ${item.displayName} from shopping list`}
-        onClick={handleRemoveButtonClick}
-      >
-        <RemoveCircle className={styles.button_icon} />
-      </IconButton>
+      <>
+        <IconButton
+          aria-label={`View shopping list`}
+          onClick={onViewListButtonClick}
+        >
+          <ListAlt className={styles.button_icon} />
+        </IconButton>
+        <IconButton
+          aria-label={`Remove ${item.displayName} from shopping list`}
+          onClick={handleRemoveButtonClick}
+        >
+          <HighlightOff className={styles.button_icon} />
+        </IconButton>
+      </>
     ) : (
       <IconButton
         aria-label={`Save ${item.displayName} to new shopping list`}
@@ -107,7 +117,11 @@ const MarketItemCard = ({
       >
         {actionSnackBar()}
       </Snackbar>
-      <ImageListItemBar title={item.displayName} actionIcon={cardButton()} />
+      <ImageListItemBar
+        className={styles.fancy_title}
+        title={item.displayName}
+        actionIcon={cardButton()}
+      />
     </ImageListItem>
   );
 };
