@@ -25,7 +25,7 @@ import {
 const InSeasonPage = () => {
   const { loggedInUser } = useLoggedInUser();
   const [usState, setUsState] = useState<string>(loggedInUser?.state || "");
-  const [zone, setZone] = useState<ZoneData>(loggedInUser?.zone || {});
+  const [zone, setZone] = useState<ZoneData | {}>(loggedInUser?.zone || {});
   const [itemsLoading, setItemsLoading] = useState(false);
   const [showItemsLoadingError, setShowItemsLoadingError] = useState(false);
   const [snackBarOpen, setSnackBarOpen] = useState(false);
@@ -77,14 +77,18 @@ const InSeasonPage = () => {
 
   // Set logged in user data if available.
   useEffect(() => {
-    if (loggedInUser?.username !== "" && loggedInUser?.zone.zone !== "") {
+    if (
+      loggedInUser?.username !== "" &&
+      loggedInUser?.zone.zone &&
+      loggedInUser?.zone.zone !== ""
+    ) {
       setZone(loggedInUser?.zone);
       setUsState(loggedInUser?.state);
     }
   }, [loggedInUser]);
 
   useEffect(() => {
-    if (zone?.zone) {
+    if (zone && zone.zone !== "") {
       async function loadInSeasonMarketItems() {
         const seasonalData = { zone: zone?.zone, month: month };
         try {

@@ -52,12 +52,12 @@ export async function logout() {
 }
 
 export interface ZoneData {
-  zone: string;
-  coordinates: {
-    lat: string;
-    lon: string;
+  zone?: string;
+  coordinates?: {
+    lat?: string;
+    lon?: string;
   };
-  temperature_range: string;
+  temperature_range?: string;
 }
 
 export interface ProfileFields {
