@@ -147,7 +147,6 @@ const InSeasonPage = () => {
               </Typography>
               {shoppingBasketItems.length !== 0 ? (
                 <Button
-                  variant="text"
                   endIcon={<ShoppingBasket />}
                   onClick={() => setViewShoppingBasket(true)}
                   variant="contained"
