@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Typography, CircularProgress, Link, Box, Button } from "@mui/material";
 import { MarketItemModel } from "@models/marketItem";
+import { ShoppingBasket } from "@mui/icons-material";
 import { ListItemModel } from "@/models/shoppingList";
 import { useLoggedInUser } from "@/context/userContext";
 import * as MarketItemsApi from "@api/marketItems.api";
@@ -11,7 +12,6 @@ import {
   GrowingZoneInput,
   MarketItemsGrid,
 } from "../../components";
-import { ShoppingBasket } from "@mui/icons-material";
 
 const InSeasonPage = () => {
   const { loggedInUser, defaultUser } = useLoggedInUser();
@@ -160,7 +160,7 @@ const InSeasonPage = () => {
         <AddEditListDialog
           onClose={() => setViewShoppingBasket(false)}
           onListSave={() => {
-            console.log("new list saved");
+            setShoppingBasketItems([]);
             setViewShoppingBasket(false);
           }}
           basketItems={shoppingBasketItems}
