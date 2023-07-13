@@ -4,6 +4,7 @@ import morgan from "morgan";
 import createHttpError, { isHttpError } from "http-errors";
 import session from "express-session";
 import MongoStore from "connect-mongo";
+import cors from "cors";
 import env from "./util/validateEnv";
 import shoppingListRoutes from "./routes/shoppingLists";
 import userRoutes from "./routes/users";
@@ -11,6 +12,9 @@ import marketItemRoutes from "./routes/marketItems";
 import { requiresAuth } from "./middleware/auth";
 
 const app = express();
+
+// Use cors headers.
+app.use(cors());
 
 // set up request logging.
 app.use(morgan("dev"));
