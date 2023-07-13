@@ -114,7 +114,7 @@ const InSeasonPage = () => {
           component="h1"
           mb={3}
         >
-          What's In Season
+          What's In Season?
         </Typography>
         <GrowingZoneInput
           onZoneSet={(zone) => setZone(zone)}
