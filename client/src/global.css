@@ -24,7 +24,7 @@ a:hover {
 }
 
 body {
-  background: #fafafa;
+  background: #fcf5eb;
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
@@ -54,10 +54,14 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.fancy_text {
+  font-family: "Slabo 27px";
+}
+
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: #36474f;
+    background-color: #fcf5eb;
   }
   a:hover {
     color: #8b2303;
