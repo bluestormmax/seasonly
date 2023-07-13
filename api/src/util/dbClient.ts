@@ -1,5 +1,5 @@
 import * as mongodb from "mongodb";
-import env from "../util/validateEnv";
+import env from "./validateEnv";
 
 export const MONGODB_DATABASE = "seasonly_app";
 export const MONGODB_COLLECTION = "marketitems";
