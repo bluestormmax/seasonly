@@ -1,6 +1,7 @@
 import { UserModel } from "@models/user";
 import { fetchData } from "./fetchData.api";
 
+// Because FE and BE are on same route, cookie gets passed to FE automatically.
 export async function getLoggedInUser(): Promise<UserModel> {
   const response = await fetchData("/api/users", {
     method: "GET",
