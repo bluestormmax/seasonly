@@ -38,7 +38,6 @@ const ListsPageLoggedInView = () => {
 
   useEffect(() => {
     async function loadInSeasonMarketItems() {
-      console.log("FETCHING IN SEASON ITEMS FOR LISTS");
       const seasonalData = {
         zone: loggedInUser?.zone?.zone,
         month: getMonthName(),
@@ -55,7 +54,7 @@ const ListsPageLoggedInView = () => {
       }
     }
     loadInSeasonMarketItems();
-  }, []);
+  }, [loggedInUser?.zone?.zone]);
 
   async function deleteList(shoppingList: ShoppingListModel) {
     try {
