@@ -4,6 +4,7 @@ import {
   List,
   ListItem,
   ListItemText,
+  Typography,
 } from "@mui/material";
 import { ChevronLeft, WbSunny, FoodBank } from "@mui/icons-material";
 import { Link } from "react-router-dom";
@@ -30,6 +31,9 @@ const OffCanvasMenu = ({
       >
         <ChevronLeft />
       </IconButton>
+      <Typography variant="h5" component="h2" pl={2}>
+        Seasonly
+      </Typography>
       <List className={styles.menu} role="navigation">
         {["What's In Season", "Shopping Lists"].map((text, index) => (
           <ListItem key={text} disablePadding>
