@@ -1,6 +1,6 @@
 # Seasonly
 
-WIP seasonal food app built on the MERN stack.
+A seasonal food app built on the MERN stack.
 
 ## What Is It?
 
@@ -12,12 +12,14 @@ A simple app that will let you:
 
 ## Road Map and Other Ideas
 
-- Better styles/branding overall.
-- Add filters to in-season view to show only veggies, only fruit, or all items.
-- Add some offline capabilities via localStorage and service workers.
-- I would love to have the images update based on the zip/zone input.
-- Possibly tie it into some recipe APIs?
+- Add update profile view to save a new zip/zone/email/password (WIP)
+- Better styles/design/branding overall (WIP)
+- Add filters to in-season view to show only veggies, only fruit, or all items (WIP)
+- Add offline capabilities via localStorage and service workers.
+- Have the images update based on the zip/zone input.
+- Larger data set: more produce with more varieties.
+- Possibly tie it into some recipe APIs.
 
 ## Built With
 
-React, TypeScript, Node.js, Express, Mongoose, MongoDB Atlas, MUI, Vite, react-hook-form, express-session, a cast of thousands...
+React, TypeScript, Node.js, Express, Mongoose, MongoDB Atlas, MUI, Vite, react-hook-form, express-session, a cast of thousands; served on Akamai Cloud.
