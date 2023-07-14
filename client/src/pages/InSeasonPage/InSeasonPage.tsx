@@ -22,18 +22,10 @@ import {
   MarketItemsGrid,
 } from "../../components";
 
-type resetZone = {
-  zone?: string;
-  coordinates?: {
-    lat?: string;
-    lon?: string;
-  };
-  temperature_range?: string;
-};
-
 const InSeasonPage = () => {
   const { loggedInUser } = useLoggedInUser();
   const [usState, setUsState] = useState<string>(loggedInUser?.state || "");
+<<<<<<< HEAD
 <<<<<<< HEAD
   const [zone, setZone] = useState<ZoneData | resetZone>(
     loggedInUser?.zone || {}
@@ -41,6 +33,9 @@ const InSeasonPage = () => {
 =======
   const [zone, setZone] = useState<ZoneData>(loggedInUser?.zone || {});
 >>>>>>> parent of 6f8def4 (Update ts warnings)
+=======
+  const [zone, setZone] = useState<ZoneData | {}>(loggedInUser?.zone || {});
+>>>>>>> parent of 9056d0a (Set reset zone type to clear ts warnings)
   const [itemsLoading, setItemsLoading] = useState(false);
   const [showItemsLoadingError, setShowItemsLoadingError] = useState(false);
   const [snackBarOpen, setSnackBarOpen] = useState(false);
