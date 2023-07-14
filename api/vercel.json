@@ -1,8 +1,0 @@
-{
-  "redirects": [
-    {
-      "src": "/(.*)",
-      "dest": "src/index.ts"
-    }
-  ]
-}
