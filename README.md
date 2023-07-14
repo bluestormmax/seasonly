@@ -1,6 +1,7 @@
 # Seasonly
 
 A seasonal food app built on the MERN stack.
+Check out v1.0 at [https://seasonly.bluestormserver.com/](https://seasonly.bluestormserver.com/)
 
 ## What Is It?
 
