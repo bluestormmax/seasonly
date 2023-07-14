@@ -26,7 +26,10 @@
     {
       "src": "/(.*)",
       "dest": "dist/index.js"
+<<<<<<< HEAD
 >>>>>>> parent of cc871d4 (Update build script, remove vercel config)
+=======
+>>>>>>> parent of 204353e (Try just setting app source for vercel)
     }
   ]
 }

@@ -9,15 +9,26 @@
 =======
     "start": "nodemon src/index.ts",
 <<<<<<< HEAD:api/package.json
+<<<<<<< HEAD:api/package.json
 >>>>>>> parent of 7d066a9 (Add pre-commit and rimraf packages to build ts on server):server/package.json
 =======
     "build": "rimraf dist && tsc",
     "ts.check": "tsc --project tsconfig.json",
     "add-build": "git add dist",
 >>>>>>> parent of cc871d4 (Update build script, remove vercel config):server/package.json
+=======
+    "build": "npm install && rimraf dist && tsc",
+    "ts.check": "tsc --project tsconfig.json",
+    "add-build": "git add dist",
+>>>>>>> parent of 204353e (Try just setting app source for vercel):server/package.json
     "lint": "eslint . --ext .ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "pre-commit": [
+    "ts.check",
+    "build",
+    "add-build"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
