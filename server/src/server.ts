@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 
 const port = env.PORT;
 
+<<<<<<< HEAD
 // mongoose
 //   .connect(env.MONGO_CONNECTION_STRING)
 //   .then(() => {
@@ -35,3 +36,14 @@ connectDB().then(() => {
     console.log("listening for requests");
   });
 });
+=======
+mongoose
+  .connect(env.MONGO_CONNECTION_STRING)
+  .then(() => {
+    console.log("Mongoose connected");
+    app.listen(port, () => {
+      console.log("Server running on port: " + port);
+    });
+  })
+  .catch(console.error);
+>>>>>>> parent of 3f1c0a5 (Rename server file to try to kick vercel)
