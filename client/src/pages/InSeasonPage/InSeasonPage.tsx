@@ -34,8 +34,9 @@ type resetZone = {
 const InSeasonPage = () => {
   const { loggedInUser } = useLoggedInUser();
   const [usState, setUsState] = useState<string>(loggedInUser?.state || "");
-  const [zone, setZone] =
-    useState < ZoneData || resetZone > (loggedInUser?.zone || {});
+  const [zone, setZone] = useState<ZoneData | resetZone>(
+    loggedInUser?.zone || {}
+  );
   const [itemsLoading, setItemsLoading] = useState(false);
   const [showItemsLoadingError, setShowItemsLoadingError] = useState(false);
   const [snackBarOpen, setSnackBarOpen] = useState(false);
