@@ -6,7 +6,7 @@ A seasonal food app built on the MERN stack.
 
 A simple app that will let you:
 
-1. find your growing zone / plant hardiness zone by zip code
+1. find your growing zone / plant hardiness zone by zip code (sorry international friends, currently US-only)
 2. see what's in season in your area
 3. select in-season items to create a market shopping list
 
