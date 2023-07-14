@@ -88,7 +88,11 @@ const InSeasonPage = () => {
 
   // Set logged in user data if available.
   useEffect(() => {
-    if (loggedInUser?.username !== "" && loggedInUser?.zone.zone !== "") {
+    if (
+      loggedInUser?.username !== "" &&
+      loggedInUser?.zone.zone &&
+      loggedInUser?.zone.zone !== ""
+    ) {
       setZone(loggedInUser?.zone);
       setUsState(loggedInUser?.state);
     }
