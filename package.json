@@ -4,6 +4,11 @@
   "description": "",
   "main": "dist/server.js",
   "scripts": {
+<<<<<<< HEAD
     "start": "nodemon server/src/server.ts"
+=======
+    "start": "node server/src/server.ts",
+    "dev": "nodemon server/src/server.ts"
+>>>>>>> parent of c8d2369 (Update server commands)
   }
 }
