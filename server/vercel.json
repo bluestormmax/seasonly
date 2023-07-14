@@ -1,7 +1,11 @@
 {
   "redirects": [
     {
+<<<<<<< HEAD
       "source": "/api(.*)",
+=======
+      "source": "/(.*)",
+>>>>>>> parent of cd910bc (Update destination config)
       "destination": "/"
     }
   ]
