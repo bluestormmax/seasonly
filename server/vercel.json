@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "version": 2,
   "builds": [
     {
@@ -20,6 +21,12 @@
       "source": "/(.*)",
       "destination": "/dist/index.js"
 >>>>>>> parent of 411ffdb (Try vercel config with deprecated properties)
+=======
+  "redirects": [
+    {
+      "src": "/(.*)",
+      "dest": "dist/index.js"
+>>>>>>> parent of cc871d4 (Update build script, remove vercel config)
     }
   ]
 }
