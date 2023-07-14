@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
+import env from "./util/validateEnv";
 import { ViteWebfontDownload } from "vite-plugin-webfont-dl";
 
 // https://vitejs.dev/config/
@@ -24,7 +25,9 @@ export default defineConfig({
   ],
   server: {
     proxy: {
-      "/api": "http://localhost:5000",
-    },
-  },
+        '/api': {
+          target: env.APP_BASE_URL,
+          changeOrigin: true,
+          secure: false,
+        },
 });
