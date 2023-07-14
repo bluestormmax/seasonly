@@ -1,4 +1,5 @@
 import { MarketItemModel } from "@models/marketItem";
+import { ListItemModel } from "@models/shoppingList";
 import { fetchData } from "./fetchData.api";
 
 export async function fetchAllMarketItems(): Promise<MarketItemModel[]> {
