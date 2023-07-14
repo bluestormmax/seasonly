@@ -5,6 +5,7 @@ import createHttpError, { isHttpError } from "http-errors";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 import cors from "cors";
+import env from "./util/validateEnv";
 import shoppingListRoutes from "./routes/shoppingLists";
 import userRoutes from "./routes/users";
 import marketItemRoutes from "./routes/marketItems";
@@ -33,7 +34,7 @@ app.use(express.json());
 // Read the session data after json but before routes.
 app.use(
   session({
-    secret: process.env.SESSION_SECRET,
+    secret: env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -41,7 +42,7 @@ app.use(
     },
     rolling: true, // refresh cookie automatically within 1hr if user active
     store: MongoStore.create({
-      mongoUrl: process.env.MONGO_CONNECTION_STRING,
+      mongoUrl: env.MONGO_CONNECTION_STRING,
     }),
   })
 );
