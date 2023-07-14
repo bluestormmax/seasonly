@@ -1,5 +1,6 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
   "version": 2,
   "builds": [
     {
@@ -30,6 +31,19 @@
 >>>>>>> parent of cc871d4 (Update build script, remove vercel config)
 =======
 >>>>>>> parent of 204353e (Try just setting app source for vercel)
+=======
+  "version": 2,
+  "builds": [
+    {
+      "src": "./index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+>>>>>>> parent of 56c74de (Rename server dir to api for vercel)
     }
   ]
 }
