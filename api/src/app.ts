@@ -12,8 +12,17 @@ import { requiresAuth } from "./middleware/auth";
 
 const app = express();
 
+const allowedOrigins = ["http://127.0.0.1:5173", "https://seasonly.vercel.app"];
+
+const corsOptions = {
+  credentials: true,
+  origin: allowedOrigins,
+  methods: "GET, POST, PUT, DELETE",
+  allowedHeaders: "Content-Type, Authorization, Cookie",
+};
+
 // Use cors headers.
-app.use(cors());
+app.use(cors(corsOptions));
 
 // set up request logging.
 app.use(morgan("dev"));
