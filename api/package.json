@@ -4,7 +4,11 @@
   "description": "",
   "main": "dist/server.js",
   "scripts": {
+<<<<<<< HEAD:api/package.json
     "start": "nodemon src/server.ts",
+=======
+    "start": "nodemon src/index.ts",
+>>>>>>> parent of 7d066a9 (Add pre-commit and rimraf packages to build ts on server):server/package.json
     "lint": "eslint . --ext .ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
