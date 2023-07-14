@@ -3,9 +3,8 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: #36474f;
+  background-color: #fcf5eb;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -68,17 +67,4 @@ button:focus-visible {
 .footer {
   margin-top: auto;
   padding: 16px;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #36474f;
-    background-color: #fcf5eb;
-  }
-  a:hover {
-    color: #8b2303;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }
