@@ -1,0 +1,11 @@
+.grid_wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(375px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+@media (max-width: 960px) {
+  .grid_wrapper {
+    grid-template-columns: 1fr;
+  }
+}
