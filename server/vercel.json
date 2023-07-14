@@ -2,11 +2,16 @@
   "redirects": [
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
       "source": "/api(.*)",
 =======
       "source": "/(.*)",
 >>>>>>> parent of cd910bc (Update destination config)
       "destination": "/"
+=======
+      "source": "/(.*)",
+      "destination": "/dist/index.js"
+>>>>>>> parent of 411ffdb (Try vercel config with deprecated properties)
     }
   ]
 }
