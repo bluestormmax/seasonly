@@ -4,26 +4,7 @@
   "description": "",
   "main": "dist/server.js",
   "scripts": {
-<<<<<<< HEAD:api/package.json
     "start": "nodemon src/server.ts",
-=======
-    "start": "nodemon src/index.ts",
-<<<<<<< HEAD:api/package.json
-<<<<<<< HEAD:api/package.json
-<<<<<<< HEAD:api/package.json
->>>>>>> parent of 7d066a9 (Add pre-commit and rimraf packages to build ts on server):server/package.json
-=======
-    "build": "rimraf dist && tsc",
-    "ts.check": "tsc --project tsconfig.json",
-    "add-build": "git add dist",
->>>>>>> parent of cc871d4 (Update build script, remove vercel config):server/package.json
-=======
-    "build": "npm install && rimraf dist && tsc",
-    "ts.check": "tsc --project tsconfig.json",
-    "add-build": "git add dist",
->>>>>>> parent of 204353e (Try just setting app source for vercel):server/package.json
-=======
->>>>>>> parent of 1d27561 (Don’t ignore server dist, try vercel build commands again):server/package.json
     "lint": "eslint . --ext .ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
