@@ -1,10 +1,10 @@
 .market_item_card {
   background-color: "#000";
   min-height: "200px";
+}
 
-  .muiimagelistitembar-title {
-    font-size: "24px";
-  }
+.market_item_card .muiimagelistitembar-title {
+  font-size: "24px";
 }
 
 .button_icon {
