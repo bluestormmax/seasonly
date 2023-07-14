@@ -44,8 +44,9 @@ const ShoppingList = ({
         ) : null}
       </CardContent>
       <Box className={styles.card_footer}>
-        <Typography variant="body2" component="span">
-          Last updated at: {date}
+        <Typography variant="body2" component="div" className="timestamp">
+          Last updated at: <br />
+          {date}
         </Typography>
         <Box className="card-actions">
           <IconButton

@@ -16,3 +16,7 @@
   padding: 16px;
   margin-top: 16px;
 }
+
+.timestamp {
+  max-width: 50%;
+}
