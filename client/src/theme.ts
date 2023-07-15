@@ -139,6 +139,7 @@ const theme = createTheme({
           },
           "&.logo": {
             color: colors.white,
+            paddingLeft: "8px",
           },
         },
       },
