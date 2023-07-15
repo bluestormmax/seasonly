@@ -8,6 +8,7 @@ import {
   Button,
   Snackbar,
   Alert,
+  Stack,
 } from "@mui/material";
 import { ShoppingBasket } from "@mui/icons-material";
 import { MarketItemModel } from "@models/marketItem";
@@ -157,9 +158,11 @@ const InSeasonPage = () => {
       {!itemsLoading && !showItemsLoadingError ? (
         marketItems.length !== 0 ? (
           <>
-            <Box
-              className="grid-header"
-              sx={{ display: "flex", justifyContent: "space-between" }}
+            <Stack
+              className="grid_header"
+              spacing={2}
+              direction={{ xs: "column", sm: "row" }}
+              justifyContent={"space-between"}
             >
               <Typography variant="h5" component="h5" pb={"6px"}>
                 {`${month}'s ${marketItems.length} most popular fruits and vegetables:`}{" "}
@@ -169,11 +172,16 @@ const InSeasonPage = () => {
                   endIcon={<ShoppingBasket />}
                   onClick={() => setViewShoppingBasket(true)}
                   variant="contained"
+                  sx={{
+                    whiteSpace: "nowrap",
+                    height: "38px",
+                    minWidth: "min-content",
+                  }}
                 >
                   View Shopping List
                 </Button>
               ) : null}
-            </Box>
+            </Stack>
             <MarketItemsGrid
               marketItems={marketItems}
               onBasketButtonClick={(item) => addMarketItemToList(item)}
