@@ -23,4 +23,8 @@ A simple app that will let you:
 
 ## Built With
 
+The zone data is sourced from [https://planthardiness.ars.usda.gov/](https://planthardiness.ars.usda.gov/)
+
+The initial seed data set was created via reports on the 50-ish most popular vegetables/fruits in US growing zones, then faceted by ChatGPL.
+
 React, TypeScript, Node.js, Express, Mongoose, MongoDB Atlas, MUI, Vite, react-hook-form, express-session, a cast of thousands; served on Akamai Cloud.
