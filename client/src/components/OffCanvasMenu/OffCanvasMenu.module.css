@@ -18,6 +18,10 @@
   transition: color 0.3s ease;
 }
 
+.menu a[aria-current="page"] {
+  background-color: rgba(132, 197, 161, 0.28);
+}
+
 .menu a svg {
   font-size: 2rem;
   margin-right: 10px;

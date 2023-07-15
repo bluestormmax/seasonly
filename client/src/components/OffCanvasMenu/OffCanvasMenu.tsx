@@ -9,7 +9,7 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { ChevronLeft, WbSunny, FoodBank } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { LoginWrapper } from "@/components";
 import styles from "./OffCanvasMenu.module.css";
 
@@ -58,19 +58,19 @@ const OffCanvasMenu = ({
         <List className={styles.menu} role="navigation">
           {["What's In Season", "Shopping Lists"].map((text, index) => (
             <ListItem key={text} disablePadding>
-              <Link
+              <NavLink
                 to={index % 2 === 0 ? "/" : "shopping-lists"}
                 onClick={onLinkClicked}
+                className={({ isActive }) => (isActive ? "active" : "")}
               >
                 {index % 2 === 0 ? <WbSunny /> : <FoodBank />}
                 <ListItemText primary={text} />{" "}
-              </Link>
+              </NavLink>
             </ListItem>
           ))}
         </List>
         {matches ? (
           <LoginWrapper
-            className={styles.off_canvas_login}
             onSignUpClicked={onSignUpClicked}
             onLoginClicked={onLoginClicked}
             onLogOutSuccess={onLogOutSuccess}
