@@ -11,3 +11,4 @@ export { OffCanvasMenu } from "./OffCanvasMenu/OffCanvasMenu";
 export { GrowingZoneInput } from "./GrowingZoneInput/GrowingZoneInput";
 export { MarketItemsGrid } from "./MarketItemsGrid/MarketItemsGrid";
 export { MarketItemCard } from "./MarketItemCard/MarketItemCard";
+export { Footer } from "./Footer/Footer";
