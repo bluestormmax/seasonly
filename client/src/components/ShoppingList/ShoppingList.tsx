@@ -48,7 +48,7 @@ const ShoppingList = ({
           Last updated at: <br />
           {date}
         </Typography>
-        <Box className="card-actions">
+        <Box className={styles.card_actions}>
           <IconButton
             onClick={(event) => {
               onEditListClicked(shoppingList);
