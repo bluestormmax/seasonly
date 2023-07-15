@@ -7,6 +7,7 @@ export {
   UpdateProfileDialog,
 } from "./dialogs";
 export { NavBar } from "./NavBar/NavBar";
+export { LoginWrapper } from "./LoginWrapper/LoginWrapper";
 export { OffCanvasMenu } from "./OffCanvasMenu/OffCanvasMenu";
 export { GrowingZoneInput } from "./GrowingZoneInput/GrowingZoneInput";
 export { MarketItemsGrid } from "./MarketItemsGrid/MarketItemsGrid";

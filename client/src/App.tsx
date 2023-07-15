@@ -45,6 +45,18 @@ function App() {
           open={showOffCanvasMenu}
           onCloseIconClicked={() => setShowOffCanvasMenu(false)}
           onLinkClicked={() => setShowOffCanvasMenu(false)}
+          onLoginClicked={() => {
+            () => setShowLoginDialog(true);
+            () => setShowOffCanvasMenu(false);
+          }}
+          onSignUpClicked={() => {
+            () => setShowSignUpDialog(true);
+            () => setShowOffCanvasMenu(false);
+          }}
+          onLogOutSuccess={() => {
+            () => setLoggedInUser(defaultUser);
+            () => setShowOffCanvasMenu(false);
+          }}
         />
         <Box className="main" p={4}>
           <Routes>

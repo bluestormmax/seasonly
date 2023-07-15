@@ -6,22 +6,32 @@ import {
   ListItemText,
   Typography,
   ClickAwayListener,
+  useMediaQuery,
 } from "@mui/material";
 import { ChevronLeft, WbSunny, FoodBank } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import { LoginWrapper } from "@/components";
 import styles from "./OffCanvasMenu.module.css";
 
 type OffCanvasMenuProps = {
   open: boolean;
   onCloseIconClicked: () => void;
   onLinkClicked: () => void;
+  onSignUpClicked: () => void;
+  onLoginClicked: () => void;
+  onLogOutSuccess: () => void;
 };
 
 const OffCanvasMenu = ({
   open,
   onCloseIconClicked,
   onLinkClicked,
+  onSignUpClicked,
+  onLoginClicked,
+  onLogOutSuccess,
 }: OffCanvasMenuProps) => {
+  const matches = useMediaQuery("(max-width: 599px)");
+
   return (
     <ClickAwayListener
       mouseEvent="onMouseDown"
@@ -58,6 +68,14 @@ const OffCanvasMenu = ({
             </ListItem>
           ))}
         </List>
+        {matches ? (
+          <LoginWrapper
+            className={styles.off_canvas_login}
+            onSignUpClicked={onSignUpClicked}
+            onLoginClicked={onLoginClicked}
+            onLogOutSuccess={onLogOutSuccess}
+          />
+        ) : null}
       </Drawer>
     </ClickAwayListener>
   );
