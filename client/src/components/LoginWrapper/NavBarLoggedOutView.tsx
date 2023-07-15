@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, Stack } from "@mui/material";
 
 type NavBarLoggedOutViewProps = {
   onSignUpClicked: () => void;
@@ -10,14 +10,14 @@ const NavBarLoggedOutView = ({
   onLoginClicked,
 }: NavBarLoggedOutViewProps) => {
   return (
-    <>
-      <Button color="inherit" onClick={onSignUpClicked} sx={{ mr: 1 }}>
+    <Stack spacing={2} direction={{ xs: "column", sm: "row" }}>
+      <Button color="inherit" onClick={onSignUpClicked}>
         Sign Up
       </Button>
       <Button color="inherit" onClick={onLoginClicked}>
         Log in
       </Button>
-    </>
+    </Stack>
   );
 };
 

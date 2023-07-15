@@ -1,4 +1,4 @@
-import { Button, Typography } from "@mui/material";
+import { Button, Typography, Stack } from "@mui/material";
 import { useLoggedInUser } from "@/context/userContext";
 import * as UserApi from "@api/user.api";
 
@@ -19,7 +19,7 @@ const NavBarLoggedInView = ({ onLogoutSuccess }: NavBarLoggedInViewProps) => {
   }
 
   return (
-    <>
+    <Stack spacing={2} direction={{ xs: "column", sm: "row" }}>
       <Typography
         variant="body1"
         component="div"
@@ -30,7 +30,7 @@ const NavBarLoggedInView = ({ onLogoutSuccess }: NavBarLoggedInViewProps) => {
       <Button color="inherit" onClick={logout}>
         Log out
       </Button>
-    </>
+    </Stack>
   );
 };
 

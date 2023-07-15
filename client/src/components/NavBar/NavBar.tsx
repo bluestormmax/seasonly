@@ -1,9 +1,13 @@
-import { AppBar, IconButton, Typography, Toolbar } from "@mui/material";
+import {
+  AppBar,
+  IconButton,
+  Typography,
+  Toolbar,
+  useMediaQuery,
+} from "@mui/material";
 import { Menu } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import { useLoggedInUser } from "@/context/userContext";
-import { NavBarLoggedInView } from "./NavBarLoggedInView";
-import { NavBarLoggedOutView } from "./NavBarLoggedOutView";
+import { LoginWrapper } from "@/components";
 
 // Null if user not logged in, but we don't want an optional prop here
 type NavBarProps = {
@@ -19,17 +23,15 @@ const NavBar = ({
   onLogOutSuccess,
   onMenuIconClicked,
 }: NavBarProps) => {
-  const { loggedInUser } = useLoggedInUser();
+  const matches = useMediaQuery("(min-width:600px)");
 
   return (
     <AppBar position="static">
       <Toolbar>
         <IconButton
           size="large"
-          edge="start"
           color="inherit"
           aria-label="menu"
-          sx={{ mr: 2 }}
           onClick={onMenuIconClicked}
         >
           <Menu />
@@ -38,19 +40,17 @@ const NavBar = ({
           variant="h6"
           component={Link}
           to="/"
-          sx={{ flexGrow: 1 }}
           className="fancy_text logo"
         >
           Seasonly
         </Typography>
-        {loggedInUser?.username !== "" ? (
-          <NavBarLoggedInView onLogoutSuccess={onLogOutSuccess} />
-        ) : (
-          <NavBarLoggedOutView
-            onLoginClicked={onLoginClicked}
+        {matches ? (
+          <LoginWrapper
             onSignUpClicked={onSignUpClicked}
+            onLoginClicked={onLoginClicked}
+            onLogOutSuccess={onLogOutSuccess}
           />
-        )}
+        ) : null}
       </Toolbar>
     </AppBar>
   );

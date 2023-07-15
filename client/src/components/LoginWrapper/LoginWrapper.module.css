@@ -1,0 +1,19 @@
+.login_wrapper {
+  margin-top: auto;
+  padding: 0 16px 32px;
+}
+
+.login_wrapper button {
+  background-color: #ff5722;
+}
+
+@media (min-width: 600px) {
+  .login_wrapper {
+    margin-top: 0;
+    padding: 0;
+  }
+
+  .login_wrapper button {
+    background-color: initial;
+  }
+}
