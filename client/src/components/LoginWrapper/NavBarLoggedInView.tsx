@@ -19,7 +19,11 @@ const NavBarLoggedInView = ({ onLogoutSuccess }: NavBarLoggedInViewProps) => {
   }
 
   return (
-    <Stack spacing={2} direction={{ xs: "column", sm: "row" }}>
+    <Stack
+      spacing={2}
+      direction={{ xs: "column", sm: "row" }}
+      alignItems={{ xs: "flex-start", sm: "center" }}
+    >
       <Typography
         variant="body1"
         component="div"
