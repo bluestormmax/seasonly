@@ -4,6 +4,7 @@ import { Button, FormLabel, Stack } from "@mui/material";
 import { ZoneData } from "@api/user.api";
 import { fetchUserZoneData } from "@api/user.api";
 import { TextInputField } from "../formFields/TextInputField";
+import styles from "./GrowingZoneInput.module.css";
 
 type GrowingZoneInputProps = {
   onZoneSet: (zone: ZoneData) => void;
@@ -52,11 +53,11 @@ const GrowingZoneInput = ({
     <form
       id="growingZoneInput"
       onSubmit={handleSubmit(onZoneSubmit)}
-      style={{ width: "400px", margin: "0 auto" }}
+      className={styles.form_styles}
     >
       <Stack>
         <FormLabel sx={{ mb: 2 }}>Enter a zip code to find out:</FormLabel>
-        <Stack direction="row" spacing={2}>
+        <Stack spacing={2} direction={{ xs: "column", sm: "row" }}>
           <Controller
             name="zip"
             control={control}
