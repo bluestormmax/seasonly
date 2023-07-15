@@ -46,16 +46,16 @@ function App() {
           onCloseIconClicked={() => setShowOffCanvasMenu(false)}
           onLinkClicked={() => setShowOffCanvasMenu(false)}
           onLoginClicked={() => {
-            () => setShowLoginDialog(true);
-            () => setShowOffCanvasMenu(false);
+            setShowLoginDialog(true);
+            setShowOffCanvasMenu(false);
           }}
           onSignUpClicked={() => {
-            () => setShowSignUpDialog(true);
-            () => setShowOffCanvasMenu(false);
+            setShowOffCanvasMenu(false);
+            setShowSignUpDialog(true);
           }}
           onLogOutSuccess={() => {
-            () => setLoggedInUser(defaultUser);
-            () => setShowOffCanvasMenu(false);
+            setShowOffCanvasMenu(false);
+            setLoggedInUser(defaultUser);
           }}
         />
         <Box className="main" p={4}>
