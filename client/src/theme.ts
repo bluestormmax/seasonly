@@ -53,6 +53,20 @@ const theme = createTheme({
     },
   },
   components: {
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          flexDirection: "row",
+        },
+      },
+    },
+    MuiToolbar: {
+      styleOverrides: {
+        root: {
+          width: "100%",
+        },
+      },
+    },
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
