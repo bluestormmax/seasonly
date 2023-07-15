@@ -6,6 +6,7 @@ import {
   Snackbar,
   Alert,
   Button,
+  Box,
 } from "@mui/material";
 import { ShoppingBasket, HighlightOff, ListAlt } from "@mui/icons-material";
 import { useLoggedInUser } from "@/context/userContext";
@@ -75,7 +76,7 @@ const MarketItemCard = ({
 
   const cardButton = () => {
     const button = isInBasket ? (
-      <>
+      <Box className={styles.action_buttons}>
         <IconButton
           title={`View shopping list`}
           onClick={onViewListButtonClick}
@@ -88,14 +89,16 @@ const MarketItemCard = ({
         >
           <HighlightOff className={styles.button_icon} />
         </IconButton>
-      </>
+      </Box>
     ) : (
-      <IconButton
-        title={`Save ${item.displayName} to new shopping list`}
-        onClick={handleBasketButtonClick}
-      >
-        <ShoppingBasket className={styles.button_icon} />
-      </IconButton>
+      <Box className={styles.action_buttons}>
+        <IconButton
+          title={`Save ${item.displayName} to new shopping list`}
+          onClick={handleBasketButtonClick}
+        >
+          <ShoppingBasket className={styles.button_icon} />
+        </IconButton>
+      </Box>
     );
     return button;
   };

@@ -10,3 +10,7 @@
 .button_icon {
   color: #fff;
 }
+
+.action_buttons {
+  display: flex;
+}
