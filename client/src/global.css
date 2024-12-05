@@ -62,11 +62,28 @@ button:focus-visible {
 }
 
 .fancy_text {
-  font-family: "Slabo 27px";
+  font-family: 'Slabo 27px';
 }
 
 .app {
   min-height: 100vh;
   display: grid;
   grid-template-rows: 66px 0 1fr 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+body::after {
+  display: inline-block;
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./assets/circle-of-foods.svg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  z-index: 0;
+  pointer-events: none;
 }
