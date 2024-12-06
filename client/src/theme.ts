@@ -1,17 +1,17 @@
-import { createTheme } from "@mui/material/styles";
+import { createTheme } from '@mui/material/styles';
 
 const headingsFont = `"Slabo 27px", serif`;
 const bodyFont = `"Lato", Arial, sans-serif`;
 const colors = {
-  primary: "#00796b",
-  secondary: "#ff5722",
-  error: "#d32f2f",
-  success: "#1e88e5",
-  info: "#76ff03",
-  white: "#ffffff",
-  darkGray: "#36474F",
-  irishGreen: "#376E66",
-  avoGreen: "#769053",
+  primary: '#00796b',
+  secondary: '#ff5722',
+  error: '#d32f2f',
+  success: '#1e88e5',
+  info: '#76ff03',
+  white: '#ffffff',
+  darkGray: '#36474F',
+  irishGreen: '#376E66',
+  avoGreen: '#769053',
 };
 
 const theme = createTheme({
@@ -56,14 +56,14 @@ const theme = createTheme({
     MuiAppBar: {
       styleOverrides: {
         root: {
-          flexDirection: "row",
+          flexDirection: 'row',
         },
       },
     },
     MuiToolbar: {
       styleOverrides: {
         root: {
-          width: "100%",
+          width: '100%',
         },
       },
     },
@@ -79,22 +79,22 @@ const theme = createTheme({
         root: {
           backgroundColor: colors.irishGreen,
           color: colors.white,
-          boxShadow: "none",
-          "&:hover": {
+          boxShadow: 'none',
+          '&:hover': {
             backgroundColor: colors.avoGreen,
-            boxShadow: "none",
+            boxShadow: 'none',
           },
-          "&:focus": {
+          '&:focus': {
             backgroundColor: colors.avoGreen,
             outlineColor: colors.secondary,
-            boxShadow: "none",
+            boxShadow: 'none',
           },
         },
         text: {
-          backgroundColor: "transparent",
+          backgroundColor: 'transparent',
           color: colors.white,
-          ".MuiAlert-message > &": {
-            backgroundColor: "transparent",
+          '.MuiAlert-message > &': {
+            backgroundColor: 'transparent',
             color: colors.darkGray,
           },
         },
@@ -103,11 +103,11 @@ const theme = createTheme({
     MuiIconButton: {
       styleOverrides: {
         root: {
-          "&:hover": {
+          '&:hover': {
             backgroundColor: colors.avoGreen,
             color: colors.white,
           },
-          "&:focus": {
+          '&:focus': {
             backgroundColor: colors.avoGreen,
             outlineColor: colors.secondary,
             color: colors.white,
@@ -118,28 +118,28 @@ const theme = createTheme({
     MuiImageListItemBar: {
       styleOverrides: {
         root: {
-          background: "rgba(54, 71, 79, 0.8)", // colors.darkGray
+          background: 'rgba(54, 71, 79, 0.8)', // colors.darkGray
         },
       },
     },
     MuiFormGroup: {
       styleOverrides: {
         root: {
-          display: "grid",
-          gridTemplateColumns: "repeat(2, 50%)",
-          gridTemplateRows: "auto",
+          display: 'grid',
+          gridTemplateColumns: 'repeat(2, 50%)',
+          gridTemplateRows: 'auto',
         },
       },
     },
     MuiTypography: {
       styleOverrides: {
         root: {
-          "&.fancy_text": {
+          '&.fancy_text': {
             fontFamily: headingsFont,
           },
-          "&.logo": {
+          '&.logo': {
             color: colors.white,
-            paddingLeft: "8px",
+            paddingLeft: '8px',
           },
         },
       },
@@ -147,7 +147,10 @@ const theme = createTheme({
     MuiFormLabel: {
       styleOverrides: {
         root: {
-          fontSize: "1.3rem",
+          fontSize: '1.3rem',
+          '&.Mui-focused': {
+            fontSize: '1rem',
+          },
         },
       },
     },
