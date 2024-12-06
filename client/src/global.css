@@ -94,9 +94,9 @@ button:focus-visible {
 
 .footer a {
   color: white;
+}
 
-  &:hover,
-  &:focus {
-    text-decoration: underline;
-  }
+.footer a:hover,
+.footer a:focus {
+  text-decoration: underline;
 }
