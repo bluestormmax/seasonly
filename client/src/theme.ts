@@ -148,7 +148,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           fontSize: '1.3rem',
-          '&.Mui-focused': {
+          '&.MuiInputLabel-shrink': {
             fontSize: '1rem',
           },
         },
