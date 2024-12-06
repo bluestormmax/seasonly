@@ -1,6 +1,6 @@
 /* eslint-disable no-inner-declarations */
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Typography,
   CircularProgress,
@@ -9,19 +9,19 @@ import {
   Snackbar,
   Alert,
   Stack,
-} from "@mui/material";
-import { ShoppingBasket } from "@mui/icons-material";
-import { MarketItemModel } from "@models/marketItem";
-import { ListItemModel } from "@models/shoppingList";
-import { useLoggedInUser } from "@/context/userContext";
-import * as MarketItemsApi from "@api/marketItems.api";
-import { ZoneData } from "@api/user.api";
-import { getStateFromZip, getMonthName, checkIfInList } from "@/utils";
+} from '@mui/material';
+import { ShoppingBasket } from '@mui/icons-material';
+import { MarketItemModel } from '@models/marketItem';
+import { ListItemModel } from '@models/shoppingList';
+import { useLoggedInUser } from '@/context/userContext';
+import * as MarketItemsApi from '@api/marketItems.api';
+import { ZoneData } from '@api/user.api';
+import { getStateFromZip, getMonthName, checkIfInList } from '@/utils';
 import {
   AddEditListDialog,
   GrowingZoneInput,
   MarketItemsGrid,
-} from "../../components";
+} from '../../components';
 
 type resetZone = {
   zone?: string;
@@ -34,12 +34,13 @@ type resetZone = {
 
 const InSeasonPage = () => {
   const { loggedInUser } = useLoggedInUser();
-  const [usState, setUsState] = useState<string>(loggedInUser?.state || "");
+  const [usState, setUsState] = useState<string>(loggedInUser?.state || '');
   const [zone, setZone] = useState<ZoneData | resetZone>(
     loggedInUser?.zone || {}
   );
   const [itemsLoading, setItemsLoading] = useState(false);
   const [showItemsLoadingError, setShowItemsLoadingError] = useState(false);
+  const [itemsLoadingErrorText, setItemsLoadingErrorText] = useState('');
   const [snackBarOpen, setSnackBarOpen] = useState(false);
   const [marketItems, setMarketItems] = useState<MarketItemModel[]>([]);
   const [shoppingBasketItems, setShoppingBasketItems] = useState<
@@ -90,9 +91,9 @@ const InSeasonPage = () => {
   // Set logged in user data if available.
   useEffect(() => {
     if (
-      loggedInUser?.username !== "" &&
+      loggedInUser?.username !== '' &&
       loggedInUser?.zone.zone &&
-      loggedInUser?.zone.zone !== ""
+      loggedInUser?.zone.zone !== ''
     ) {
       setZone(loggedInUser?.zone);
       setUsState(loggedInUser?.state);
@@ -111,8 +112,12 @@ const InSeasonPage = () => {
 
           setMarketItems(initialMarketItems);
         } catch (error) {
-          console.error(error);
+          // console.error(error);
           setShowItemsLoadingError(true);
+          // TODO: the error message from the server needs formatting, this is temporary.
+          setItemsLoadingErrorText(
+            'No in-season market items found for this zone.'
+          );
         } finally {
           setItemsLoading(false);
         }
@@ -123,11 +128,11 @@ const InSeasonPage = () => {
 
   return (
     <>
-      <Box sx={{ textAlign: "center" }}>
+      <Box sx={{ textAlign: 'center' }}>
         <Typography
-          className="heading welcome"
-          variant="h3"
-          component="h1"
+          className='heading welcome'
+          variant='h3'
+          component='h1'
           mb={3}
         >
           What's In Season?
@@ -138,44 +143,42 @@ const InSeasonPage = () => {
             setUsStateFromZip(zip);
           }}
         />
-        {zone.zone !== "" ? (
-          <Typography component="p" variant="body1" sx={{ p: "32px 0" }}>
+        {zone.zone !== '' ? (
+          <Typography component='p' variant='body1' sx={{ p: '32px 0' }}>
             <strong>
               <em>{`${
                 !itemsLoading ? `Showing` : `Fetching`
-              } the harvest data for:`}</em>{" "}
+              } the harvest data for:`}</em>{' '}
               {`Hardiness zone ${zone?.zone} in 
             ${usState}`}
             </strong>
           </Typography>
         ) : null}
       </Box>
-      {showItemsLoadingError ? (
-        <Alert severity="error">
-          Something went wrong while loading items.
-        </Alert>
+      {!itemsLoading && showItemsLoadingError ? (
+        <Alert severity='error'>{itemsLoadingErrorText}</Alert>
       ) : null}
       {!itemsLoading && !showItemsLoadingError ? (
         marketItems.length !== 0 ? (
           <>
             <Stack
-              className="grid_header"
+              className='grid_header'
               spacing={2}
-              direction={{ xs: "column", sm: "row" }}
-              justifyContent={"space-between"}
+              direction={{ xs: 'column', sm: 'row' }}
+              justifyContent={'space-between'}
             >
-              <Typography variant="h5" component="h5" pb={"6px"}>
-                {`${month}'s ${marketItems.length} most popular fruits and vegetables:`}{" "}
+              <Typography variant='h5' component='h5' pb={'6px'}>
+                {`${month}'s ${marketItems.length} most popular fruits and vegetables:`}{' '}
               </Typography>
               {shoppingBasketItems.length !== 0 ? (
                 <Button
                   endIcon={<ShoppingBasket />}
                   onClick={() => setViewShoppingBasket(true)}
-                  variant="contained"
+                  variant='contained'
                   sx={{
-                    whiteSpace: "nowrap",
-                    height: "38px",
-                    minWidth: "min-content",
+                    whiteSpace: 'nowrap',
+                    height: '38px',
+                    minWidth: 'min-content',
                   }}
                 >
                   View Shopping List
@@ -189,8 +192,8 @@ const InSeasonPage = () => {
               onSnackBarLinkClick={() => setViewShoppingBasket(true)}
               onViewListButtonClick={() => setViewShoppingBasket(true)}
             />
-            <Box textAlign="center">
-              <Link to="https://www.pexels.com/" target="blank">
+            <Box textAlign='center'>
+              <Link to='https://www.pexels.com/' target='blank'>
                 Images provided by Pexels
               </Link>
             </Box>
@@ -201,18 +204,20 @@ const InSeasonPage = () => {
             >
               <Alert
                 onClose={handleSnackBarClose}
-                severity="success"
-                sx={{ width: "100%" }}
+                severity='success'
+                sx={{ width: '100%' }}
               >
-                New shopping list saved.{" "}
-                <Link to="shopping-lists">View your saved lists</Link>
+                New shopping list saved.{' '}
+                <Link to='shopping-lists'>View your saved lists</Link>
               </Alert>
             </Snackbar>
           </>
         ) : null
-      ) : (
-        <CircularProgress />
-      )}
+      ) : itemsLoading && !showItemsLoadingError ? (
+        <Box sx={{ textAlign: 'center', mt: 4 }}>
+          <CircularProgress />
+        </Box>
+      ) : null}
       {viewShoppingBasket ? (
         <AddEditListDialog
           onClose={() => setViewShoppingBasket(false)}
