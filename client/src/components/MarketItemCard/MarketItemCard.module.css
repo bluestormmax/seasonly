@@ -1,10 +1,15 @@
+:root {
+  --animation-time: 0.5s;
+}
+
 .market_item_card {
-  background-color: "#000";
-  min-height: "200px";
+  background-color: '#000';
+  min-height: '200px';
+  animation: grow var(--animation-time) ease-in;
 }
 
 .market_item_card .muiimagelistitembar-title {
-  font-size: "24px";
+  font-size: '24px';
 }
 
 .button_icon {
@@ -17,4 +22,13 @@
 
 .action_buttons button + button {
   margin-left: 4px;
+}
+
+@keyframes grow {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
 }

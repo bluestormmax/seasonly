@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from 'react';
 import {
   IconButton,
   ImageListItem,
@@ -7,11 +7,11 @@ import {
   Alert,
   Button,
   Box,
-} from "@mui/material";
-import { ShoppingBasket, HighlightOff, ListAlt } from "@mui/icons-material";
-import { useLoggedInUser } from "@/context/userContext";
-import { MarketItemModel } from "@models/marketItem";
-import styles from "./MarketItemCard.module.css";
+} from '@mui/material';
+import { ShoppingBasket, HighlightOff, ListAlt } from '@mui/icons-material';
+import { useLoggedInUser } from '@/context/userContext';
+import { MarketItemModel } from '@models/marketItem';
+import styles from './MarketItemCard.module.css';
 
 type MarketItemCardProps = {
   item: MarketItemModel;
@@ -31,10 +31,12 @@ const MarketItemCard = ({
   const { loggedInUser } = useLoggedInUser();
   const [snackBarOpen, setSnackBarOpen] = useState(false);
   const [isInBasket, setIsInBasket] = useState(false);
+  const listItem = useRef<HTMLLIElement>(null);
+
   const imgUrl = `/${item.name}.jpg`;
 
   const handleBasketButtonClick = () => {
-    if (loggedInUser?.username === "") {
+    if (loggedInUser?.username === '') {
       setSnackBarOpen(true);
     } else {
       setSnackBarOpen(true);
@@ -53,22 +55,22 @@ const MarketItemCard = ({
   };
 
   const actionSnackBar = () =>
-    loggedInUser?.username !== "" ? (
+    loggedInUser?.username !== '' ? (
       <Alert
         onClose={handleSnackBarClose}
-        severity="success"
-        sx={{ width: "100%" }}
+        severity='success'
+        sx={{ width: '100%' }}
       >
-        Item added to shopping list.{" "}
-        <Button variant="text" onClick={onSnackBarLinkClick}>
+        Item added to shopping list.{' '}
+        <Button variant='text' onClick={onSnackBarLinkClick}>
           View list
         </Button>
       </Alert>
     ) : (
       <Alert
         onClose={handleSnackBarClose}
-        severity="warning"
-        sx={{ width: "100%" }}
+        severity='warning'
+        sx={{ width: '100%' }}
       >
         Sign up or log in to save shopping lists.
       </Alert>
@@ -103,14 +105,25 @@ const MarketItemCard = ({
     return button;
   };
 
+  useEffect(() => {
+    if (listItem.current) {
+      const delay = Math.random() + 0.5;
+      listItem.current.style.setProperty('--animation-time', delay + 's');
+    }
+  }, []);
+
   return (
-    <ImageListItem key={item.name} className={styles.market_item_card}>
+    <ImageListItem
+      key={item.name}
+      ref={listItem}
+      className={styles.market_item_card}
+    >
       {imgUrl ? (
         <img
           src={`${imgUrl}?w=248&fit=crop&auto=format`}
           srcSet={`${imgUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
           alt={item.name}
-          loading="lazy"
+          loading='lazy'
         />
       ) : null}
       <Snackbar
@@ -121,7 +134,7 @@ const MarketItemCard = ({
         {actionSnackBar()}
       </Snackbar>
       <ImageListItemBar
-        className="fancy_text"
+        className='fancy_text'
         title={item.displayName}
         actionIcon={cardButton()}
         sx={{ pr: 1 }}
