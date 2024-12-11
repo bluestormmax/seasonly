@@ -2,7 +2,7 @@ import { createTheme } from '@mui/material/styles';
 
 const headingsFont = `"Slabo 27px", serif`;
 const bodyFont = `"Lato", Arial, sans-serif`;
-const colors = {
+export const customColors = {
   primary: '#00796b',
   secondary: '#ff5722',
   error: '#d32f2f',
@@ -12,24 +12,25 @@ const colors = {
   darkGray: '#36474F',
   irishGreen: '#376E66',
   avoGreen: '#769053',
+  eggplant: '#712A8D',
 };
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: colors.primary,
+      main: customColors.primary,
     },
     secondary: {
-      main: colors.secondary,
+      main: customColors.secondary,
     },
     error: {
-      main: colors.error,
+      main: customColors.error,
     },
     success: {
-      main: colors.success,
+      main: customColors.success,
     },
     info: {
-      main: colors.info,
+      main: customColors.info,
     },
   },
   typography: {
@@ -70,32 +71,32 @@ const theme = createTheme({
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
-          backgroundColor: colors.white,
+          backgroundColor: customColors.white,
         },
       },
     },
     MuiButton: {
       styleOverrides: {
         root: {
-          backgroundColor: colors.irishGreen,
-          color: colors.white,
+          backgroundColor: customColors.irishGreen,
+          color: customColors.white,
           boxShadow: 'none',
           '&:hover': {
-            backgroundColor: colors.avoGreen,
+            backgroundColor: customColors.avoGreen,
             boxShadow: 'none',
           },
           '&:focus': {
-            backgroundColor: colors.avoGreen,
-            outlineColor: colors.secondary,
+            backgroundColor: customColors.avoGreen,
+            outlineColor: customColors.secondary,
             boxShadow: 'none',
           },
         },
         text: {
           backgroundColor: 'transparent',
-          color: colors.white,
+          color: customColors.white,
           '.MuiAlert-message > &': {
             backgroundColor: 'transparent',
-            color: colors.darkGray,
+            color: customColors.darkGray,
           },
         },
       },
@@ -104,13 +105,13 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           '&:hover': {
-            backgroundColor: colors.avoGreen,
-            color: colors.white,
+            backgroundColor: customColors.avoGreen,
+            color: customColors.white,
           },
           '&:focus': {
-            backgroundColor: colors.avoGreen,
-            outlineColor: colors.secondary,
-            color: colors.white,
+            backgroundColor: customColors.avoGreen,
+            outlineColor: customColors.secondary,
+            color: customColors.white,
           },
         },
       },
@@ -118,7 +119,7 @@ const theme = createTheme({
     MuiImageListItemBar: {
       styleOverrides: {
         root: {
-          background: 'rgba(54, 71, 79, 0.8)', // colors.darkGray
+          background: 'rgba(54, 71, 79, 0.8)', // customColors.darkGray
         },
       },
     },
@@ -138,7 +139,7 @@ const theme = createTheme({
             fontFamily: headingsFont,
           },
           '&.logo': {
-            color: colors.white,
+            color: customColors.white,
             paddingLeft: '8px',
           },
         },
@@ -157,8 +158,8 @@ const theme = createTheme({
     MuiDialogTitle: {
       styleOverrides: {
         root: {
-          color: colors.white,
-          backgroundColor: colors.avoGreen,
+          color: customColors.white,
+          backgroundColor: customColors.avoGreen,
         },
       },
     },

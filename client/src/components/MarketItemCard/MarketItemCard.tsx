@@ -8,10 +8,12 @@ import {
   Button,
   Box,
 } from '@mui/material';
+import { alpha } from '@mui/material';
 import { ShoppingBasket, HighlightOff, ListAlt } from '@mui/icons-material';
 import { useLoggedInUser } from '@/context/userContext';
 import { MarketItemModel } from '@models/marketItem';
 import styles from './MarketItemCard.module.css';
+import theme, { customColors } from '@/theme';
 
 type MarketItemCardProps = {
   item: MarketItemModel;
@@ -137,7 +139,7 @@ const MarketItemCard = ({
         className='fancy_text'
         title={item.displayName}
         actionIcon={cardButton()}
-        sx={{ pr: 1 }}
+        sx={{ bgcolor: alpha(customColors.eggplant, 0.8), pr: 1 }}
       />
     </ImageListItem>
   );
