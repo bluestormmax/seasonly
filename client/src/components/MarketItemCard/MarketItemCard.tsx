@@ -109,7 +109,7 @@ const MarketItemCard = ({
 
   useEffect(() => {
     if (listItem.current) {
-      const delay = Math.random() + 0.5;
+      const delay = Math.random() + 0.3;
       listItem.current.style.setProperty('--animation-time', delay + 's');
     }
   }, []);
