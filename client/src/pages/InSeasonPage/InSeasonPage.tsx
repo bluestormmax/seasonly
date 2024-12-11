@@ -21,7 +21,8 @@ import {
   AddEditListDialog,
   GrowingZoneInput,
   MarketItemsGrid,
-} from '../../components';
+} from '@components/index.ts';
+import styles from './InSeasonPage.module.css';
 
 type resetZone = {
   zone?: string;
@@ -128,7 +129,10 @@ const InSeasonPage = () => {
 
   return (
     <>
-      <Box sx={{ textAlign: 'center' }}>
+      <Box
+        className={styles.in_season_hero_wrapper}
+        sx={{ textAlign: 'center' }}
+      >
         <Typography
           className='heading welcome'
           variant='h3'

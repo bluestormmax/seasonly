@@ -1,0 +1,47 @@
+.in_season_hero_wrapper,
+.in_season_hero_wrapper h1,
+.in_season_hero_wrapper form,
+.in_season_hero_wrapper p {
+  position: relative;
+  z-index: 1;
+}
+
+.in_season_hero_wrapper::before {
+  display: inline-block;
+  content: '';
+  position: absolute;
+  background-image: url('../../assets/watermelon.svg');
+  background-repeat: no-repeat;
+  width: 200px;
+  height: 200px;
+  top: -40px;
+  left: -100px;
+  z-index: 0;
+  transform: rotate(-165deg);
+}
+
+.in_season_hero_wrapper::after {
+  display: inline-block;
+  content: '';
+  position: absolute;
+  background-image: url('../../assets/carrot.svg');
+  background-repeat: no-repeat;
+  width: 200px;
+  height: 200px;
+  top: 0;
+  right: -100px;
+  z-index: 0;
+  transform: rotate(-45deg);
+}
+
+@media (min-width: 768px) {
+  .in_season_hero_wrapper::after {
+    right: calc(50%);
+    transform: rotate(-45deg) translateX(300px) translateY(280px);
+  }
+
+  .in_season_hero_wrapper::before {
+    left: calc(50%);
+    transform: translateX(-380px) rotate(-165deg);
+  }
+}
