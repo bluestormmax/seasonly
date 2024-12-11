@@ -13,7 +13,7 @@ import { ShoppingBasket, HighlightOff, ListAlt } from '@mui/icons-material';
 import { useLoggedInUser } from '@/context/userContext';
 import { MarketItemModel } from '@models/marketItem';
 import styles from './MarketItemCard.module.css';
-import theme, { customColors } from '@/theme';
+import { customColors } from '@/theme';
 
 type MarketItemCardProps = {
   item: MarketItemModel;
